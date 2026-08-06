@@ -1,0 +1,199 @@
+{
+  "site": {
+    "name": "Sélestat International F3P Master 2026",
+    "shortName": "SIFM 2026",
+    "tagline": "Modellflug-Wettbewerb",
+    "description": "Offizielle Website des Sélestat International F3P Master 2026: Programm, Reglement, praktische Informationen und Anmeldung.",
+    "eventDates": "noch offen",
+    "eventLocation": "noch offen",
+    "contactEmail": "contact@example.com"
+  },
+  "nav": {
+    "home": "Startseite",
+    "programme": "Programm",
+    "reglement": "Reglement",
+    "informations": "Informationen",
+    "inscription": "Anmeldung",
+    "contact": "Kontakt",
+    "register": "Anmelden",
+    "openMenu": "Menü öffnen"
+  },
+  "footer": {
+    "rights": "© {year} {name}. Alle Rechte vorbehalten."
+  },
+  "categories": {
+    "planeur": "Segelflug",
+    "voltige": "Kunstflug",
+    "droneRacing": "Drohnenrennen",
+    "libre": "Offene Kategorie"
+  },
+  "home": {
+    "badge": "Modellflug-Wettbewerb",
+    "ctaRegister": "Zum Wettbewerb anmelden",
+    "ctaProgramme": "Programm ansehen",
+    "highlights": {
+      "dates": "Termine",
+      "lieu": "Ort",
+      "categories": "Kategorien",
+      "categoriesValue": "Segelflug, Kunstflug, Drohnenrennen…",
+      "ouvert": "Offen für",
+      "ouvertValue": "Alle Niveaus, Lizenzierte und Amateure"
+    },
+    "sections": {
+      "programme": {
+        "title": "Programm",
+        "description": "Der vollständige Ablauf des Wettbewerbs, Disziplin für Disziplin.",
+        "cta": "Programm ansehen"
+      },
+      "reglement": {
+        "title": "Reglement",
+        "description": "Kategorien, Bewertungskriterien und Sicherheitsregeln.",
+        "cta": "Reglement lesen"
+      },
+      "informations": {
+        "title": "Informationen",
+        "description": "Anreise, Unterkunft, Verpflegung und alles Wissenswerte.",
+        "cta": "Informationen ansehen"
+      }
+    }
+  },
+  "programme": {
+    "eyebrow": "Ablauf der Veranstaltung",
+    "title": "Programm",
+    "description": "Dieses Programm ist vorläufig und wird kurz vor dem Wettbewerb konkretisiert. Die endgültigen Zeiten werden den Teilnehmern per E-Mail mitgeteilt.",
+    "dateTbd": "noch offen",
+    "day1": {
+      "label": "Tag 1",
+      "events": [
+        { "time": "08:00", "title": "Empfang der Teilnehmer & Modellabnahme" },
+        { "time": "09:00", "title": "Sicherheitsbriefing und Vorstellung der Disziplinen" },
+        { "time": "10:00", "title": "Qualifikationsrunden — Kategorie Segelflug" },
+        { "time": "14:00", "title": "Qualifikationsrunden — Kategorie Kunstflug" },
+        { "time": "18:00", "title": "Vorläufige Ergebnisse & Nachbesprechung" }
+      ]
+    },
+    "day2": {
+      "label": "Tag 2",
+      "events": [
+        { "time": "09:00", "title": "Finalrunden je Kategorie" },
+        { "time": "12:00", "title": "Mittagspause" },
+        { "time": "14:00", "title": "Freie Vorführungen" },
+        { "time": "16:30", "title": "Siegerehrung" }
+      ]
+    }
+  },
+  "reglement": {
+    "eyebrow": "Wettbewerbsregeln",
+    "title": "Reglement",
+    "description": "Das vollständige Reglement (offizielles Dokument) wird jedem angemeldeten Teilnehmer zugesandt. Diese Seite fasst die wichtigsten Punkte zusammen.",
+    "categoriesHeading": "Kategorien",
+    "categoryDescriptions": {
+      "planeur": "Strecken- und Präzisionsflug, Start per Gummiseil oder im Schlepp.",
+      "voltige": "Pflicht- und Kürfiguren, bewertet von einer Jury nach FAI-Raster.",
+      "droneRacing": "Zeitrennen auf markierter Strecke, im K.-o.-System.",
+      "libre": "Offen für jede weitere Disziplin, nach Zustimmung der Organisation."
+    },
+    "scoring": {
+      "heading": "Bewertung",
+      "items": [
+        "Jede Disziplin wird von einer Jury aus mindestens 3 Richtern bewertet.",
+        "Die Endnote ist der Durchschnitt der Wertungen ohne die beste und die schlechteste Note.",
+        "Bei Gleichstand entscheidet ein Stechflug.",
+        "Jeder Verstoß gegen die Sicherheitsregeln führt zu einer Strafe oder Disqualifikation."
+      ]
+    },
+    "safety": {
+      "heading": "Sicherheit",
+      "items": [
+        "Kennzeichnungsweste oder -armband im Flugbereich Pflicht.",
+        "Modelle werden vor jeder Session von einem Technik-Kommissar geprüft.",
+        "Flugbereich und Publikumsbereich sind durch Absperrungen strikt getrennt.",
+        "Den Anweisungen der Streckenposten ist jederzeit Folge zu leisten."
+      ]
+    }
+  },
+  "informations": {
+    "eyebrow": "Gut zu wissen",
+    "title": "Praktische Informationen",
+    "description": "Alles, was du für deinen Besuch des Wettbewerbs wissen musst.",
+    "blocks": {
+      "lieu": {
+        "title": "Ort",
+        "body": "{location}. Die genaue Adresse des Flugplatzes wird den angemeldeten Teilnehmern mitgeteilt."
+      },
+      "acces": {
+        "title": "Anreise & Parken",
+        "body": "Kostenlose Parkplätze vor Ort. Beschilderung ab der Geländeeinfahrt am Wettbewerbstag."
+      },
+      "hebergement": {
+        "title": "Unterkunft",
+        "body": "Eine Liste nahegelegener Hotels und Campingplätze wird hier veröffentlicht. Buchung liegt in der Verantwortung der Teilnehmer."
+      },
+      "restauration": {
+        "title": "Verpflegung",
+        "body": "Getränke und Speisen vor Ort an beiden Tagen. Mittagessen auch zum Mitnehmen erhältlich."
+      },
+      "meteo": {
+        "title": "Wetter",
+        "body": "Bei ungünstigen Wetterbedingungen kann das Programm angepasst werden. Änderungen werden vor Ort und per E-Mail bekanntgegeben."
+      },
+      "contact": {
+        "title": "Kontakt vor Ort",
+        "body": "Ein Ansprechpartner der Organisation ist während der gesamten Veranstaltung erreichbar. Kontakt: {email}."
+      }
+    },
+    "mapPlaceholder": "Anfahrtskarte folgt in Kürze"
+  },
+  "inscription": {
+    "eyebrow": "Teilnehmen",
+    "title": "Anmeldung",
+    "description": "Fülle das Formular aus, um dich anzumelden. Die Teilnehmerliste unten aktualisiert sich in Echtzeit.",
+    "form": {
+      "title": "Anmeldeformular",
+      "description": "Mit * markierte Felder sind Pflichtfelder. Deine E-Mail-Adresse und Telefonnummer werden niemals öffentlich angezeigt.",
+      "prenom": "Vorname *",
+      "prenomPlaceholder": "Hans",
+      "nom": "Nachname *",
+      "nomPlaceholder": "Müller",
+      "email": "E-Mail *",
+      "emailPlaceholder": "hans.mueller@email.com",
+      "telephone": "Telefon",
+      "telephonePlaceholder": "+49 151 23456789",
+      "categorie": "Kategorie *",
+      "categoriePlaceholder": "Kategorie wählen",
+      "club": "Verein",
+      "clubPlaceholder": "Name deines Vereins (optional)",
+      "submit": "Anmelden",
+      "notConfigured": "Supabase ist noch nicht konfiguriert (siehe .env.local.example): Anmeldungen können derzeit nicht gespeichert werden.",
+      "genericError": "Ein Fehler ist aufgetreten, bitte versuche es erneut.",
+      "successTitle": "Anmeldung gesendet!",
+      "successDescription": "Danke, deine Anmeldung erscheint unten. Du erhältst eine E-Mail-Bestätigung, sobald die Organisation deinen Status bestätigt hat.",
+      "registerAnother": "Eine weitere Person anmelden",
+      "validation": {
+        "prenomRequired": "Vorname ist erforderlich",
+        "nomRequired": "Nachname ist erforderlich",
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailInvalid": "Ungültige E-Mail",
+        "categorieRequired": "Bitte wähle eine Kategorie"
+      }
+    },
+    "list": {
+      "title": "Teilnehmer",
+      "participantCount": "{count, plural, =0 {Noch keine Teilnehmer} one {# Teilnehmer} other {# Teilnehmer}}",
+      "realtime": "Live",
+      "notConfigured": "Supabase ist noch nicht konfiguriert. Trage NEXT_PUBLIC_SUPABASE_URL und NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local ein, um die Live-Liste zu aktivieren.",
+      "loading": "Wird geladen…",
+      "empty": "Noch keine Anmeldungen. Sei die/der Erste!",
+      "statusConfirmed": "Bestätigt",
+      "statusPending": "Ausstehend"
+    }
+  },
+  "contact": {
+    "eyebrow": "Eine Frage?",
+    "title": "Kontakt",
+    "description": "Bei Fragen zum Wettbewerb, zum Reglement oder zu deiner Anmeldung wende dich an die Organisation.",
+    "emailLabel": "E-Mail",
+    "locationLabel": "Ort des Wettbewerbs",
+    "sendEmail": "E-Mail senden"
+  }
+}

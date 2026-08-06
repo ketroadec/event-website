@@ -1,0 +1,199 @@
+{
+  "site": {
+    "name": "Sélestat International F3P Master 2026",
+    "shortName": "SIFM 2026",
+    "tagline": "Compétition d'aéromodélisme",
+    "description": "Site officiel du Sélestat International F3P Master 2026 : programme, règlement, informations pratiques et inscriptions.",
+    "eventDates": "à définir",
+    "eventLocation": "à définir",
+    "contactEmail": "contact@example.com"
+  },
+  "nav": {
+    "home": "Accueil",
+    "programme": "Programme",
+    "reglement": "Règlement",
+    "informations": "Informations",
+    "inscription": "Inscription",
+    "contact": "Contact",
+    "register": "S'inscrire",
+    "openMenu": "Ouvrir le menu"
+  },
+  "footer": {
+    "rights": "© {year} {name}. Tous droits réservés."
+  },
+  "categories": {
+    "planeur": "Planeur",
+    "voltige": "Voltige",
+    "droneRacing": "Drone racing",
+    "libre": "Catégorie libre"
+  },
+  "home": {
+    "badge": "Compétition d'aéromodélisme",
+    "ctaRegister": "S'inscrire à la compétition",
+    "ctaProgramme": "Voir le programme",
+    "highlights": {
+      "dates": "Dates",
+      "lieu": "Lieu",
+      "categories": "Catégories",
+      "categoriesValue": "Planeur, voltige, drone racing…",
+      "ouvert": "Ouvert à",
+      "ouvertValue": "Tous niveaux, licenciés et amateurs"
+    },
+    "sections": {
+      "programme": {
+        "title": "Programme",
+        "description": "Le déroulé complet de la compétition, épreuve par épreuve.",
+        "cta": "Consulter le programme"
+      },
+      "reglement": {
+        "title": "Règlement",
+        "description": "Catégories, critères de notation et règles de sécurité.",
+        "cta": "Lire le règlement"
+      },
+      "informations": {
+        "title": "Informations",
+        "description": "Accès, hébergement, restauration et tout ce qu'il faut savoir.",
+        "cta": "Voir les informations"
+      }
+    }
+  },
+  "programme": {
+    "eyebrow": "Déroulé de l'événement",
+    "title": "Programme",
+    "description": "Ce programme est indicatif et sera affiné à l'approche de la compétition. Les horaires définitifs seront communiqués aux inscrits par email.",
+    "dateTbd": "à définir",
+    "day1": {
+      "label": "Jour 1",
+      "events": [
+        { "time": "08h00", "title": "Accueil des participants & vérification des modèles" },
+        { "time": "09h00", "title": "Briefing sécurité et présentation des épreuves" },
+        { "time": "10h00", "title": "Manches qualificatives — catégorie Planeur" },
+        { "time": "14h00", "title": "Manches qualificatives — catégorie Voltige" },
+        { "time": "18h00", "title": "Résultats provisoires & débriefing" }
+      ]
+    },
+    "day2": {
+      "label": "Jour 2",
+      "events": [
+        { "time": "09h00", "title": "Finales par catégorie" },
+        { "time": "12h00", "title": "Pause déjeuner" },
+        { "time": "14h00", "title": "Démonstrations libres" },
+        { "time": "16h30", "title": "Remise des prix" }
+      ]
+    }
+  },
+  "reglement": {
+    "eyebrow": "Règles de la compétition",
+    "title": "Règlement",
+    "description": "Le règlement complet (document officiel) sera transmis à chaque inscrit. Cette page en résume les points essentiels.",
+    "categoriesHeading": "Catégories",
+    "categoryDescriptions": {
+      "planeur": "Vol de distance et de précision, lancer au sandow ou remorqué.",
+      "voltige": "Figures imposées et libres, notées par un jury sur grille FAI.",
+      "droneRacing": "Courses chronométrées sur circuit balisé, par élimination directe.",
+      "libre": "Ouverte à toute autre discipline, sur validation de l'organisation."
+    },
+    "scoring": {
+      "heading": "Notation",
+      "items": [
+        "Chaque épreuve est notée par un jury d'au moins 3 juges.",
+        "Le score final correspond à la moyenne des notes, hors meilleure et moins bonne note.",
+        "Les ex æquo sont départagés par un vol de barrage.",
+        "Toute infraction aux règles de sécurité entraîne une pénalité ou une disqualification."
+      ]
+    },
+    "safety": {
+      "heading": "Sécurité",
+      "items": [
+        "Port du gilet ou brassard identifiant obligatoire en zone de vol.",
+        "Modèles vérifiés par un commissaire technique avant chaque session.",
+        "Zone de vol et zone publique strictement séparées par le balisage.",
+        "Respect des consignes des officiels de piste à tout moment."
+      ]
+    }
+  },
+  "informations": {
+    "eyebrow": "Bon à savoir",
+    "title": "Informations pratiques",
+    "description": "Tout ce qu'il faut savoir pour bien préparer votre venue à la compétition.",
+    "blocks": {
+      "lieu": {
+        "title": "Lieu",
+        "body": "{location}. L'adresse précise du terrain de vol sera communiquée aux inscrits."
+      },
+      "acces": {
+        "title": "Accès & stationnement",
+        "body": "Parking gratuit sur place. Fléchage depuis l'entrée du site le jour de la compétition."
+      },
+      "hebergement": {
+        "title": "Hébergement",
+        "body": "Une liste d'hôtels et de campings à proximité sera publiée ici. Réservation à la charge des participants."
+      },
+      "restauration": {
+        "title": "Restauration",
+        "body": "Buvette et restauration sur place les deux jours. Possibilité de repas à emporter le midi."
+      },
+      "meteo": {
+        "title": "Météo",
+        "body": "En cas de conditions météo défavorables, le programme pourra être adapté. Toute modification sera annoncée sur place et par email."
+      },
+      "contact": {
+        "title": "Contact sur place",
+        "body": "Une astreinte organisation sera joignable pendant toute la durée de l'événement. Coordonnées : {email}."
+      }
+    },
+    "mapPlaceholder": "Carte d'accès à venir"
+  },
+  "inscription": {
+    "eyebrow": "Participer",
+    "title": "Inscription",
+    "description": "Remplissez le formulaire pour vous inscrire. La liste des participants ci-dessous se met à jour en temps réel.",
+    "form": {
+      "title": "Formulaire d'inscription",
+      "description": "Les champs marqués * sont obligatoires. Votre email et téléphone ne sont jamais affichés publiquement.",
+      "prenom": "Prénom *",
+      "prenomPlaceholder": "Jean",
+      "nom": "Nom *",
+      "nomPlaceholder": "Dupont",
+      "email": "Email *",
+      "emailPlaceholder": "jean.dupont@email.com",
+      "telephone": "Téléphone",
+      "telephonePlaceholder": "06 12 34 56 78",
+      "categorie": "Catégorie *",
+      "categoriePlaceholder": "Choisir une catégorie",
+      "club": "Club",
+      "clubPlaceholder": "Nom de votre club (facultatif)",
+      "submit": "S'inscrire",
+      "notConfigured": "Supabase n'est pas encore configuré (voir .env.local.example) : les inscriptions ne peuvent pas être enregistrées pour le moment.",
+      "genericError": "Une erreur est survenue, réessayez.",
+      "successTitle": "Inscription envoyée !",
+      "successDescription": "Merci, votre inscription apparaît ci-dessous. Vous recevrez une confirmation par email dès que l'organisation aura validé votre statut.",
+      "registerAnother": "Inscrire une autre personne",
+      "validation": {
+        "prenomRequired": "Le prénom est requis",
+        "nomRequired": "Le nom est requis",
+        "emailRequired": "L'email est requis",
+        "emailInvalid": "Email invalide",
+        "categorieRequired": "Choisissez une catégorie"
+      }
+    },
+    "list": {
+      "title": "Inscrits",
+      "participantCount": "{count, plural, =0 {Aucun participant} one {# participant} other {# participants}}",
+      "realtime": "Temps réel",
+      "notConfigured": "Supabase n'est pas encore configuré. Renseignez NEXT_PUBLIC_SUPABASE_URL et NEXT_PUBLIC_SUPABASE_ANON_KEY dans .env.local pour activer la liste en temps réel.",
+      "loading": "Chargement…",
+      "empty": "Aucune inscription pour le moment. Soyez le premier !",
+      "statusConfirmed": "Confirmé",
+      "statusPending": "En attente"
+    }
+  },
+  "contact": {
+    "eyebrow": "Une question ?",
+    "title": "Contact",
+    "description": "Pour toute question sur la compétition, le règlement ou votre inscription, contactez l'organisation.",
+    "emailLabel": "Email",
+    "locationLabel": "Lieu de la compétition",
+    "sendEmail": "Envoyer un email"
+  }
+}

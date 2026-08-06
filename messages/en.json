@@ -1,0 +1,199 @@
+{
+  "site": {
+    "name": "Sélestat International F3P Master 2026",
+    "shortName": "SIFM 2026",
+    "tagline": "Model aircraft competition",
+    "description": "Official website of the Sélestat International F3P Master 2026: schedule, rules, practical information and registration.",
+    "eventDates": "to be announced",
+    "eventLocation": "to be announced",
+    "contactEmail": "contact@example.com"
+  },
+  "nav": {
+    "home": "Home",
+    "programme": "Schedule",
+    "reglement": "Rules",
+    "informations": "Information",
+    "inscription": "Register",
+    "contact": "Contact",
+    "register": "Register",
+    "openMenu": "Open menu"
+  },
+  "footer": {
+    "rights": "© {year} {name}. All rights reserved."
+  },
+  "categories": {
+    "planeur": "Glider",
+    "voltige": "Aerobatics",
+    "droneRacing": "Drone racing",
+    "libre": "Open category"
+  },
+  "home": {
+    "badge": "Model aircraft competition",
+    "ctaRegister": "Register for the competition",
+    "ctaProgramme": "View the schedule",
+    "highlights": {
+      "dates": "Dates",
+      "lieu": "Location",
+      "categories": "Categories",
+      "categoriesValue": "Glider, aerobatics, drone racing…",
+      "ouvert": "Open to",
+      "ouvertValue": "All levels, licensed and amateur pilots"
+    },
+    "sections": {
+      "programme": {
+        "title": "Schedule",
+        "description": "The full schedule of the competition, event by event.",
+        "cta": "View the schedule"
+      },
+      "reglement": {
+        "title": "Rules",
+        "description": "Categories, scoring criteria and safety rules.",
+        "cta": "Read the rules"
+      },
+      "informations": {
+        "title": "Information",
+        "description": "Access, accommodation, catering and everything you need to know.",
+        "cta": "View information"
+      }
+    }
+  },
+  "programme": {
+    "eyebrow": "Event schedule",
+    "title": "Schedule",
+    "description": "This schedule is indicative and will be refined closer to the competition. Final times will be communicated to registered participants by email.",
+    "dateTbd": "to be announced",
+    "day1": {
+      "label": "Day 1",
+      "events": [
+        { "time": "8:00 AM", "title": "Participant check-in & aircraft inspection" },
+        { "time": "9:00 AM", "title": "Safety briefing and event presentation" },
+        { "time": "10:00 AM", "title": "Qualifying rounds — Glider category" },
+        { "time": "2:00 PM", "title": "Qualifying rounds — Aerobatics category" },
+        { "time": "6:00 PM", "title": "Provisional results & debrief" }
+      ]
+    },
+    "day2": {
+      "label": "Day 2",
+      "events": [
+        { "time": "9:00 AM", "title": "Category finals" },
+        { "time": "12:00 PM", "title": "Lunch break" },
+        { "time": "2:00 PM", "title": "Free demonstrations" },
+        { "time": "4:30 PM", "title": "Award ceremony" }
+      ]
+    }
+  },
+  "reglement": {
+    "eyebrow": "Competition rules",
+    "title": "Rules",
+    "description": "The full rules (official document) will be sent to every registered participant. This page summarizes the key points.",
+    "categoriesHeading": "Categories",
+    "categoryDescriptions": {
+      "planeur": "Distance and precision flying, bungee or towed launch.",
+      "voltige": "Compulsory and free figures, scored by a jury on an FAI grid.",
+      "droneRacing": "Timed races on a marked circuit, single elimination.",
+      "libre": "Open to any other discipline, subject to organizer approval."
+    },
+    "scoring": {
+      "heading": "Scoring",
+      "items": [
+        "Each event is scored by a jury of at least 3 judges.",
+        "The final score is the average of the scores, excluding the best and worst.",
+        "Ties are broken by a fly-off.",
+        "Any breach of safety rules results in a penalty or disqualification."
+      ]
+    },
+    "safety": {
+      "heading": "Safety",
+      "items": [
+        "Identifying vest or armband mandatory in the flying area.",
+        "Aircraft inspected by a technical marshal before each session.",
+        "Flying area and public area strictly separated by marked boundaries.",
+        "Track officials' instructions must be followed at all times."
+      ]
+    }
+  },
+  "informations": {
+    "eyebrow": "Good to know",
+    "title": "Practical information",
+    "description": "Everything you need to know to prepare for your visit to the competition.",
+    "blocks": {
+      "lieu": {
+        "title": "Location",
+        "body": "{location}. The exact address of the flying field will be sent to registered participants."
+      },
+      "acces": {
+        "title": "Access & parking",
+        "body": "Free parking on site. Signage from the site entrance on competition day."
+      },
+      "hebergement": {
+        "title": "Accommodation",
+        "body": "A list of nearby hotels and campsites will be published here. Booking is the participants' responsibility."
+      },
+      "restauration": {
+        "title": "Catering",
+        "body": "Refreshments and food available on site both days. Takeaway lunch options available."
+      },
+      "meteo": {
+        "title": "Weather",
+        "body": "In case of unfavorable weather conditions, the schedule may be adjusted. Any change will be announced on site and by email."
+      },
+      "contact": {
+        "title": "On-site contact",
+        "body": "An organization contact will be reachable throughout the event. Contact: {email}."
+      }
+    },
+    "mapPlaceholder": "Access map coming soon"
+  },
+  "inscription": {
+    "eyebrow": "Take part",
+    "title": "Registration",
+    "description": "Fill out the form to register. The list of participants below updates in real time.",
+    "form": {
+      "title": "Registration form",
+      "description": "Fields marked * are required. Your email and phone number are never displayed publicly.",
+      "prenom": "First name *",
+      "prenomPlaceholder": "John",
+      "nom": "Last name *",
+      "nomPlaceholder": "Smith",
+      "email": "Email *",
+      "emailPlaceholder": "john.smith@email.com",
+      "telephone": "Phone",
+      "telephonePlaceholder": "+1 555 123 4567",
+      "categorie": "Category *",
+      "categoriePlaceholder": "Choose a category",
+      "club": "Club",
+      "clubPlaceholder": "Your club name (optional)",
+      "submit": "Register",
+      "notConfigured": "Supabase is not configured yet (see .env.local.example): registrations cannot be saved at the moment.",
+      "genericError": "Something went wrong, please try again.",
+      "successTitle": "Registration sent!",
+      "successDescription": "Thank you, your registration appears below. You will receive an email confirmation once the organizers have validated your status.",
+      "registerAnother": "Register another person",
+      "validation": {
+        "prenomRequired": "First name is required",
+        "nomRequired": "Last name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email",
+        "categorieRequired": "Please choose a category"
+      }
+    },
+    "list": {
+      "title": "Participants",
+      "participantCount": "{count, plural, =0 {No participants} one {# participant} other {# participants}}",
+      "realtime": "Live",
+      "notConfigured": "Supabase is not configured yet. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local to enable the live list.",
+      "loading": "Loading…",
+      "empty": "No registrations yet. Be the first!",
+      "statusConfirmed": "Confirmed",
+      "statusPending": "Pending"
+    }
+  },
+  "contact": {
+    "eyebrow": "Got a question?",
+    "title": "Contact",
+    "description": "For any question about the competition, the rules or your registration, contact the organizers.",
+    "emailLabel": "Email",
+    "locationLabel": "Competition location",
+    "sendEmail": "Send an email"
+  }
+}
