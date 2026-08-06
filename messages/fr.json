@@ -4,9 +4,15 @@
     "shortName": "SIFM 2026",
     "tagline": "Compétition d'aéromodélisme",
     "description": "Site officiel du Sélestat International F3P Master 2026 : programme, règlement, informations pratiques et inscriptions.",
-    "eventDates": "à définir",
-    "eventLocation": "à définir",
+    "eventDates": "21 novembre 2026",
+    "eventLocation": "Sélestat, France",
     "contactEmail": "contact@example.com"
+  },
+  "countdown": {
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes"
   },
   "nav": {
     "home": "Accueil",
@@ -29,6 +35,8 @@
   },
   "home": {
     "badge": "Compétition d'aéromodélisme",
+    "heroTitleLine1": "Sélestat International",
+    "heroTitleLine2": "F3P Master 2026",
     "ctaRegister": "S'inscrire à la compétition",
     "ctaProgramme": "Voir le programme",
     "highlights": {

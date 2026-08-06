@@ -59,7 +59,7 @@ export default async function ReglementPage({ params }: Props) {
         <section className="grid gap-8 md:grid-cols-2">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+              <span className="flex size-8 items-center justify-center rounded-full bg-accent text-accent-foreground">
                 <Gauge className="size-4" />
               </span>
               <h2 className="font-heading text-lg font-semibold">
@@ -78,7 +78,7 @@ export default async function ReglementPage({ params }: Props) {
 
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+              <span className="flex size-8 items-center justify-center rounded-full bg-accent text-accent-foreground">
                 <ShieldCheck className="size-4" />
               </span>
               <h2 className="font-heading text-lg font-semibold">

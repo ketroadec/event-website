@@ -58,7 +58,7 @@ export default async function InformationsPage({ params }: Props) {
             return (
               <Card key={key}>
                 <CardHeader>
-                  <span className="mb-2 flex size-9 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                  <span className="mb-2 flex size-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
                     <Icon className="size-4.5" />
                   </span>
                   <CardTitle>{t(`blocks.${key}.title`)}</CardTitle>

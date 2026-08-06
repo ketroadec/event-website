@@ -33,7 +33,7 @@ export default async function ContactPage({ params }: Props) {
         <Card>
           <CardContent className="space-y-6 py-8">
             <div className="flex items-start gap-3">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
                 <Mail className="size-4.5" />
               </span>
               <div>
@@ -44,7 +44,7 @@ export default async function ContactPage({ params }: Props) {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
                 <MapPin className="size-4.5" />
               </span>
               <div>

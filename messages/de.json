@@ -4,9 +4,15 @@
     "shortName": "SIFM 2026",
     "tagline": "Modellflug-Wettbewerb",
     "description": "Offizielle Website des Sélestat International F3P Master 2026: Programm, Reglement, praktische Informationen und Anmeldung.",
-    "eventDates": "noch offen",
-    "eventLocation": "noch offen",
+    "eventDates": "21. November 2026",
+    "eventLocation": "Sélestat, Frankreich",
     "contactEmail": "contact@example.com"
+  },
+  "countdown": {
+    "days": "Tage",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "seconds": "Sekunden"
   },
   "nav": {
     "home": "Startseite",
@@ -29,6 +35,8 @@
   },
   "home": {
     "badge": "Modellflug-Wettbewerb",
+    "heroTitleLine1": "Sélestat International",
+    "heroTitleLine2": "F3P Master 2026",
     "ctaRegister": "Zum Wettbewerb anmelden",
     "ctaProgramme": "Programm ansehen",
     "highlights": {

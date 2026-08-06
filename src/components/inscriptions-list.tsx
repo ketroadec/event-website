@@ -94,7 +94,7 @@ export function InscriptionsList() {
     <Card>
       <CardHeader className="flex-row items-center justify-between gap-3 space-y-0">
         <div className="flex items-center gap-2">
-          <span className="flex size-9 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+          <span className="flex size-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
             <Users className="size-4.5" />
           </span>
           <div>

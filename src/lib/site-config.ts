@@ -4,6 +4,13 @@
  * référencés ici via `key` (clé dans le namespace "categories" / "nav").
  */
 
+/**
+ * Date/heure cible pour le compte à rebours du hero (ISO 8601, avec fuseau).
+ * Heure de départ non communiquée : 09h00 (Europe/Paris) posée par défaut,
+ * à ajuster ici dès qu'elle est connue.
+ */
+export const EVENT_DATE_ISO = "2026-11-21T09:00:00+01:00"
+
 export const categories = [
   { value: "planeur", key: "planeur" },
   { value: "voltige", key: "voltige" },
