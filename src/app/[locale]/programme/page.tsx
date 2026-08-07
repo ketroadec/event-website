@@ -41,7 +41,7 @@ export default async function ProgrammePage({ params }: Props) {
               <h2 className="font-heading text-xl font-semibold">
                 {t(`${day.key}.label`)}
               </h2>
-              <Badge variant="secondary">{t("dateTbd")}</Badge>
+              <Badge variant="secondary">{t(`${day.key}.date`)}</Badge>
             </div>
             <Card>
               <CardContent className="divide-y divide-border">

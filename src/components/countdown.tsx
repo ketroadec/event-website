@@ -42,13 +42,13 @@ export function Countdown() {
   ] as const
 
   return (
-    <div className="grid grid-cols-4 divide-x divide-border rounded-2xl bg-card shadow-xl ring-1 ring-foreground/10">
+    <div className="grid grid-cols-4 divide-x divide-white/15">
       {units.map((unit) => (
-        <div key={unit.key} className="flex flex-col items-center gap-1 px-2 py-5 sm:py-6">
-          <span className="font-heading text-2xl font-bold text-primary tabular-nums sm:text-4xl">
+        <div key={unit.key} className="flex flex-col items-center gap-1 px-3 sm:px-5">
+          <span className="font-display text-3xl text-white tabular-nums sm:text-5xl">
             {unit.value === undefined ? "–" : String(unit.value).padStart(2, "0")}
           </span>
-          <span className="text-[11px] font-medium text-muted-foreground uppercase sm:text-xs">
+          <span className="text-[11px] font-medium text-white/60 uppercase sm:text-xs">
             {t(unit.key)}
           </span>
         </div>

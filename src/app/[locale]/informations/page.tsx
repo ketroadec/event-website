@@ -1,8 +1,20 @@
 import type { Metadata } from "next"
-import { MapPin, Car, BedDouble, UtensilsCrossed, PhoneCall, CloudSun } from "lucide-react"
+import {
+  MapPin,
+  Ruler,
+  Car,
+  BedDouble,
+  UtensilsCrossed,
+  PhoneCall,
+  CloudSun,
+  Ticket,
+  Download,
+} from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { PageHero } from "@/components/page-hero"
+import { POSTER_URL } from "@/lib/site-config"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -21,6 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const blockIcons = {
   lieu: MapPin,
+  venue: Ruler,
+  publicDay: Ticket,
   acces: Car,
   hebergement: BedDouble,
   restauration: UtensilsCrossed,
@@ -51,7 +65,10 @@ export default async function InformationsPage({ params }: Props) {
             const Icon = blockIcons[key]
             const body =
               key === "lieu"
-                ? t("blocks.lieu.body", { location: tSite("eventLocation") })
+                ? t("blocks.lieu.body", {
+                    venue: tSite("eventVenue"),
+                    address: tSite("eventAddress"),
+                  })
                 : key === "contact"
                   ? t("blocks.contact.body", { email: tSite("contactEmail") })
                   : t(`blocks.${key}.body`)
@@ -68,6 +85,23 @@ export default async function InformationsPage({ params }: Props) {
             )
           })}
         </div>
+
+        <Card className="mt-4">
+          <CardContent className="flex flex-col items-center justify-center gap-4 py-12 text-center">
+            <span className="flex size-11 items-center justify-center rounded-full bg-accent text-accent-foreground">
+              <Download className="size-5" />
+            </span>
+            <div>
+              <p className="font-medium">{t("poster.title")}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{t("poster.body")}</p>
+            </div>
+            <Button asChild>
+              <a href={POSTER_URL} download>
+                {t("poster.cta")}
+              </a>
+            </Button>
+          </CardContent>
+        </Card>
 
         <Card className="mt-4">
           <CardContent className="flex items-center justify-center py-16 text-sm text-muted-foreground">

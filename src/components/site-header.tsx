@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { useTranslations } from "next-intl"
-import { Menu, PlaneTakeoff } from "lucide-react"
+import { Menu } from "lucide-react"
 
 import { Link, usePathname } from "@/i18n/navigation"
 import { navItems } from "@/lib/site-config"
@@ -26,11 +27,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 font-heading font-semibold">
-          <span className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            <PlaneTakeoff className="size-4" />
-          </span>
-          <span className="text-base tracking-tight">{tSite("shortName")}</span>
+        <Link href="/" className="relative h-12 w-24">
+          <Image
+            src="/images/brand/logo-event.png"
+            alt={tSite("shortName")}
+            fill
+            sizes="96px"
+            className="object-contain object-left"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

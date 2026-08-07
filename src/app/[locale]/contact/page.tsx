@@ -50,7 +50,7 @@ export default async function ContactPage({ params }: Props) {
               <div>
                 <p className="text-sm font-medium">{t("locationLabel")}</p>
                 <p className="text-sm text-muted-foreground">
-                  {tSite("eventLocation")}
+                  {tSite("eventAddress")}
                 </p>
               </div>
             </div>

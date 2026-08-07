@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Info } from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { PageHero } from "@/components/page-hero"
@@ -27,7 +28,14 @@ export default async function InscriptionPage({ params }: Props) {
         description={t("description")}
       />
 
-      <div className="mx-auto grid max-w-5xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:items-start">
+      <div className="mx-auto max-w-5xl px-4 pt-10 sm:px-6">
+        <div className="flex items-start gap-3 rounded-xl border border-accent bg-accent/40 px-4 py-3 text-sm text-accent-foreground">
+          <Info className="mt-0.5 size-4 shrink-0" />
+          <p>{t("opensNote")}</p>
+        </div>
+      </div>
+
+      <div className="mx-auto grid max-w-5xl gap-8 px-4 pt-6 pb-14 sm:px-6 lg:grid-cols-2 lg:items-start">
         <RegistrationForm />
         <InscriptionsList />
       </div>

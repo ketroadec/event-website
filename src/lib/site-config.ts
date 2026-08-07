@@ -11,11 +11,29 @@
  */
 export const EVENT_DATE_ISO = "2026-11-21T09:00:00+01:00"
 
+/** Lien vers l'affiche officielle (PDF), issue de l'organisation. */
+export const POSTER_URL = "/documents/affiche-sifm-2026.pdf"
+
+/**
+ * Partenaires et organisateurs officiels (source : affiche de l'événement).
+ * Noms propres, non traduits. `logo` optionnel : chemin vers le fichier dans
+ * public/images/brand (fournis par l'organisation, qualité à confirmer).
+ */
+export const partners = [
+  { name: "Modélistes Club Sélestat", logo: "/images/brand/organizer.png" },
+  { name: "FAI", logo: "/images/brand/fai-logo.png" },
+  { name: "Ville de Sélestat — Alsace Centrale", logo: "/images/brand/logo-selestat.png" },
+  { name: "FFAM — Fédération Française d'AéroModélisme", logo: "/images/brand/logo-ffam.png" },
+  { name: "LAM — Ligue d'AéroModélisme Grand Est", logo: "/images/brand/logo-ligue.png" },
+  // Pas de logo propre disponible pour le moment (fichier reçu tronqué) : nom seul.
+  { name: "CTAA — Comité Territorial d'Aéromodélisme d'Alsace", logo: null },
+] as const
+
 export const categories = [
-  { value: "planeur", key: "planeur" },
-  { value: "voltige", key: "voltige" },
-  { value: "drone-racing", key: "droneRacing" },
-  { value: "libre", key: "libre" },
+  { value: "f3p-a", key: "f3pA" },
+  { value: "f3p-afm", key: "f3pAfm" },
+  { value: "national-a", key: "nationalA" },
+  { value: "national-b", key: "nationalB" },
 ] as const
 
 export type NavItem = {

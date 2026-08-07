@@ -1,14 +1,18 @@
 {
   "site": {
-    "name": "Sélestat International F3P Master 2026",
+    "name": "Sélestat International F3P Masters 2026",
     "shortName": "SIFM 2026",
-    "tagline": "Model aircraft competition",
-    "description": "Official website of the Sélestat International F3P Master 2026: schedule, rules, practical information and registration.",
-    "eventDates": "November 21, 2026",
+    "tagline": "International indoor RC aerobatics competition",
+    "description": "Official website of the Sélestat International F3P Masters 2026, an international indoor RC aerobatics competition featuring Europe's top pilots: schedule, rules, practical information and registration.",
+    "eventDates": "November 21-22, 2026",
     "eventLocation": "Sélestat, France",
+    "eventAddress": "6 Avenue Adrien Zeller, 67600 Sélestat, France",
+    "eventVenue": "Gymnase Adrien Zeller",
+    "website": "www.sifm.fr",
     "contactEmail": "contact@example.com"
   },
   "countdown": {
+    "startsIn": "The competition starts in",
     "days": "Days",
     "hours": "Hours",
     "minutes": "Minutes",
@@ -28,22 +32,78 @@
     "rights": "© {year} {name}. All rights reserved."
   },
   "categories": {
-    "planeur": "Glider",
-    "voltige": "Aerobatics",
-    "droneRacing": "Drone racing",
-    "libre": "Open category"
+    "f3pA": "F3P-A",
+    "f3pAfm": "F3P-AFM",
+    "nationalA": "National A",
+    "nationalB": "National B"
+  },
+  "partners": {
+    "heading": "Partners & organizers"
+  },
+  "news": {
+    "heading": "Latest news",
+    "viewAll": "View all news",
+    "readMore": "Read more",
+    "items": {
+      "registrations": {
+        "date": "July 25, 2026",
+        "title": "Registrations will open on September 1st",
+        "excerpt": "Mark your calendars! Online registration opens on Tuesday, September 1st at 8 PM (Paris time)."
+      },
+      "venue": {
+        "date": "April 15, 2026",
+        "title": "The venue is ready for the competition",
+        "excerpt": "We're excited to welcome you in a spacious venue, sized to suit F3P competition."
+      },
+      "priority": {
+        "date": "April 10, 2026",
+        "title": "F3P-A & F3P-AFM priority registration",
+        "excerpt": "National A & B categories will open later in autumn, depending on the number of entries."
+      }
+    }
   },
   "home": {
-    "badge": "Model aircraft competition",
-    "heroTitleLine1": "Sélestat International",
-    "heroTitleLine2": "F3P Master 2026",
+    "badge": "Featuring Europe's top pilots",
+    "heroTitleLine1": "Sélestat",
+    "heroTitleLine2": "International",
+    "heroTitleLine3": "F3P Masters 2026",
     "ctaRegister": "Register for the competition",
     "ctaProgramme": "View the schedule",
+    "ctaDiscover": "Discover the event",
+    "aboutHeading": "Sélestat International F3P Masters",
+    "aboutBody": "Join us for a top-level indoor RC aerobatics competition in the heart of Alsace, France. Two days of precision, passion and performance in an exceptional venue!",
+    "aboutCta": "Read more",
+    "ceilingHeight": "13-meter ceiling height",
+    "cards": {
+      "selestat": {
+        "title": "Sélestat",
+        "body": "Discover our beautiful region",
+        "alt": "Aerial view of Sélestat"
+      },
+      "venue": {
+        "title": "The venue",
+        "body": "A fitting gym, 13-meter ceiling height",
+        "alt": "Interior of the Gymnase Adrien Zeller"
+      },
+      "pilots": {
+        "title": "Top pilots",
+        "body": "Europe's best pilots will be there",
+        "alt": "Pilot holding an F3P model"
+      }
+    },
+    "practical": {
+      "heading": "Practical information",
+      "registration": { "title": "Registration", "body": "How to register and fees" },
+      "schedule": { "title": "Schedule", "body": "Times and event program" },
+      "pilotInfo": { "title": "Pilot info", "body": "Rules, categories and documents" },
+      "accommodation": { "title": "Accommodation", "body": "Hotels and stays nearby" },
+      "access": { "title": "Access", "body": "How to get to Sélestat" }
+    },
     "highlights": {
       "dates": "Dates",
       "lieu": "Location",
       "categories": "Categories",
-      "categoriesValue": "Glider, aerobatics, drone racing…",
+      "categoriesValue": "F3P-A, F3P-AFM, National A & B",
       "ouvert": "Open to",
       "ouvertValue": "All levels, licensed and amateur pilots"
     },
@@ -69,9 +129,9 @@
     "eyebrow": "Event schedule",
     "title": "Schedule",
     "description": "This schedule is indicative and will be refined closer to the competition. Final times will be communicated to registered participants by email.",
-    "dateTbd": "to be announced",
     "day1": {
       "label": "Day 1",
+      "date": "Saturday, November 21, 2026",
       "events": [
         { "time": "8:00 AM", "title": "Participant check-in & aircraft inspection" },
         { "time": "9:00 AM", "title": "Safety briefing and event presentation" },
@@ -81,12 +141,14 @@
       ]
     },
     "day2": {
-      "label": "Day 2",
+      "label": "Day 2 — Public day",
+      "date": "Sunday, November 22, 2026",
       "events": [
-        { "time": "9:00 AM", "title": "Category finals" },
+        { "time": "10:00 AM", "title": "Open to the public (free entry) & category finals" },
         { "time": "12:00 PM", "title": "Lunch break" },
         { "time": "2:00 PM", "title": "Free demonstrations" },
-        { "time": "4:30 PM", "title": "Award ceremony" }
+        { "time": "4:30 PM", "title": "Award ceremony" },
+        { "time": "5:00 PM", "title": "Closing" }
       ]
     }
   },
@@ -96,10 +158,10 @@
     "description": "The full rules (official document) will be sent to every registered participant. This page summarizes the key points.",
     "categoriesHeading": "Categories",
     "categoryDescriptions": {
-      "planeur": "Distance and precision flying, bungee or towed launch.",
-      "voltige": "Compulsory and free figures, scored by a jury on an FAI grid.",
-      "droneRacing": "Timed races on a marked circuit, single elimination.",
-      "libre": "Open to any other discipline, subject to organizer approval."
+      "f3pA": "International F3P category, compulsory programme under FAI rules.",
+      "f3pAfm": "F3P-AFM category, free-style musical programme.",
+      "nationalA": "National A category, open to experienced pilots.",
+      "nationalB": "National B category, for pilots still progressing."
     },
     "scoring": {
       "heading": "Scoring",
@@ -127,7 +189,15 @@
     "blocks": {
       "lieu": {
         "title": "Location",
-        "body": "{location}. The exact address of the flying field will be sent to registered participants."
+        "body": "{venue}, {address}."
+      },
+      "venue": {
+        "title": "The venue",
+        "body": "13-meter ceiling height, suited to F3P's vertical figures."
+      },
+      "publicDay": {
+        "title": "Public day",
+        "body": "Free entry on November 22, 10 AM to 5 PM, at the CSI, Avenue Adrien Zeller in Sélestat. Come cheer on the pilots!"
       },
       "acces": {
         "title": "Access & parking",
@@ -143,12 +213,17 @@
       },
       "meteo": {
         "title": "Weather",
-        "body": "In case of unfavorable weather conditions, the schedule may be adjusted. Any change will be announced on site and by email."
+        "body": "Indoor competition: the schedule proceeds as planned regardless of outdoor weather conditions."
       },
       "contact": {
         "title": "On-site contact",
         "body": "An organization contact will be reachable throughout the event. Contact: {email}."
       }
+    },
+    "poster": {
+      "title": "Official poster",
+      "body": "Download the official event poster as a PDF.",
+      "cta": "Download the poster (PDF)"
     },
     "mapPlaceholder": "Access map coming soon"
   },
@@ -156,6 +231,7 @@
     "eyebrow": "Take part",
     "title": "Registration",
     "description": "Fill out the form to register. The list of participants below updates in real time.",
+    "opensNote": "Registration opens on September 1, 2026, with priority given to the F3P-A and F3P-AFM categories. You can already fill in the form below in advance.",
     "form": {
       "title": "Registration form",
       "description": "Fields marked * are required. Your email and phone number are never displayed publicly.",

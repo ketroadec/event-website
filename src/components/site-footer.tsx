@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useTranslations } from "next-intl"
 import { PlaneTakeoff } from "lucide-react"
 
@@ -10,7 +11,7 @@ export function SiteFooter() {
   const tFooter = useTranslations("footer")
 
   return (
-    <footer className="bg-[#170a2e] text-white/70">
+    <footer className="bg-navy text-white/70">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-start md:justify-between">
         <div className="space-y-2">
           <div className="flex items-center gap-2 font-heading font-semibold text-white">
@@ -27,15 +28,40 @@ export function SiteFooter() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-white/60 transition-colors hover:text-[#ff5fa8]"
+              className="text-white/60 transition-colors hover:text-primary"
             >
               {t(item.key)}
             </Link>
           ))}
         </nav>
       </div>
-      <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-white/50 sm:px-6">
-        {tFooter("rights", { year: new Date().getFullYear(), name: tSite("shortName") })}
+      <div className="border-t border-white/10 px-4 py-4 sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 sm:flex-row">
+          <p className="text-center text-xs text-white/50">
+            {tFooter("rights", { year: new Date().getFullYear(), name: tSite("shortName") })}
+          </p>
+          {/* Réseaux sociaux : décoratifs pour le moment, aucun compte officiel confirmé */}
+          <div className="flex items-center gap-3 opacity-70">
+            <div className="relative size-7">
+              <Image
+                src="/images/brand/facebook.png"
+                alt="Facebook"
+                fill
+                sizes="28px"
+                className="object-contain"
+              />
+            </div>
+            <div className="relative size-7">
+              <Image
+                src="/images/brand/instagram.png"
+                alt="Instagram"
+                fill
+                sizes="28px"
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   )
