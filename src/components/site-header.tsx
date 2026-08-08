@@ -27,12 +27,12 @@ export function SiteHeader() {
   return (
     <header className="absolute inset-x-0 top-0 z-50 bg-transparent">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="relative h-12 w-24">
+        <Link href="/" className="relative -ml-10 mt-14 h-[120px] w-[240px] sm:-ml-20 lg:-ml-24">
           <Image
             src="/images/brand/logo-event.png"
             alt={tSite("shortName")}
             fill
-            sizes="96px"
+            sizes="240px"
             className="object-contain object-left"
             priority
           />
@@ -47,8 +47,8 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-foreground",
-                  isActive ? "text-foreground" : "text-muted-foreground"
+                  "rounded-lg px-3 py-2 font-heading text-sm font-semibold tracking-wide text-navy uppercase transition-colors hover:text-primary",
+                  isActive && "underline decoration-2 underline-offset-8"
                 )}
               >
                 {t(item.key)}
@@ -89,8 +89,8 @@ export function SiteHeader() {
                       href={item.href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-muted",
-                        isActive ? "bg-muted text-foreground" : "text-muted-foreground"
+                        "rounded-lg px-3 py-2 font-heading text-sm font-semibold tracking-wide text-navy uppercase transition-colors hover:bg-muted",
+                        isActive && "underline decoration-2 underline-offset-8"
                       )}
                     >
                       {t(item.key)}
