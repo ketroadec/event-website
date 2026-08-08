@@ -59,7 +59,7 @@ export default async function Home({
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative bg-white">
         <Image
           src="/images/brand/hero-background.png"
           alt=""
@@ -70,19 +70,17 @@ export default async function Home({
           className="object-cover"
         />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 sm:pt-32">
-          <div className="mb-6 flex justify-end">
-            <div className="relative h-14 w-14">
-              <Image
-                src="/images/brand/fai-logo.png"
-                alt="FAI"
-                fill
-                sizes="56px"
-                className="object-contain"
-              />
-            </div>
-          </div>
+        <div className="pointer-events-none absolute top-8 right-45 z-20 h-[179.2px] w-[179.2px] translate-x-1/4">
+          <Image
+            src="/images/brand/fai-logo.png"
+            alt="FAI"
+            fill
+            sizes="160px"
+            className="object-contain"
+          />
+        </div>
 
+        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 sm:pt-32">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="text-center lg:text-left">
               <p className="font-display text-xl text-navy italic sm:text-2xl">
@@ -115,12 +113,12 @@ export default async function Home({
               </div>
             </div>
 
-            <div className="relative mx-auto aspect-square w-full max-w-md">
+            <div className="pointer-events-none absolute top-[67%] right-[25%] z-0 aspect-square w-[clamp(28.98rem,62.1vw,115.92rem)] translate-x-1/2 -translate-y-1/2">
               <Image
                 src="/images/brand/hero-aircraft.png"
                 alt={tSite("name")}
                 fill
-                sizes="(min-width: 1024px) 448px, 320px"
+                sizes="115.92rem"
                 className="object-contain"
                 priority
               />
@@ -130,7 +128,7 @@ export default async function Home({
       </section>
 
       {/* Bandeau compte à rebours */}
-      <div className="relative overflow-hidden bg-navy">
+      <div className="relative z-20 overflow-hidden bg-navy">
         <Image
           src="/images/brand/footer-bg.png"
           alt=""
