@@ -70,7 +70,7 @@ export default async function Home({
           className="object-cover"
         />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-10 pb-14 sm:px-6 sm:pt-14">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 sm:pt-32">
           <div className="mb-6 flex justify-end">
             <div className="relative h-14 w-14">
               <Image

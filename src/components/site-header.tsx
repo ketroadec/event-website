@@ -25,7 +25,7 @@ export function SiteHeader() {
   const tSite = useTranslations("site")
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
+    <header className="absolute inset-x-0 top-0 z-50 bg-transparent">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="relative h-12 w-24">
           <Image
