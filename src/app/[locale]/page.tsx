@@ -113,12 +113,12 @@ export default async function Home({
               </div>
             </div>
 
-            <div className="pointer-events-none absolute top-[67%] right-[25%] z-0 aspect-square w-[clamp(28.98rem,62.1vw,115.92rem)] translate-x-1/2 -translate-y-1/2">
+            <div className="pointer-events-none absolute top-[67%] right-[25%] z-0 aspect-square w-[clamp(16.2288rem,34.776vw,64.9152rem)] translate-x-1/2 -translate-y-1/2">
               <Image
                 src="/images/brand/hero-aircraft.png"
                 alt={tSite("name")}
                 fill
-                sizes="115.92rem"
+                sizes="64.9152rem"
                 className="object-contain"
                 priority
               />
