@@ -63,7 +63,7 @@ export default async function Home({
           className="object-cover"
         />
 
-        <div className="pointer-events-none absolute top-8 right-45 z-20 h-[179.2px] w-[179.2px] translate-x-1/4">
+        <div className="pointer-events-none absolute top-4 right-4 z-20 h-14 w-14 sm:top-6 sm:right-6 sm:h-20 sm:w-20 lg:top-8 lg:right-45 lg:h-[179.2px] lg:w-[179.2px] lg:translate-x-1/4">
           <Image
             src="/images/brand/fai-logo.png"
             alt="FAI"
@@ -75,7 +75,7 @@ export default async function Home({
 
         <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 sm:pt-32">
           <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div className="text-center lg:text-left">
+            <div className="relative z-10 text-center lg:text-left">
               <p className="font-display text-[1.375rem] text-navy italic sm:text-[1.65rem]">
                 {tSite("eventDates")}
               </p>
@@ -105,7 +105,7 @@ export default async function Home({
               </div>
             </div>
 
-            <div className="pointer-events-none absolute top-[67%] right-[25%] z-0 aspect-square w-[clamp(16.2288rem,34.776vw,64.9152rem)] translate-x-1/2 -translate-y-1/2">
+            <div className="pointer-events-none absolute top-[85%] left-1/2 z-0 aspect-square w-[clamp(11rem,58vw,18rem)] -translate-x-1/2 -translate-y-1/2 opacity-30 lg:top-[67%] lg:left-auto lg:right-[25%] lg:w-[clamp(16.2288rem,34.776vw,64.9152rem)] lg:translate-x-1/2 lg:opacity-100">
               <Image
                 src="/images/brand/hero-aircraft.png"
                 alt={tSite("name")}
@@ -170,12 +170,12 @@ export default async function Home({
             </Button>
           </div>
 
-          <div className="grid h-full grid-cols-3 gap-3 py-6 md:col-span-2">
+          <div className="grid grid-cols-3 gap-3 py-6 md:col-span-2">
             {cards.map((card) => {
-              const cardClassName = "flex h-full flex-col overflow-hidden ring-1 ring-border"
+              const cardClassName = "flex flex-col overflow-hidden ring-1 ring-border"
               const cardContent = (
                 <>
-                  <div className="relative w-full flex-1">
+                  <div className="relative aspect-square w-full">
                     <Image
                       src={card.src}
                       alt={t(`cards.${card.key}.alt`)}
