@@ -4,10 +4,17 @@ export type StatutInscription = "en_attente" | "confirme"
 export type NouvelleInscription = {
   prenom: string
   nom: string
+  nationalite: string
+  adresse: string
   email: string
   telephone?: string
+  federation?: string
+  fai_licence: string
   categorie: string
-  club?: string
+  afm: boolean
+  repas_samedi_midi: number
+  repas_samedi_soir: number
+  repas_dimanche_midi: number
 }
 
 /** Ligne publique affichée en temps réel (table `inscriptions_publiques`). */
@@ -16,6 +23,9 @@ export type InscriptionPublique = {
   prenom: string
   nom: string
   categorie: string
+  nationalite: string
+  fai_licence: string
+  afm: boolean
   statut: StatutInscription
   created_at: string
 }
@@ -29,10 +39,17 @@ export type Database = {
           id: string
           prenom: string
           nom: string
+          nationalite: string
+          adresse: string
           email: string
           telephone: string | null
+          federation: string | null
+          fai_licence: string
           categorie: string
-          club: string | null
+          afm: boolean
+          repas_samedi_midi: number
+          repas_samedi_soir: number
+          repas_dimanche_midi: number
           statut: StatutInscription
           created_at: string
         }
@@ -40,10 +57,17 @@ export type Database = {
           id?: string
           prenom: string
           nom: string
+          nationalite: string
+          adresse: string
           email: string
           telephone?: string | null
+          federation?: string | null
+          fai_licence: string
           categorie: string
-          club?: string | null
+          afm?: boolean
+          repas_samedi_midi?: number
+          repas_samedi_soir?: number
+          repas_dimanche_midi?: number
           statut?: StatutInscription
           created_at?: string
         }

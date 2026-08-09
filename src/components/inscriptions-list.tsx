@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useTranslations } from "next-intl"
 import { Radio, Users } from "lucide-react"
 
-import { categories } from "@/lib/site-config"
+import { categories, mainClasses, afmCategory } from "@/lib/site-config"
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase/client"
 import type { InscriptionPublique } from "@/lib/supabase/types"
 import { Badge } from "@/components/ui/badge"
@@ -46,7 +46,7 @@ export function InscriptionsList() {
     async function loadInitial(sb: NonNullable<typeof supabase>) {
       const { data, error } = await sb
         .from("inscriptions_publiques")
-        .select("id, prenom, nom, categorie, statut, created_at")
+        .select("id, prenom, nom, categorie, nationalite, fai_licence, afm, statut, created_at")
         .order("created_at", { ascending: true })
 
       if (!isMounted) return
@@ -123,24 +123,67 @@ export function InscriptionsList() {
             {t("empty")}
           </p>
         ) : (
-          <ul className="divide-y divide-border">
-            {inscriptions.map((inscription) => (
-              <li
-                key={inscription.id}
-                className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0"
-              >
-                <div>
-                  <p className="text-sm font-medium">
-                    {inscription.prenom} {inscription.nom}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {categoryLabel(inscription.categorie)}
-                  </p>
-                </div>
-                <StatutBadge statut={inscription.statut} />
-              </li>
-            ))}
-          </ul>
+          <div className="space-y-6">
+            {(() => {
+              const knownValues = new Set<string>(mainClasses.map((c) => c.value))
+              const uncategorized = inscriptions.filter((i) => !knownValues.has(i.categorie))
+
+              const groups = [
+                ...mainClasses.map((category) => ({
+                  key: category.value,
+                  label: categoryLabel(category.value),
+                  members: inscriptions.filter((i) => i.categorie === category.value),
+                })),
+                {
+                  key: afmCategory.value,
+                  label: categoryLabel(afmCategory.value),
+                  members: inscriptions.filter((i) => i.afm),
+                },
+                // Filet de sécurité : une inscription dont la catégorie ne correspond à
+                // aucune classe connue (donnée ancienne/incohérente) doit rester visible
+                // plutôt que de disparaître silencieusement de la liste.
+                {
+                  key: "uncategorized",
+                  label: t("uncategorized"),
+                  members: uncategorized,
+                },
+              ]
+
+              return groups.map((group) => {
+                if (group.members.length === 0) return null
+
+                return (
+                  <div key={group.key}>
+                    <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-navy uppercase">
+                      {group.label}
+                      <span className="text-xs font-normal text-muted-foreground">
+                        ({group.members.length})
+                      </span>
+                    </h3>
+                    <ul className="divide-y divide-border">
+                      {group.members.map((inscription) => (
+                        <li
+                          key={inscription.id}
+                          className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0"
+                        >
+                          <div>
+                            <p className="text-sm font-medium">
+                              {inscription.nom} {inscription.prenom}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              {inscription.nationalite}
+                              {inscription.fai_licence && ` · FAI ${inscription.fai_licence}`}
+                            </p>
+                          </div>
+                          <StatutBadge statut={inscription.statut} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              })
+            })()}
+          </div>
         )}
       </CardContent>
     </Card>

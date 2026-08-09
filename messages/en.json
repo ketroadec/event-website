@@ -26,7 +26,8 @@
     "inscription": "Register",
     "contact": "Contact",
     "register": "Register",
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "inscrits": "Pilots"
   },
   "footer": {
     "rights": "© {year} {name}. All rights reserved."
@@ -93,11 +94,26 @@
     },
     "practical": {
       "heading": "Practical information",
-      "registration": { "title": "Registration", "body": "How to register and fees" },
-      "schedule": { "title": "Schedule", "body": "Times and event program" },
-      "pilotInfo": { "title": "Pilot info", "body": "Rules, categories and documents" },
-      "accommodation": { "title": "Accommodation", "body": "Hotels and stays nearby" },
-      "access": { "title": "Access", "body": "How to get to Sélestat" }
+      "registration": {
+        "title": "Registration",
+        "body": "How to register and fees"
+      },
+      "schedule": {
+        "title": "Schedule",
+        "body": "Times and event program"
+      },
+      "pilotInfo": {
+        "title": "Pilot info",
+        "body": "Rules, categories and documents"
+      },
+      "accommodation": {
+        "title": "Accommodation",
+        "body": "Hotels and stays nearby"
+      },
+      "access": {
+        "title": "Access",
+        "body": "How to get to Sélestat"
+      }
     },
     "highlights": {
       "dates": "Dates",
@@ -133,22 +149,52 @@
       "label": "Day 1",
       "date": "Saturday, November 21, 2026",
       "events": [
-        { "time": "8:00 AM", "title": "Participant check-in & aircraft inspection" },
-        { "time": "9:00 AM", "title": "Safety briefing and event presentation" },
-        { "time": "10:00 AM", "title": "Qualifying rounds — Glider category" },
-        { "time": "2:00 PM", "title": "Qualifying rounds — Aerobatics category" },
-        { "time": "6:00 PM", "title": "Provisional results & debrief" }
+        {
+          "time": "8:00 AM",
+          "title": "Participant check-in & aircraft inspection"
+        },
+        {
+          "time": "9:00 AM",
+          "title": "Safety briefing and event presentation"
+        },
+        {
+          "time": "10:00 AM",
+          "title": "Qualifying rounds — Glider category"
+        },
+        {
+          "time": "2:00 PM",
+          "title": "Qualifying rounds — Aerobatics category"
+        },
+        {
+          "time": "6:00 PM",
+          "title": "Provisional results & debrief"
+        }
       ]
     },
     "day2": {
       "label": "Day 2 — Public day",
       "date": "Sunday, November 22, 2026",
       "events": [
-        { "time": "10:00 AM", "title": "Open to the public (free entry) & category finals" },
-        { "time": "12:00 PM", "title": "Lunch break" },
-        { "time": "2:00 PM", "title": "Free demonstrations" },
-        { "time": "4:30 PM", "title": "Award ceremony" },
-        { "time": "5:00 PM", "title": "Closing" }
+        {
+          "time": "10:00 AM",
+          "title": "Open to the public (free entry) & category finals"
+        },
+        {
+          "time": "12:00 PM",
+          "title": "Lunch break"
+        },
+        {
+          "time": "2:00 PM",
+          "title": "Free demonstrations"
+        },
+        {
+          "time": "4:30 PM",
+          "title": "Award ceremony"
+        },
+        {
+          "time": "5:00 PM",
+          "title": "Closing"
+        }
       ]
     }
   },
@@ -230,7 +276,7 @@
   "inscription": {
     "eyebrow": "Take part",
     "title": "Registration",
-    "description": "Fill out the form to register. The list of participants below updates in real time.",
+    "description": "Fill out the form to register.",
     "opensNote": "Registration opens on September 1, 2026, with priority given to the F3P-A and F3P-AFM categories. You can already fill in the form below in advance.",
     "form": {
       "title": "Registration form",
@@ -243,10 +289,22 @@
       "emailPlaceholder": "john.smith@email.com",
       "telephone": "Phone",
       "telephonePlaceholder": "+1 555 123 4567",
-      "categorie": "Category *",
+      "categorie": "Class *",
       "categoriePlaceholder": "Choose a category",
-      "club": "Club",
-      "clubPlaceholder": "Your club name (optional)",
+      "nationalite": "Nationality *",
+      "nationalitePlaceholder": "Choose a country",
+      "adresse": "Address *",
+      "adressePlaceholder": "12 Airfield Road, London",
+      "federation": "National aeroclub / federation",
+      "federationPlaceholder": "Your aeroclub or federation name (optional)",
+      "faiLicence": "FAI Licence Number *",
+      "faiLicencePlaceholder": "e.g. GBR-12345",
+      "afmLabel": "Add the F3P-AFM category",
+      "mealsHeading": "Meals",
+      "mealsDescription": "Number of meals to reserve (yourself + guests).",
+      "saturdayLunch": "Saturday lunch *",
+      "saturdayDinner": "Saturday dinner *",
+      "sundayLunch": "Sunday lunch *",
       "submit": "Register",
       "notConfigured": "Supabase is not configured yet (see .env.local.example): registrations cannot be saved at the moment.",
       "genericError": "Something went wrong, please try again.",
@@ -258,7 +316,10 @@
         "nomRequired": "Last name is required",
         "emailRequired": "Email is required",
         "emailInvalid": "Invalid email",
-        "categorieRequired": "Please choose a category"
+        "categorieRequired": "Please choose a category",
+        "nationaliteRequired": "Nationality is required",
+        "adresseRequired": "Address is required",
+        "faiLicenceRequired": "FAI Licence Number is required"
       }
     },
     "list": {
@@ -269,8 +330,15 @@
       "loading": "Loading…",
       "empty": "No registrations yet. Be the first!",
       "statusConfirmed": "Confirmed",
-      "statusPending": "Pending"
-    }
+      "statusPending": "Pending",
+      "uncategorized": "Uncategorized"
+    },
+    "viewList": "View the list of registrants"
+  },
+  "inscrits": {
+    "eyebrow": "Participants",
+    "title": "Pilots",
+    "description": "List of participants registered for the event, updated in real time."
   },
   "contact": {
     "eyebrow": "Got a question?",

@@ -4,13 +4,15 @@ import { useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { CheckCircle2, Loader2 } from "lucide-react"
 
-import { categories } from "@/lib/site-config"
+import { mainClasses, afmCategory } from "@/lib/site-config"
+import { getCountryOptions } from "@/lib/countries"
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   Card,
   CardContent,
@@ -34,9 +36,13 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+const MEAL_COUNTS = ["0", "1", "2", "3", "4", "5", "6"] as const
+
 export function RegistrationForm() {
   const t = useTranslations("inscription.form")
   const tCategories = useTranslations("categories")
+  const locale = useLocale()
+  const countryOptions = useMemo(() => getCountryOptions(locale), [locale])
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle"
@@ -48,14 +54,21 @@ export function RegistrationForm() {
       z.object({
         prenom: z.string().trim().min(1, t("validation.prenomRequired")),
         nom: z.string().trim().min(1, t("validation.nomRequired")),
+        nationalite: z.string().trim().min(1, t("validation.nationaliteRequired")),
+        adresse: z.string().trim().min(1, t("validation.adresseRequired")),
         email: z
           .string()
           .trim()
           .min(1, t("validation.emailRequired"))
           .email(t("validation.emailInvalid")),
         telephone: z.string().trim().optional(),
+        federation: z.string().trim().optional(),
+        fai_licence: z.string().trim().min(1, t("validation.faiLicenceRequired")),
         categorie: z.string().min(1, t("validation.categorieRequired")),
-        club: z.string().trim().optional(),
+        afm: z.boolean(),
+        repas_samedi_midi: z.enum(MEAL_COUNTS),
+        repas_samedi_soir: z.enum(MEAL_COUNTS),
+        repas_dimanche_midi: z.enum(MEAL_COUNTS),
       }),
     [t]
   )
@@ -67,10 +80,17 @@ export function RegistrationForm() {
     defaultValues: {
       prenom: "",
       nom: "",
+      nationalite: "",
+      adresse: "",
       email: "",
       telephone: "",
+      federation: "",
+      fai_licence: "",
       categorie: "",
-      club: "",
+      afm: false,
+      repas_samedi_midi: "0",
+      repas_samedi_soir: "0",
+      repas_dimanche_midi: "0",
     },
   })
 
@@ -86,10 +106,17 @@ export function RegistrationForm() {
       const { error } = await supabase.from("inscriptions").insert({
         prenom: values.prenom,
         nom: values.nom,
+        nationalite: values.nationalite,
+        adresse: values.adresse,
         email: values.email,
         telephone: values.telephone || null,
+        federation: values.federation || null,
+        fai_licence: values.fai_licence,
         categorie: values.categorie,
-        club: values.club || null,
+        afm: values.afm,
+        repas_samedi_midi: Number(values.repas_samedi_midi),
+        repas_samedi_soir: Number(values.repas_samedi_soir),
+        repas_dimanche_midi: Number(values.repas_dimanche_midi),
       })
 
       if (error) throw error
@@ -157,6 +184,46 @@ export function RegistrationForm() {
               />
             </div>
 
+            <FormField
+              control={form.control}
+              name="nationalite"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("nationalite")}</FormLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormControl>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder={t("nationalitePlaceholder")} />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {countryOptions.map((country) => (
+                        <SelectItem key={country.code} value={country.name}>
+                          <span aria-hidden>{country.flag}</span>
+                          {country.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="adresse"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("adresse")}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={t("adressePlaceholder")} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <div className="grid gap-5 sm:grid-cols-2">
               <FormField
                 control={form.control}
@@ -189,6 +256,35 @@ export function RegistrationForm() {
             <div className="grid gap-5 sm:grid-cols-2">
               <FormField
                 control={form.control}
+                name="federation"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("federation")}</FormLabel>
+                    <FormControl>
+                      <Input placeholder={t("federationPlaceholder")} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="fai_licence"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("faiLicence")}</FormLabel>
+                    <FormControl>
+                      <Input placeholder={t("faiLicencePlaceholder")} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div>
+              <FormField
+                control={form.control}
                 name="categorie"
                 render={({ field }) => (
                   <FormItem>
@@ -200,7 +296,7 @@ export function RegistrationForm() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {categories.map((cat) => (
+                        {mainClasses.map((cat) => (
                           <SelectItem key={cat.value} value={cat.value}>
                             {tCategories(cat.key)}
                           </SelectItem>
@@ -213,17 +309,97 @@ export function RegistrationForm() {
               />
               <FormField
                 control={form.control}
-                name="club"
+                name="afm"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t("club")}</FormLabel>
+                  <FormItem className="mt-3 flex flex-row items-center gap-2 space-y-0">
                     <FormControl>
-                      <Input placeholder={t("clubPlaceholder")} {...field} />
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
-                    <FormMessage />
+                    <FormLabel className="font-normal">
+                      {t("afmLabel")} ({tCategories(afmCategory.key)})
+                    </FormLabel>
                   </FormItem>
                 )}
               />
+            </div>
+
+            <div>
+              <p className="text-sm font-medium">{t("mealsHeading")}</p>
+              <p className="text-sm text-muted-foreground">{t("mealsDescription")}</p>
+              <div className="mt-3 grid gap-5 sm:grid-cols-3">
+                <FormField
+                  control={form.control}
+                  name="repas_samedi_midi"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("saturdayLunch")}</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="w-full">
+                            <SelectValue />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {MEAL_COUNTS.map((count) => (
+                            <SelectItem key={count} value={count}>
+                              {count}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="repas_samedi_soir"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("saturdayDinner")}</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="w-full">
+                            <SelectValue />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {MEAL_COUNTS.map((count) => (
+                            <SelectItem key={count} value={count}>
+                              {count}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="repas_dimanche_midi"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("sundayLunch")}</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="w-full">
+                            <SelectValue />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {MEAL_COUNTS.map((count) => (
+                            <SelectItem key={count} value={count}>
+                              {count}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </div>
 
             {!isSupabaseConfigured && (

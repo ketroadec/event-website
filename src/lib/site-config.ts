@@ -36,6 +36,11 @@ export const categories = [
   { value: "national-b", key: "nationalB" },
 ] as const
 
+/** Classe "principale" (choix unique à l'inscription). F3P-AFM est une catégorie
+ *  supplémentaire cumulable, proposée séparément (case à cocher). */
+export const mainClasses = categories.filter((c) => c.value !== "f3p-afm")
+export const afmCategory = categories.find((c) => c.value === "f3p-afm")!
+
 export type NavItem = {
   key: string
   href: string
@@ -47,5 +52,6 @@ export const navItems: NavItem[] = [
   { key: "reglement", href: "/reglement" },
   { key: "informations", href: "/informations" },
   { key: "inscription", href: "/inscription" },
+  { key: "inscrits", href: "/inscrits" },
   { key: "contact", href: "/contact" },
 ]

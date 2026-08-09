@@ -26,7 +26,8 @@
     "inscription": "Anmeldung",
     "contact": "Kontakt",
     "register": "Anmelden",
-    "openMenu": "Menü öffnen"
+    "openMenu": "Menü öffnen",
+    "inscrits": "Piloten"
   },
   "footer": {
     "rights": "© {year} {name}. Alle Rechte vorbehalten."
@@ -93,11 +94,26 @@
     },
     "practical": {
       "heading": "Praktische Informationen",
-      "registration": { "title": "Anmeldung", "body": "So meldest du dich an, Gebühren" },
-      "schedule": { "title": "Programm", "body": "Zeiten und Ablauf" },
-      "pilotInfo": { "title": "Piloten-Infos", "body": "Reglement, Kategorien und Dokumente" },
-      "accommodation": { "title": "Unterkunft", "body": "Hotels und Übernachtung in der Nähe" },
-      "access": { "title": "Anreise", "body": "So kommst du nach Sélestat" }
+      "registration": {
+        "title": "Anmeldung",
+        "body": "So meldest du dich an, Gebühren"
+      },
+      "schedule": {
+        "title": "Programm",
+        "body": "Zeiten und Ablauf"
+      },
+      "pilotInfo": {
+        "title": "Piloten-Infos",
+        "body": "Reglement, Kategorien und Dokumente"
+      },
+      "accommodation": {
+        "title": "Unterkunft",
+        "body": "Hotels und Übernachtung in der Nähe"
+      },
+      "access": {
+        "title": "Anreise",
+        "body": "So kommst du nach Sélestat"
+      }
     },
     "highlights": {
       "dates": "Termine",
@@ -133,22 +149,52 @@
       "label": "Tag 1",
       "date": "Samstag, 21. November 2026",
       "events": [
-        { "time": "08:00", "title": "Empfang der Teilnehmer & Modellabnahme" },
-        { "time": "09:00", "title": "Sicherheitsbriefing und Vorstellung der Disziplinen" },
-        { "time": "10:00", "title": "Qualifikationsrunden — Kategorie Segelflug" },
-        { "time": "14:00", "title": "Qualifikationsrunden — Kategorie Kunstflug" },
-        { "time": "18:00", "title": "Vorläufige Ergebnisse & Nachbesprechung" }
+        {
+          "time": "08:00",
+          "title": "Empfang der Teilnehmer & Modellabnahme"
+        },
+        {
+          "time": "09:00",
+          "title": "Sicherheitsbriefing und Vorstellung der Disziplinen"
+        },
+        {
+          "time": "10:00",
+          "title": "Qualifikationsrunden — Kategorie Segelflug"
+        },
+        {
+          "time": "14:00",
+          "title": "Qualifikationsrunden — Kategorie Kunstflug"
+        },
+        {
+          "time": "18:00",
+          "title": "Vorläufige Ergebnisse & Nachbesprechung"
+        }
       ]
     },
     "day2": {
       "label": "Tag 2 — Publikumstag",
       "date": "Sonntag, 22. November 2026",
       "events": [
-        { "time": "10:00", "title": "Öffnung für das Publikum (freier Eintritt) & Finalrunden" },
-        { "time": "12:00", "title": "Mittagspause" },
-        { "time": "14:00", "title": "Freie Vorführungen" },
-        { "time": "16:30", "title": "Siegerehrung" },
-        { "time": "17:00", "title": "Ende der Veranstaltung" }
+        {
+          "time": "10:00",
+          "title": "Öffnung für das Publikum (freier Eintritt) & Finalrunden"
+        },
+        {
+          "time": "12:00",
+          "title": "Mittagspause"
+        },
+        {
+          "time": "14:00",
+          "title": "Freie Vorführungen"
+        },
+        {
+          "time": "16:30",
+          "title": "Siegerehrung"
+        },
+        {
+          "time": "17:00",
+          "title": "Ende der Veranstaltung"
+        }
       ]
     }
   },
@@ -230,7 +276,7 @@
   "inscription": {
     "eyebrow": "Teilnehmen",
     "title": "Anmeldung",
-    "description": "Fülle das Formular aus, um dich anzumelden. Die Teilnehmerliste unten aktualisiert sich in Echtzeit.",
+    "description": "Fülle das Formular aus, um dich anzumelden.",
     "opensNote": "Die Anmeldung öffnet am 1. September 2026, mit Priorität für die Kategorien F3P-A und F3P-AFM. Du kannst das Formular unten schon jetzt vorab ausfüllen.",
     "form": {
       "title": "Anmeldeformular",
@@ -243,10 +289,22 @@
       "emailPlaceholder": "hans.mueller@email.com",
       "telephone": "Telefon",
       "telephonePlaceholder": "+49 151 23456789",
-      "categorie": "Kategorie *",
+      "categorie": "Klasse *",
       "categoriePlaceholder": "Kategorie wählen",
-      "club": "Verein",
-      "clubPlaceholder": "Name deines Vereins (optional)",
+      "nationalite": "Nationalität *",
+      "nationalitePlaceholder": "Land wählen",
+      "adresse": "Adresse *",
+      "adressePlaceholder": "Musterstraße 12, Musterstadt",
+      "federation": "Nationaler Aeroclub / Verband",
+      "federationPlaceholder": "Name deines Aeroclubs oder Verbands (optional)",
+      "faiLicence": "FAI-Lizenznummer *",
+      "faiLicencePlaceholder": "z. B. GER-12345",
+      "afmLabel": "Kategorie F3P-AFM hinzufügen",
+      "mealsHeading": "Mahlzeiten",
+      "mealsDescription": "Anzahl der zu reservierenden Mahlzeiten (du + Begleitpersonen).",
+      "saturdayLunch": "Mittagessen Samstag *",
+      "saturdayDinner": "Abendessen Samstag *",
+      "sundayLunch": "Mittagessen Sonntag *",
       "submit": "Anmelden",
       "notConfigured": "Supabase ist noch nicht konfiguriert (siehe .env.local.example): Anmeldungen können derzeit nicht gespeichert werden.",
       "genericError": "Ein Fehler ist aufgetreten, bitte versuche es erneut.",
@@ -258,7 +316,10 @@
         "nomRequired": "Nachname ist erforderlich",
         "emailRequired": "E-Mail ist erforderlich",
         "emailInvalid": "Ungültige E-Mail",
-        "categorieRequired": "Bitte wähle eine Kategorie"
+        "categorieRequired": "Bitte wähle eine Kategorie",
+        "nationaliteRequired": "Die Nationalität ist erforderlich",
+        "adresseRequired": "Die Adresse ist erforderlich",
+        "faiLicenceRequired": "Die FAI-Lizenznummer ist erforderlich"
       }
     },
     "list": {
@@ -269,8 +330,15 @@
       "loading": "Wird geladen…",
       "empty": "Noch keine Anmeldungen. Sei die/der Erste!",
       "statusConfirmed": "Bestätigt",
-      "statusPending": "Ausstehend"
-    }
+      "statusPending": "Ausstehend",
+      "uncategorized": "Nicht zugeordnet"
+    },
+    "viewList": "Teilnehmerliste ansehen"
+  },
+  "inscrits": {
+    "eyebrow": "Teilnehmer",
+    "title": "Piloten",
+    "description": "Liste der für die Veranstaltung angemeldeten Teilnehmer, in Echtzeit aktualisiert."
   },
   "contact": {
     "eyebrow": "Eine Frage?",

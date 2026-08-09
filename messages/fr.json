@@ -26,7 +26,8 @@
     "inscription": "Inscription",
     "contact": "Contact",
     "register": "S'inscrire",
-    "openMenu": "Ouvrir le menu"
+    "openMenu": "Ouvrir le menu",
+    "inscrits": "Pilotes"
   },
   "footer": {
     "rights": "© {year} {name}. Tous droits réservés."
@@ -93,11 +94,26 @@
     },
     "practical": {
       "heading": "Informations pratiques",
-      "registration": { "title": "Inscription", "body": "Comment s'inscrire et tarifs" },
-      "schedule": { "title": "Programme", "body": "Horaires et déroulé" },
-      "pilotInfo": { "title": "Infos pilotes", "body": "Règlement, catégories et documents" },
-      "accommodation": { "title": "Hébergement", "body": "Hôtels et logements à proximité" },
-      "access": { "title": "Accès", "body": "Comment venir à Sélestat" }
+      "registration": {
+        "title": "Inscription",
+        "body": "Comment s'inscrire et tarifs"
+      },
+      "schedule": {
+        "title": "Programme",
+        "body": "Horaires et déroulé"
+      },
+      "pilotInfo": {
+        "title": "Infos pilotes",
+        "body": "Règlement, catégories et documents"
+      },
+      "accommodation": {
+        "title": "Hébergement",
+        "body": "Hôtels et logements à proximité"
+      },
+      "access": {
+        "title": "Accès",
+        "body": "Comment venir à Sélestat"
+      }
     },
     "highlights": {
       "dates": "Dates",
@@ -133,22 +149,52 @@
       "label": "Jour 1",
       "date": "Samedi 21 novembre 2026",
       "events": [
-        { "time": "08h00", "title": "Accueil des participants & vérification des modèles" },
-        { "time": "09h00", "title": "Briefing sécurité et présentation des épreuves" },
-        { "time": "10h00", "title": "Manches qualificatives — catégorie Planeur" },
-        { "time": "14h00", "title": "Manches qualificatives — catégorie Voltige" },
-        { "time": "18h00", "title": "Résultats provisoires & débriefing" }
+        {
+          "time": "08h00",
+          "title": "Accueil des participants & vérification des modèles"
+        },
+        {
+          "time": "09h00",
+          "title": "Briefing sécurité et présentation des épreuves"
+        },
+        {
+          "time": "10h00",
+          "title": "Manches qualificatives — catégorie Planeur"
+        },
+        {
+          "time": "14h00",
+          "title": "Manches qualificatives — catégorie Voltige"
+        },
+        {
+          "time": "18h00",
+          "title": "Résultats provisoires & débriefing"
+        }
       ]
     },
     "day2": {
       "label": "Jour 2 — Journée grand public",
       "date": "Dimanche 22 novembre 2026",
       "events": [
-        { "time": "10h00", "title": "Ouverture au public (entrée gratuite) & finales par catégorie" },
-        { "time": "12h00", "title": "Pause déjeuner" },
-        { "time": "14h00", "title": "Démonstrations libres" },
-        { "time": "16h30", "title": "Remise des prix" },
-        { "time": "17h00", "title": "Fermeture" }
+        {
+          "time": "10h00",
+          "title": "Ouverture au public (entrée gratuite) & finales par catégorie"
+        },
+        {
+          "time": "12h00",
+          "title": "Pause déjeuner"
+        },
+        {
+          "time": "14h00",
+          "title": "Démonstrations libres"
+        },
+        {
+          "time": "16h30",
+          "title": "Remise des prix"
+        },
+        {
+          "time": "17h00",
+          "title": "Fermeture"
+        }
       ]
     }
   },
@@ -230,7 +276,7 @@
   "inscription": {
     "eyebrow": "Participer",
     "title": "Inscription",
-    "description": "Remplissez le formulaire pour vous inscrire. La liste des participants ci-dessous se met à jour en temps réel.",
+    "description": "Remplissez le formulaire pour vous inscrire.",
     "opensNote": "Les inscriptions ouvrent le 1er septembre 2026, avec priorité donnée aux catégories F3P-A et F3P-AFM. Vous pouvez déjà pré-remplir le formulaire ci-dessous.",
     "form": {
       "title": "Formulaire d'inscription",
@@ -242,11 +288,23 @@
       "email": "Email *",
       "emailPlaceholder": "jean.dupont@email.com",
       "telephone": "Téléphone",
-      "telephonePlaceholder": "06 12 34 56 78",
-      "categorie": "Catégorie *",
+      "telephonePlaceholder": "+33 6 12 34 56 78",
+      "categorie": "Classe *",
       "categoriePlaceholder": "Choisir une catégorie",
-      "club": "Club",
-      "clubPlaceholder": "Nom de votre club (facultatif)",
+      "nationalite": "Nationalité *",
+      "nationalitePlaceholder": "Choisir un pays",
+      "adresse": "Adresse *",
+      "adressePlaceholder": "12 rue des Aviateurs, 67600 Sélestat",
+      "federation": "Aéroclub national / fédération",
+      "federationPlaceholder": "Nom de votre aéroclub ou fédération (facultatif)",
+      "faiLicence": "Numéro de licence FAI *",
+      "faiLicencePlaceholder": "Ex. FRA-12345",
+      "afmLabel": "Ajouter la catégorie F3P-AFM",
+      "mealsHeading": "Repas",
+      "mealsDescription": "Nombre de repas à réserver (vous + accompagnants).",
+      "saturdayLunch": "Déjeuner du samedi *",
+      "saturdayDinner": "Dîner du samedi *",
+      "sundayLunch": "Déjeuner du dimanche *",
       "submit": "S'inscrire",
       "notConfigured": "Supabase n'est pas encore configuré (voir .env.local.example) : les inscriptions ne peuvent pas être enregistrées pour le moment.",
       "genericError": "Une erreur est survenue, réessayez.",
@@ -258,7 +316,10 @@
         "nomRequired": "Le nom est requis",
         "emailRequired": "L'email est requis",
         "emailInvalid": "Email invalide",
-        "categorieRequired": "Choisissez une catégorie"
+        "categorieRequired": "Choisissez une catégorie",
+        "nationaliteRequired": "La nationalité est requise",
+        "adresseRequired": "L'adresse est requise",
+        "faiLicenceRequired": "Le numéro de licence FAI est requis"
       }
     },
     "list": {
@@ -269,8 +330,15 @@
       "loading": "Chargement…",
       "empty": "Aucune inscription pour le moment. Soyez le premier !",
       "statusConfirmed": "Confirmé",
-      "statusPending": "En attente"
-    }
+      "statusPending": "En attente",
+      "uncategorized": "Non classé"
+    },
+    "viewList": "Voir la liste des inscrits"
+  },
+  "inscrits": {
+    "eyebrow": "Participants",
+    "title": "Pilotes",
+    "description": "Liste des participants inscrits à l'événement, mise à jour en temps réel."
   },
   "contact": {
     "eyebrow": "Une question ?",
