@@ -9,7 +9,7 @@
     "eventAddress": "6 Avenue Adrien Zeller, 67600 Sélestat, France",
     "eventVenue": "Gymnase Adrien Zeller",
     "website": "www.sifm.fr",
-    "contactEmail": "contact@example.com"
+    "contactEmail": "maxime.schmitt.7@gmail.com"
   },
   "countdown": {
     "startsIn": "The competition starts in",
@@ -37,7 +37,7 @@
     "f3pA": "F3P-A",
     "f3pAfm": "F3P-AFM",
     "nationalA": "National A",
-    "nationalB": "National B"
+    "f3pAa": "F3P-AA"
   },
   "partners": {
     "heading": "Partners & organizers"
@@ -65,7 +65,7 @@
     }
   },
   "home": {
-    "badge": "Featuring Europe's top pilots",
+    "badge": "World's best pilots",
     "heroTitleLine1": "Sélestat",
     "heroTitleLine2": "International",
     "heroTitleLine3": "F3P Masters 2026",
@@ -84,12 +84,12 @@
       },
       "venue": {
         "title": "The venue",
-        "body": "A fitting gym, 13-meter ceiling height",
+        "body": "A fitting gym for the competition",
         "alt": "Interior of the Gymnase Adrien Zeller"
       },
       "pilots": {
         "title": "Top pilots",
-        "body": "Europe's best pilots will be there",
+        "body": "World's best pilots",
         "alt": "Pilot holding an F3P model"
       }
     },
@@ -120,7 +120,7 @@
       "dates": "Dates",
       "lieu": "Location",
       "categories": "Categories",
-      "categoriesValue": "F3P-A, F3P-AFM, National A & B",
+      "categoriesValue": "F3P-A, F3P-AFM, F3P-AA, National A",
       "ouvert": "Open to",
       "ouvertValue": "All levels, licensed and amateur pilots"
     },
@@ -145,7 +145,7 @@
   "programme": {
     "eyebrow": "Event schedule",
     "title": "Schedule",
-    "description": "This schedule is indicative and will be refined closer to the competition. Final times will be communicated to registered participants by email.",
+    "description": "This schedule is indicative and will be refined closer to the competition.",
     "day1": {
       "label": "Day 1",
       "date": "Saturday, November 21, 2026",
@@ -197,7 +197,8 @@
           "title": "Closing"
         }
       ]
-    }
+    },
+    "downloadCta": "Download the schedule (PDF)"
   },
   "reglement": {
     "eyebrow": "Competition rules",
@@ -208,7 +209,7 @@
       "f3pA": "International F3P category, compulsory programme under FAI rules.",
       "f3pAfm": "F3P-AFM category, free-style musical programme.",
       "nationalA": "National A category, open to experienced pilots.",
-      "nationalB": "National B category, for pilots still progressing."
+      "f3pAa": "F3P-AA category, for pilots still progressing."
     },
     "scoring": {
       "heading": "Scoring",
@@ -227,6 +228,14 @@
         "Flying area and public area strictly separated by marked boundaries.",
         "Track officials' instructions must be followed at all times."
       ]
+    },
+    "rulesDocument": {
+      "title": "Official FAI rules (F3P)",
+      "cta": "Download the rules (PDF)"
+    },
+    "rulesDocumentNationalA": {
+      "title": "FFAM federal rules (National A)",
+      "cta": "Download the rules (PDF)"
     }
   },
   "informations": {
@@ -267,6 +276,10 @@
         "body": "An organization contact will be reachable throughout the event. Contact: {email}."
       }
     },
+    "infoForm": {
+      "title": "Information form",
+      "cta": "Download the form (PDF)"
+    },
     "poster": {
       "title": "Official poster",
       "body": "Download the official event poster as a PDF.",
@@ -278,7 +291,7 @@
     "eyebrow": "Take part",
     "title": "Registration",
     "description": "Fill out the form to register.",
-    "opensNote": "Registration opens on September 1, 2026, with priority given to the F3P-A and F3P-AFM categories. You can already fill in the form below in advance.",
+    "opensNote": "Registration opens on September 1, 2026, with priority given to the F3P-A and F3P-AFM categories. Registration for the F3P-AA and National A categories will open on October 1.",
     "form": {
       "title": "Registration form",
       "description": "Fields marked * are required. Your email and phone number are never displayed publicly.",
@@ -321,7 +334,8 @@
         "nationaliteRequired": "Nationality is required",
         "adresseRequired": "Address is required",
         "faiLicenceRequired": "FAI Licence Number is required"
-      }
+      },
+      "totalDue": "Amount due"
     },
     "list": {
       "title": "Participants",

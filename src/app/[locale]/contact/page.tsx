@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Mail, MapPin } from "lucide-react"
+import { Mail } from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { PageHero } from "@/components/page-hero"
@@ -43,18 +43,6 @@ export default async function ContactPage({ params }: Props) {
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-3">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                <MapPin className="size-4.5" />
-              </span>
-              <div>
-                <p className="text-sm font-medium">{t("locationLabel")}</p>
-                <p className="text-sm text-muted-foreground">
-                  {tSite("eventAddress")}
-                </p>
-              </div>
-            </div>
-
             <Button asChild className="w-full">
               <a href={`mailto:${tSite("contactEmail")}`}>{t("sendEmail")}</a>
             </Button>

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { CalendarDays, MapPin, Ruler, Trophy, ArrowRight } from "lucide-react"
+import { CalendarDays, MapPin, Trophy, ArrowRight } from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Link } from "@/i18n/navigation"
@@ -24,14 +24,13 @@ export default async function Home({
   const infoList = [
     { icon: CalendarDays, label: tSite("eventDates") },
     { icon: MapPin, label: `${tSite("eventVenue")} — ${tSite("eventLocation")}` },
-    { icon: Ruler, label: t("ceilingHeight") },
     { icon: Trophy, label: t("highlights.categoriesValue") },
   ]
 
   const cards = [
-    { key: "selestat" as const, src: "/images/brand/city.png" },
+    { key: "selestat" as const, src: "/images/brand/city.png", href: "https://www.selestat.fr/" },
     { key: "venue" as const, src: "/images/brand/venue.png" },
-    { key: "pilots" as const, src: "/images/brand/pilot.png" },
+    { key: "pilots" as const, src: "/images/brand/pilot.png", href: "/inscrits" },
   ]
 
   const practicalItems = [
@@ -172,29 +171,66 @@ export default async function Home({
           </div>
 
           <div className="grid h-full grid-cols-3 gap-3 py-6 md:col-span-2">
-            {cards.map((card) => (
-              <div key={card.key} className="flex h-full flex-col overflow-hidden ring-1 ring-border">
-                <div className="relative w-full flex-1">
-                  <Image
-                    src={card.src}
-                    alt={t(`cards.${card.key}.alt`)}
-                    fill
-                    sizes="(min-width: 768px) 200px, 33vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="bg-navy px-2 py-1.5">
-                  <p className="truncate text-[11px] font-bold text-white uppercase">
-                    {t(`cards.${card.key}.title`)}
-                  </p>
-                </div>
-                <div className="min-h-[46px] bg-card px-2 py-2">
-                  <p className="line-clamp-2 text-[11px] text-navy">
-                    {t(`cards.${card.key}.body`)}
-                  </p>
-                </div>
-              </div>
-            ))}
+            {cards.map((card) => {
+              const cardClassName = "flex h-full flex-col overflow-hidden ring-1 ring-border"
+              const cardContent = (
+                <>
+                  <div className="relative w-full flex-1">
+                    <Image
+                      src={card.src}
+                      alt={t(`cards.${card.key}.alt`)}
+                      fill
+                      sizes="(min-width: 768px) 200px, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="bg-navy px-2 py-1.5">
+                    <p className="truncate text-[11px] font-bold text-white uppercase">
+                      {t(`cards.${card.key}.title`)}
+                    </p>
+                  </div>
+                  <div className="min-h-[46px] bg-card px-2 py-2">
+                    <p className="line-clamp-2 text-[11px] text-navy">
+                      {t(`cards.${card.key}.body`)}
+                    </p>
+                  </div>
+                </>
+              )
+
+              if (!card.href) {
+                return (
+                  <div key={card.key} className={cardClassName}>
+                    {cardContent}
+                  </div>
+                )
+              }
+
+              if (card.href.startsWith("http")) {
+                return (
+                  <a
+                    key={card.key}
+                    href={card.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cardClassName}
+                  >
+                    {cardContent}
+                  </a>
+                )
+              }
+
+              return (
+                <Link
+                  key={card.key}
+                  href={card.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClassName}
+                >
+                  {cardContent}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

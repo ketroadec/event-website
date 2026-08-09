@@ -7,7 +7,7 @@ import { z } from "zod"
 import { useLocale, useTranslations } from "next-intl"
 import { CheckCircle2, Loader2 } from "lucide-react"
 
-import { mainClasses, afmCategory } from "@/lib/site-config"
+import { mainClasses, afmCategory, CLASS_FEES, AFM_FEE, MEAL_PRICES } from "@/lib/site-config"
 import { getCountryOptions } from "@/lib/countries"
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
@@ -93,6 +93,19 @@ export function RegistrationForm() {
       repas_dimanche_midi: "0",
     },
   })
+
+  const categorie = form.watch("categorie")
+  const afm = form.watch("afm")
+  const repasSamediMidi = form.watch("repas_samedi_midi")
+  const repasSamediSoir = form.watch("repas_samedi_soir")
+  const repasDimancheMidi = form.watch("repas_dimanche_midi")
+
+  const totalDue =
+    (CLASS_FEES[categorie] ?? 0) +
+    (afm ? AFM_FEE : 0) +
+    Number(repasSamediMidi) * MEAL_PRICES.repas_samedi_midi +
+    Number(repasSamediSoir) * MEAL_PRICES.repas_samedi_soir +
+    Number(repasDimancheMidi) * MEAL_PRICES.repas_dimanche_midi
 
   async function onSubmit(values: FormValues) {
     setStatus("submitting")
@@ -298,7 +311,7 @@ export function RegistrationForm() {
                       <SelectContent>
                         {mainClasses.map((cat) => (
                           <SelectItem key={cat.value} value={cat.value}>
-                            {tCategories(cat.key)}
+                            {tCategories(cat.key)} ({CLASS_FEES[cat.value]} €)
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -316,7 +329,7 @@ export function RegistrationForm() {
                       <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      {t("afmLabel")} ({tCategories(afmCategory.key)})
+                      {t("afmLabel")} ({tCategories(afmCategory.key)}, +{AFM_FEE} €)
                     </FormLabel>
                   </FormItem>
                 )}
@@ -332,7 +345,9 @@ export function RegistrationForm() {
                   name="repas_samedi_midi"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("saturdayLunch")}</FormLabel>
+                      <FormLabel>
+                        {t("saturdayLunch")} ({MEAL_PRICES.repas_samedi_midi} €)
+                      </FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger className="w-full">
@@ -356,7 +371,9 @@ export function RegistrationForm() {
                   name="repas_samedi_soir"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("saturdayDinner")}</FormLabel>
+                      <FormLabel>
+                        {t("saturdayDinner")} ({MEAL_PRICES.repas_samedi_soir} €)
+                      </FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger className="w-full">
@@ -380,7 +397,9 @@ export function RegistrationForm() {
                   name="repas_dimanche_midi"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("sundayLunch")}</FormLabel>
+                      <FormLabel>
+                        {t("sundayLunch")} ({MEAL_PRICES.repas_dimanche_midi} €)
+                      </FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger className="w-full">
@@ -411,6 +430,15 @@ export function RegistrationForm() {
             {status === "error" && (
               <p className="text-sm font-medium text-destructive">{errorMessage}</p>
             )}
+
+            <div className="flex items-center justify-between rounded-lg bg-accent px-4 py-3">
+              <span className="text-sm font-medium text-accent-foreground">
+                {t("totalDue")}
+              </span>
+              <span className="text-lg font-semibold text-accent-foreground">
+                {totalDue} €
+              </span>
+            </div>
 
             <Button
               type="submit"

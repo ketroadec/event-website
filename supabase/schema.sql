@@ -82,3 +82,8 @@ set nationalite = i.nationalite,
     afm = i.afm
 from public.inscriptions i
 where pub.id = i.id;
+
+-- Renomme la valeur technique de la catégorie "National B" -> "F3P-AA"
+-- (le libellé affiché avait déjà changé ; on aligne la valeur stockée en base).
+update public.inscriptions set categorie = 'f3p-aa' where categorie = 'national-b';
+update public.inscriptions_publiques set categorie = 'f3p-aa' where categorie = 'national-b';

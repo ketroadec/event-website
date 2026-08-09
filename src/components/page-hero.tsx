@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 import { cn } from "@/lib/utils"
 
 export function PageHero({
@@ -12,8 +14,17 @@ export function PageHero({
   className?: string
 }) {
   return (
-    <div className={cn("border-b border-border/60 bg-muted/30", className)}>
-      <div className="mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 sm:pt-36 sm:pb-20">
+    <div className={cn("relative overflow-hidden border-b border-border/60", className)}>
+      <Image
+        src="/images/brand/hero-background.png"
+        alt=""
+        fill
+        aria-hidden
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 sm:pt-36 sm:pb-20">
         {eyebrow && (
           <p className="mb-3 text-sm font-medium tracking-wide text-primary uppercase">
             {eyebrow}

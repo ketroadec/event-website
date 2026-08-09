@@ -9,7 +9,7 @@
     "eventAddress": "6 Avenue Adrien Zeller, 67600 Sélestat, Frankreich",
     "eventVenue": "Gymnase Adrien Zeller",
     "website": "www.sifm.fr",
-    "contactEmail": "contact@example.com"
+    "contactEmail": "maxime.schmitt.7@gmail.com"
   },
   "countdown": {
     "startsIn": "Der Wettbewerb beginnt in",
@@ -37,7 +37,7 @@
     "f3pA": "F3P-A",
     "f3pAfm": "F3P-AFM",
     "nationalA": "National A",
-    "nationalB": "National B"
+    "f3pAa": "F3P-AA"
   },
   "partners": {
     "heading": "Partner & Organisatoren"
@@ -65,7 +65,7 @@
     }
   },
   "home": {
-    "badge": "Mit Europas besten Piloten",
+    "badge": "Die besten Piloten der Welt",
     "heroTitleLine1": "Sélestat",
     "heroTitleLine2": "International",
     "heroTitleLine3": "F3P Masters 2026",
@@ -84,12 +84,12 @@
       },
       "venue": {
         "title": "Die Halle",
-        "body": "Passende Halle, 13 Meter Deckenhöhe",
+        "body": "Eine passende Halle für den Wettkampf",
         "alt": "Innenansicht der Gymnase Adrien Zeller"
       },
       "pilots": {
         "title": "Top-Piloten",
-        "body": "Europas beste Piloten sind dabei",
+        "body": "Die besten Piloten der Welt",
         "alt": "Pilot mit F3P-Modell"
       }
     },
@@ -120,7 +120,7 @@
       "dates": "Termine",
       "lieu": "Ort",
       "categories": "Kategorien",
-      "categoriesValue": "F3P-A, F3P-AFM, National A & B",
+      "categoriesValue": "F3P-A, F3P-AFM, F3P-AA, National A",
       "ouvert": "Offen für",
       "ouvertValue": "Alle Niveaus, Lizenzierte und Amateure"
     },
@@ -145,7 +145,7 @@
   "programme": {
     "eyebrow": "Ablauf der Veranstaltung",
     "title": "Programm",
-    "description": "Dieses Programm ist vorläufig und wird kurz vor dem Wettbewerb konkretisiert. Die endgültigen Zeiten werden den Teilnehmern per E-Mail mitgeteilt.",
+    "description": "Dieses Programm ist vorläufig und wird kurz vor dem Wettbewerb konkretisiert.",
     "day1": {
       "label": "Tag 1",
       "date": "Samstag, 21. November 2026",
@@ -197,7 +197,8 @@
           "title": "Ende der Veranstaltung"
         }
       ]
-    }
+    },
+    "downloadCta": "Programm herunterladen (PDF)"
   },
   "reglement": {
     "eyebrow": "Wettbewerbsregeln",
@@ -208,7 +209,7 @@
       "f3pA": "Internationale F3P-Kategorie, Pflichtprogramm nach FAI-Reglement.",
       "f3pAfm": "Kategorie F3P-AFM, freies Musikprogramm (Free-style musical).",
       "nationalA": "Nationale Kategorie A, für erfahrene Piloten.",
-      "nationalB": "Nationale Kategorie B, für Piloten in der Weiterentwicklung."
+      "f3pAa": "Kategorie F3P-AA, für Piloten in der Weiterentwicklung."
     },
     "scoring": {
       "heading": "Bewertung",
@@ -227,6 +228,14 @@
         "Flugbereich und Publikumsbereich sind durch Absperrungen strikt getrennt.",
         "Den Anweisungen der Streckenposten ist jederzeit Folge zu leisten."
       ]
+    },
+    "rulesDocument": {
+      "title": "Offizielles FAI-Reglement (F3P)",
+      "cta": "Reglement herunterladen (PDF)"
+    },
+    "rulesDocumentNationalA": {
+      "title": "FFAM-Verbandsreglement (National A)",
+      "cta": "Reglement herunterladen (PDF)"
     }
   },
   "informations": {
@@ -267,6 +276,10 @@
         "body": "Ein Ansprechpartner der Organisation ist während der gesamten Veranstaltung erreichbar. Kontakt: {email}."
       }
     },
+    "infoForm": {
+      "title": "Informationsformular",
+      "cta": "Formular herunterladen (PDF)"
+    },
     "poster": {
       "title": "Offizielles Plakat",
       "body": "Lade das offizielle Plakat der Veranstaltung als PDF herunter.",
@@ -278,7 +291,7 @@
     "eyebrow": "Teilnehmen",
     "title": "Anmeldung",
     "description": "Fülle das Formular aus, um dich anzumelden.",
-    "opensNote": "Die Anmeldung öffnet am 1. September 2026, mit Priorität für die Kategorien F3P-A und F3P-AFM. Du kannst das Formular unten schon jetzt vorab ausfüllen.",
+    "opensNote": "Die Anmeldung öffnet am 1. September 2026, mit Priorität für die Kategorien F3P-A und F3P-AFM. Die Anmeldung für die Kategorien F3P-AA und National A öffnet am 1. Oktober.",
     "form": {
       "title": "Anmeldeformular",
       "description": "Mit * markierte Felder sind Pflichtfelder. Deine E-Mail-Adresse und Telefonnummer werden niemals öffentlich angezeigt.",
@@ -321,7 +334,8 @@
         "nationaliteRequired": "Die Nationalität ist erforderlich",
         "adresseRequired": "Die Adresse ist erforderlich",
         "faiLicenceRequired": "Die FAI-Lizenznummer ist erforderlich"
-      }
+      },
+      "totalDue": "Zu zahlender Betrag"
     },
     "list": {
       "title": "Teilnehmer",

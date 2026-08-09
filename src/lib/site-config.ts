@@ -14,6 +14,18 @@ export const EVENT_DATE_ISO = "2026-11-21T09:00:00+01:00"
 /** Lien vers l'affiche officielle (PDF), issue de l'organisation. */
 export const POSTER_URL = "/documents/affiche-sifm-2026.pdf"
 
+/** Lien vers le formulaire d'informations officiel (PDF), issue de l'organisation. */
+export const INFO_FORM_URL = "/documents/informations-sifm-2026.pdf"
+
+/** Lien vers le règlement FAI Sporting Code Section 4 Volume F3 (PDF), catégories F3P-A/AFM/AA. */
+export const RULES_URL = "/documents/reglement-f3p-sc4-2026.pdf"
+
+/** Lien vers le règlement fédéral FFAM de la catégorie Nationale A (PDF). */
+export const RULES_NATIONAL_A_URL = "/documents/reglement-national-a-2026.pdf"
+
+/** Lien vers le programme provisoire (PDF), issue de l'organisation. */
+export const SCHEDULE_URL = "/documents/programme-sifm-2026.pdf"
+
 /**
  * Partenaires et organisateurs officiels (source : affiche de l'événement).
  * Noms propres, non traduits. `logo` optionnel : chemin vers le fichier dans
@@ -48,13 +60,30 @@ export const categories = [
   { value: "f3p-a", key: "f3pA" },
   { value: "f3p-afm", key: "f3pAfm" },
   { value: "national-a", key: "nationalA" },
-  { value: "national-b", key: "nationalB" },
+  { value: "f3p-aa", key: "f3pAa" },
 ] as const
 
 /** Classe "principale" (choix unique à l'inscription). F3P-AFM est une catégorie
  *  supplémentaire cumulable, proposée séparément (case à cocher). */
 export const mainClasses = categories.filter((c) => c.value !== "f3p-afm")
 export const afmCategory = categories.find((c) => c.value === "f3p-afm")!
+
+/** Frais d'inscription par classe principale (en euros). */
+export const CLASS_FEES: Record<string, number> = {
+  "f3p-a": 50,
+  "national-a": 20,
+  "f3p-aa": 20,
+}
+
+/** Frais pour l'ajout cumulé de la catégorie F3P-AFM (en euros). */
+export const AFM_FEE = 20
+
+/** Prix des repas, par personne (en euros). */
+export const MEAL_PRICES = {
+  repas_samedi_midi: 18,
+  repas_samedi_soir: 25,
+  repas_dimanche_midi: 18,
+} as const
 
 export type NavItem = {
   key: string
@@ -64,8 +93,8 @@ export type NavItem = {
 export const navItems: NavItem[] = [
   { key: "home", href: "/" },
   { key: "programme", href: "/programme" },
-  { key: "reglement", href: "/reglement" },
   { key: "informations", href: "/informations" },
+  { key: "reglement", href: "/reglement" },
   { key: "inscrits", href: "/inscrits" },
   { key: "contact", href: "/contact" },
 ]
