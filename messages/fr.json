@@ -30,7 +30,8 @@
     "inscrits": "Pilotes"
   },
   "footer": {
-    "rights": "© {year} {name}. Tous droits réservés."
+    "rights": "© {year} {name}. Tous droits réservés.",
+    "developedBy": "Developed by Kévin Troadec"
   },
   "categories": {
     "f3pA": "F3P-A",
@@ -271,7 +272,7 @@
       "body": "Téléchargez l'affiche officielle de l'événement au format PDF.",
       "cta": "Télécharger l'affiche (PDF)"
     },
-    "mapPlaceholder": "Carte d'accès à venir"
+    "mapTitle": "Carte d'accès à l'événement"
   },
   "inscription": {
     "eyebrow": "Participer",

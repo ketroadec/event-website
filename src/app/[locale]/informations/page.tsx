@@ -51,6 +51,9 @@ export default async function InformationsPage({ params }: Props) {
 
   const blockKeys = Object.keys(blockIcons) as (keyof typeof blockIcons)[]
 
+  const mapQuery = encodeURIComponent(`${tSite("eventVenue")}, ${tSite("eventAddress")}`)
+  const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`
+
   return (
     <div>
       <PageHero
@@ -103,11 +106,15 @@ export default async function InformationsPage({ params }: Props) {
           </CardContent>
         </Card>
 
-        <Card className="mt-4">
-          <CardContent className="flex items-center justify-center py-16 text-sm text-muted-foreground">
-            {t("mapPlaceholder")}
-          </CardContent>
-        </Card>
+        <div className="mt-4 overflow-hidden rounded-xl ring-1 ring-foreground/10">
+          <iframe
+            src={mapEmbedUrl}
+            title={t("mapTitle")}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-80 w-full border-0"
+          />
+        </div>
       </div>
     </div>
   )

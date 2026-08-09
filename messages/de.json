@@ -30,7 +30,8 @@
     "inscrits": "Piloten"
   },
   "footer": {
-    "rights": "© {year} {name}. Alle Rechte vorbehalten."
+    "rights": "© {year} {name}. Alle Rechte vorbehalten.",
+    "developedBy": "Developed by Kévin Troadec"
   },
   "categories": {
     "f3pA": "F3P-A",
@@ -271,7 +272,7 @@
       "body": "Lade das offizielle Plakat der Veranstaltung als PDF herunter.",
       "cta": "Plakat herunterladen (PDF)"
     },
-    "mapPlaceholder": "Anfahrtskarte folgt in Kürze"
+    "mapTitle": "Anfahrtskarte zur Veranstaltung"
   },
   "inscription": {
     "eyebrow": "Teilnehmen",

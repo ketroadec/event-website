@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Link } from "@/i18n/navigation"
 import { partners } from "@/lib/site-config"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Countdown } from "@/components/countdown"
 
@@ -201,13 +202,13 @@ export default async function Home({
       {/* Informations pratiques */}
       <section className="relative overflow-hidden bg-navy">
         <Image
-          src="/images/brand/footer-bg.png"
+          src="/images/brand/blue-brush.png"
           alt=""
           fill
           aria-hidden
           className="object-cover opacity-70"
         />
-        <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="relative z-10 mx-auto max-w-6xl px-2 py-7 sm:px-3">
           <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             <div className="w-full">
               <h2 className="font-display text-2xl text-white uppercase sm:text-3xl">
@@ -237,42 +238,29 @@ export default async function Home({
                 ))}
               </div>
             </div>
-
-            <div className="flex shrink-0 items-center gap-4">
-              <div className="relative h-14 w-[93px] rounded bg-white/90 p-1">
-                <Image
-                  src="/images/brand/logo-event.png"
-                  alt={tSite("shortName")}
-                  fill
-                  sizes="93px"
-                  className="object-contain"
-                />
-              </div>
-              <div className="relative h-14 w-14">
-                <Image src="/images/brand/fai-logo.png" alt="FAI" fill sizes="56px" className="object-contain" />
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Partenaires & organisateurs */}
-      <section className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6">
+      <section className="mx-auto max-w-5xl px-2 py-8 text-center sm:px-3">
         <p className="mb-8 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
           {tPartners("heading")}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-8">
           {partners.map((partner) =>
             partner.logo ? (
-              <div key={partner.name} className="relative h-12 w-28">
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  fill
-                  sizes="112px"
-                  className="object-contain grayscale transition hover:grayscale-0"
-                />
-              </div>
+              <Image
+                key={partner.name}
+                src={partner.logo}
+                alt={partner.name}
+                width={partner.width}
+                height={partner.height}
+                className={cn(
+                  "block w-auto self-center object-contain",
+                  partner.logo === "/images/brand/logo-selestat.png" ? "h-12" : "h-24"
+                )}
+              />
             ) : (
               <span
                 key={partner.name}
