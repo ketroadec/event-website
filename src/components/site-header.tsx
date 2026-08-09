@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { useTranslations } from "next-intl"
 import { Menu } from "lucide-react"
 
@@ -27,17 +26,6 @@ export function SiteHeader() {
   return (
     <header className="absolute inset-x-0 top-0 z-50 bg-transparent">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="relative -ml-10 mt-14 h-[120px] w-[240px] sm:-ml-20 lg:-ml-24">
-          <Image
-            src="/images/brand/logo-event.png"
-            alt={tSite("shortName")}
-            fill
-            sizes="240px"
-            className="object-contain object-left"
-            priority
-          />
-        </Link>
-
         <nav className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => {
             const isActive =
@@ -59,7 +47,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 md:flex">
           <LanguageSwitcher />
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="rounded-none bg-[#0281fd] uppercase hover:bg-[#0281fd]/90">
             <Link href="/inscription">{t("register")}</Link>
           </Button>
         </div>

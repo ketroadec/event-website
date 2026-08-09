@@ -19,7 +19,6 @@ export default async function Home({
   const tSite = await getTranslations("site")
   const tPartners = await getTranslations("partners")
   const tCountdown = await getTranslations("countdown")
-  const tNews = await getTranslations("news")
 
   const infoList = [
     { icon: CalendarDays, label: tSite("eventDates") },
@@ -32,12 +31,6 @@ export default async function Home({
     { key: "selestat" as const, src: "/images/brand/city.png" },
     { key: "venue" as const, src: "/images/brand/venue.png" },
     { key: "pilots" as const, src: "/images/brand/pilot.png" },
-  ]
-
-  const newsItems = [
-    { key: "registrations" as const, src: "/images/brand/news-bg.png", href: "/inscription" },
-    { key: "venue" as const, src: "/images/brand/venue2.png", href: "/informations" },
-    { key: "priority" as const, src: "/images/brand/venue3.png", href: "/inscription" },
   ]
 
   const practicalItems = [
@@ -83,20 +76,19 @@ export default async function Home({
         <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 sm:pt-32">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="text-center lg:text-left">
-              <p className="font-display text-xl text-navy italic sm:text-2xl">
+              <p className="font-display text-[1.375rem] text-navy italic sm:text-[1.65rem]">
                 {tSite("eventDates")}
               </p>
 
-              <h1 className="font-display leading-[0.9] text-balance">
-                <span className="block text-6xl text-primary sm:text-7xl lg:text-8xl">
-                  {t("heroTitleLine1")}
-                </span>
-                <span className="my-1 block font-heading text-base font-semibold tracking-[0.4em] text-navy sm:text-lg">
-                  {t("heroTitleLine2")}
-                </span>
-                <span className="block text-5xl text-primary italic sm:text-6xl lg:text-7xl">
-                  {t("heroTitleLine3")}
-                </span>
+              <h1 className="relative mx-auto aspect-[1224/740] w-64 sm:w-80 lg:mx-0 lg:w-96">
+                <Image
+                  src="/images/brand/logo-event.png"
+                  alt={tSite("name")}
+                  fill
+                  sizes="(min-width: 1024px) 384px, 320px"
+                  className="object-contain object-center lg:object-left"
+                  priority
+                />
               </h1>
 
               <p className="mt-4 font-heading text-lg font-extrabold tracking-wide text-navy uppercase sm:text-xl">
@@ -107,7 +99,7 @@ export default async function Home({
               </p>
 
               <div className="mt-7 flex justify-center lg:justify-start">
-                <Button asChild size="lg" className="bg-navy hover:bg-navy-light">
+                <Button asChild size="lg" className="rounded-none bg-navy uppercase hover:bg-navy-light">
                   <Link href="/informations">{t("ctaDiscover")}</Link>
                 </Button>
               </div>
@@ -141,7 +133,7 @@ export default async function Home({
             {tCountdown("startsIn")}
           </p>
           <Countdown />
-          <Button asChild className="bg-primary hover:bg-primary/90">
+          <Button asChild className="rounded-none bg-[#0281fd] uppercase hover:bg-[#0281fd]/90">
             <Link href="/inscription">
               {t("ctaRegister")}
               <ArrowRight className="size-4" />
@@ -151,20 +143,17 @@ export default async function Home({
       </div>
 
       {/* À propos + photos */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid items-start gap-10 md:grid-cols-2">
-          <div>
-            <p className="mb-2 text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-              {tSite("shortName")}
-            </p>
-            <h2 className="font-heading text-2xl font-bold text-balance sm:text-3xl">
+      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+        <div className="grid gap-10 md:grid-cols-3">
+          <div className="md:col-span-1">
+            <h2 className="font-heading text-2xl font-bold text-balance text-navy uppercase sm:text-3xl">
               {t("aboutHeading")}
             </h2>
-            <p className="mt-4 text-muted-foreground">{t("aboutBody")}</p>
+            <p className="mt-4 text-navy">{t("aboutBody")}</p>
 
             <ul className="mt-6 space-y-3">
               {infoList.map((item) => (
-                <li key={item.label} className="flex items-center gap-3 text-sm">
+                <li key={item.label} className="flex items-center gap-3 text-sm text-navy">
                   <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
                     <item.icon className="size-4" />
                   </span>
@@ -173,7 +162,7 @@ export default async function Home({
               ))}
             </ul>
 
-            <Button asChild className="mt-7">
+            <Button asChild className="mt-7 rounded-none">
               <Link href="/informations">
                 {t("aboutCta")}
                 <ArrowRight className="size-4" />
@@ -181,13 +170,10 @@ export default async function Home({
             </Button>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid h-full grid-cols-3 gap-3 py-6 md:col-span-2">
             {cards.map((card) => (
-              <div
-                key={card.key}
-                className="overflow-hidden rounded-xl ring-1 ring-border"
-              >
-                <div className="relative aspect-square w-full">
+              <div key={card.key} className="flex h-full flex-col overflow-hidden ring-1 ring-border">
+                <div className="relative w-full flex-1">
                   <Image
                     src={card.src}
                     alt={t(`cards.${card.key}.alt`)}
@@ -201,55 +187,12 @@ export default async function Home({
                     {t(`cards.${card.key}.title`)}
                   </p>
                 </div>
-                <div className="bg-card px-2 py-2">
-                  <p className="line-clamp-2 text-[11px] text-muted-foreground">
+                <div className="min-h-[46px] bg-card px-2 py-2">
+                  <p className="line-clamp-2 text-[11px] text-navy">
                     {t(`cards.${card.key}.body`)}
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Actualités */}
-      <section className="border-t border-border/60 bg-muted/30 py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mb-8 flex items-center justify-between">
-            <h2 className="font-heading text-xl font-bold uppercase">{tNews("heading")}</h2>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {newsItems.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                className="group overflow-hidden rounded-xl bg-card ring-1 ring-border transition-shadow hover:shadow-md"
-              >
-                <div className="relative h-40 w-full">
-                  <Image
-                    src={item.src}
-                    alt={tNews(`items.${item.key}.title`)}
-                    fill
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <p className="text-xs text-muted-foreground">
-                    {tNews(`items.${item.key}.date`)}
-                  </p>
-                  <h3 className="mt-1 font-heading font-semibold text-balance">
-                    {tNews(`items.${item.key}.title`)}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {tNews(`items.${item.key}.excerpt`)}
-                  </p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                    {tNews("readMore")}
-                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </div>
-              </Link>
             ))}
           </div>
         </div>
@@ -277,7 +220,13 @@ export default async function Home({
                     href={item.href}
                     className="flex flex-col items-center gap-2 rounded-xl border border-white/15 px-3 py-5 text-center transition-colors hover:bg-white/5"
                   >
-                    <Image src={item.icon} alt="" width={125} height={100} className="size-10" />
+                    <Image
+                      src={item.icon}
+                      alt=""
+                      width={125}
+                      height={100}
+                      className="h-10 w-auto object-contain"
+                    />
                     <span className="text-xs font-semibold text-white uppercase">
                       {t(`practical.${item.key}.title`)}
                     </span>
@@ -290,16 +239,16 @@ export default async function Home({
             </div>
 
             <div className="flex shrink-0 items-center gap-4">
-              <div className="relative h-14 w-16 rounded bg-white/90 p-1">
+              <div className="relative h-14 w-[93px] rounded bg-white/90 p-1">
                 <Image
                   src="/images/brand/logo-event.png"
                   alt={tSite("shortName")}
                   fill
-                  sizes="64px"
+                  sizes="93px"
                   className="object-contain"
                 />
               </div>
-              <div className="relative h-14 w-14 rounded bg-white/90 p-1">
+              <div className="relative h-14 w-14">
                 <Image src="/images/brand/fai-logo.png" alt="FAI" fill sizes="56px" className="object-contain" />
               </div>
             </div>
@@ -327,7 +276,7 @@ export default async function Home({
             ) : (
               <span
                 key={partner.name}
-                className="rounded-full border border-border bg-card px-4 py-2 text-sm text-foreground"
+                className="rounded-full border border-border bg-card px-4 py-2 text-sm text-navy"
               >
                 {partner.name}
               </span>
