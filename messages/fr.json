@@ -65,7 +65,7 @@
     }
   },
   "home": {
-    "badge": "Les meilleurs pilotes du monde",
+    "badge": "À la rencontre des meilleurs pilotes mondiaux",
     "heroTitleLine1": "Sélestat",
     "heroTitleLine2": "International",
     "heroTitleLine3": "F3P Masters 2026",
@@ -73,7 +73,7 @@
     "ctaProgramme": "Voir le programme",
     "ctaDiscover": "Découvrir l'événement",
     "aboutHeading": "Sélestat International F3P Masters",
-    "aboutBody": "Rejoignez-nous pour une compétition d'aérobatie RC en salle de haut niveau, au cœur de l'Alsace, France. Deux jours de précision, de passion et de performance dans un lieu d'exception !",
+    "aboutBody": "Rejoignez nous pour une compétition de voltige en salle de haut niveau au cœur de l'Alsace, en France. Deux jours de précision, de passion et de performance dans une salle d'exception",
     "aboutCta": "En savoir plus",
     "ceilingHeight": "Plafond à 13 mètres",
     "cards": {
@@ -84,7 +84,7 @@
       },
       "venue": {
         "title": "Le lieu",
-        "body": "Un gymnase adapté à la compétition",
+        "body": "Un gymnase adapté à la compétition avec une hauteur sous plafond de 13 mètres",
         "alt": "Intérieur du gymnase Adrien Zeller"
       },
       "pilots": {

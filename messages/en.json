@@ -65,7 +65,7 @@
     }
   },
   "home": {
-    "badge": "World's best pilots",
+    "badge": "Meet the world's best pilots",
     "heroTitleLine1": "Sélestat",
     "heroTitleLine2": "International",
     "heroTitleLine3": "F3P Masters 2026",
@@ -73,7 +73,7 @@
     "ctaProgramme": "View the schedule",
     "ctaDiscover": "Discover the event",
     "aboutHeading": "Sélestat International F3P Masters",
-    "aboutBody": "Join us for a top-level indoor RC aerobatics competition in the heart of Alsace, France. Two days of precision, passion and performance in an exceptional venue!",
+    "aboutBody": "Join us for a top-level indoor aerobatics competition in the heart of Alsace, France. Two days of precision, passion and performance in an exceptional venue",
     "aboutCta": "Read more",
     "ceilingHeight": "13-meter ceiling height",
     "cards": {
@@ -84,7 +84,7 @@
       },
       "venue": {
         "title": "The venue",
-        "body": "A fitting gym for the competition",
+        "body": "A gym suited to the competition, with a 13-meter ceiling height",
         "alt": "Interior of the Gymnase Adrien Zeller"
       },
       "pilots": {

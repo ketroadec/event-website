@@ -65,7 +65,7 @@
     }
   },
   "home": {
-    "badge": "Die besten Piloten der Welt",
+    "badge": "Triff die besten Piloten der Welt",
     "heroTitleLine1": "Sélestat",
     "heroTitleLine2": "International",
     "heroTitleLine3": "F3P Masters 2026",
@@ -73,7 +73,7 @@
     "ctaProgramme": "Programm ansehen",
     "ctaDiscover": "Veranstaltung entdecken",
     "aboutHeading": "Sélestat International F3P Masters",
-    "aboutBody": "Erlebe einen erstklassigen Hallenflug-Wettbewerb im Herzen des Elsass, Frankreich. Zwei Tage voller Präzision, Leidenschaft und Leistung an einem außergewöhnlichen Ort!",
+    "aboutBody": "Erlebe einen erstklassigen Hallenkunstflug-Wettbewerb im Herzen des Elsass, Frankreich. Zwei Tage voller Präzision, Leidenschaft und Leistung in einer außergewöhnlichen Halle",
     "aboutCta": "Mehr erfahren",
     "ceilingHeight": "13 Meter Deckenhöhe",
     "cards": {
@@ -84,7 +84,7 @@
       },
       "venue": {
         "title": "Die Halle",
-        "body": "Eine passende Halle für den Wettkampf",
+        "body": "Eine für den Wettkampf geeignete Halle mit 13 Meter Deckenhöhe",
         "alt": "Innenansicht der Gymnase Adrien Zeller"
       },
       "pilots": {
