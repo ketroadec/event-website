@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Info } from "lucide-react"
+import { Lock } from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Link } from "@/i18n/navigation"
@@ -28,15 +28,40 @@ export default async function InscriptionPage({ params }: Props) {
         description={t("description")}
       />
 
-      <div className="mx-auto max-w-2xl px-4 pt-10 sm:px-6">
-        <div className="flex items-start gap-3 rounded-xl border border-accent bg-accent/40 px-4 py-3 text-sm text-accent-foreground">
-          <Info className="mt-0.5 size-4 shrink-0" />
-          <p>{t("opensNote")}</p>
-        </div>
-      </div>
+      <div className="mx-auto max-w-2xl px-4 pt-10 pb-14 sm:px-6">
+        <div className="relative">
+          <div aria-hidden className="pointer-events-none blur-sm select-none">
+            <RegistrationForm />
+          </div>
 
-      <div className="mx-auto max-w-2xl px-4 pt-6 pb-14 sm:px-6">
-        <RegistrationForm />
+          <div className="absolute inset-0 flex items-start justify-center pt-10">
+            <div className="mx-4 w-full max-w-sm overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-xl">
+              <div className="flex flex-col items-center gap-3 bg-navy px-6 py-6 text-center">
+                <span className="flex size-11 items-center justify-center rounded-full bg-white/10 text-white">
+                  <Lock className="size-5" />
+                </span>
+                <p className="font-heading text-base font-bold tracking-wide text-white uppercase">
+                  {t("comingSoonTitle")}
+                </p>
+              </div>
+              <div className="divide-y divide-border">
+                <div className="flex items-center justify-between gap-3 px-5 py-3.5">
+                  <span className="text-sm font-semibold text-navy">
+                    {t("priorityCategories")}
+                  </span>
+                  <span className="text-sm text-muted-foreground">{t("priorityDate")}</span>
+                </div>
+                <div className="flex items-center justify-between gap-3 px-5 py-3.5">
+                  <span className="text-sm font-semibold text-navy">
+                    {t("laterCategories")}
+                  </span>
+                  <span className="text-sm text-muted-foreground">{t("laterDate")}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <p className="mt-6 text-center text-sm text-muted-foreground">
           <Link href="/inscrits" className="font-medium text-primary hover:underline">
             {t("viewList")}

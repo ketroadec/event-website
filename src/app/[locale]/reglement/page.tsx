@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ShieldCheck, Gauge, ListChecks, AlertTriangle, Download } from "lucide-react"
+import { Download } from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { PageHero } from "@/components/page-hero"
@@ -21,9 +21,6 @@ export default async function ReglementPage({ params }: Props) {
 
   const t = await getTranslations("reglement")
   const tCategories = await getTranslations("categories")
-
-  const scoring = t.raw("scoring.items") as string[]
-  const safety = t.raw("safety.items") as string[]
 
   // F3P-A, F3P-AFM et F3P-AA partagent le même règlement FAI (Sporting Code Section 4, Volume F3).
   const faiKeys = ["f3pA", "f3pAfm", "f3pAa"] as const
@@ -90,46 +87,6 @@ export default async function ReglementPage({ params }: Props) {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </section>
-
-        <section className="grid gap-8 md:grid-cols-2">
-          <div>
-            <div className="mb-4 flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                <Gauge className="size-4" />
-              </span>
-              <h2 className="font-heading text-lg font-semibold">
-                {t("scoring.heading")}
-              </h2>
-            </div>
-            <ul className="space-y-3">
-              {scoring.map((rule) => (
-                <li key={rule} className="flex gap-2.5 text-sm text-muted-foreground">
-                  <ListChecks className="mt-0.5 size-4 shrink-0 text-primary" />
-                  {rule}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <div className="mb-4 flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                <ShieldCheck className="size-4" />
-              </span>
-              <h2 className="font-heading text-lg font-semibold">
-                {t("safety.heading")}
-              </h2>
-            </div>
-            <ul className="space-y-3">
-              {safety.map((rule) => (
-                <li key={rule} className="flex gap-2.5 text-sm text-muted-foreground">
-                  <AlertTriangle className="mt-0.5 size-4 shrink-0 text-primary" />
-                  {rule}
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
       </div>

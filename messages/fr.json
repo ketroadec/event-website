@@ -285,13 +285,14 @@
       "body": "Téléchargez l'affiche officielle de l'événement au format PDF.",
       "cta": "Télécharger l'affiche (PDF)"
     },
-    "mapTitle": "Carte d'accès à l'événement"
+    "mapTitle": "Carte d'accès à l'événement",
+    "comingSoon": "Bientôt disponible"
   },
   "inscription": {
     "eyebrow": "Participer",
     "title": "Inscription",
     "description": "Remplissez le formulaire pour vous inscrire.",
-    "opensNote": "Les inscriptions ouvrent le 1er septembre 2026, avec priorité donnée aux catégories F3P-A et F3P-AFM. Les inscriptions pour les catégories F3P-AA et Nationale A ouvriront le 1er octobre.",
+    "opensNote": "Les inscriptions ouvrent le 1er septembre 2026 à 20h, avec priorité donnée aux catégories F3P-A et F3P-AFM. Les inscriptions pour les catégories F3P-AA et Nationale A ouvriront le 1er octobre à 20h.",
     "form": {
       "title": "Formulaire d'inscription",
       "description": "Les champs marqués * sont obligatoires. Votre email et téléphone ne sont jamais affichés publiquement.",
@@ -348,7 +349,12 @@
       "statusPending": "En attente",
       "uncategorized": "Non classé"
     },
-    "viewList": "Voir la liste des inscrits"
+    "viewList": "Voir la liste des inscrits",
+    "comingSoonTitle": "Inscriptions bientôt ouvertes",
+    "priorityCategories": "F3P-A · F3P-AFM",
+    "priorityDate": "1er sept. 2026, 20h",
+    "laterCategories": "F3P-AA · Nationale A",
+    "laterDate": "1er oct. 2026, 20h"
   },
   "inscrits": {
     "eyebrow": "Participants",

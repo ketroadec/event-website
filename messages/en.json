@@ -285,13 +285,14 @@
       "body": "Download the official event poster as a PDF.",
       "cta": "Download the poster (PDF)"
     },
-    "mapTitle": "Event access map"
+    "mapTitle": "Event access map",
+    "comingSoon": "Coming soon"
   },
   "inscription": {
     "eyebrow": "Take part",
     "title": "Registration",
     "description": "Fill out the form to register.",
-    "opensNote": "Registration opens on September 1, 2026, with priority given to the F3P-A and F3P-AFM categories. Registration for the F3P-AA and National A categories will open on October 1.",
+    "opensNote": "Registration opens on September 1, 2026 at 8:00 PM, with priority given to the F3P-A and F3P-AFM categories. Registration for the F3P-AA and National A categories will open on October 1 at 8:00 PM.",
     "form": {
       "title": "Registration form",
       "description": "Fields marked * are required. Your email and phone number are never displayed publicly.",
@@ -348,7 +349,12 @@
       "statusPending": "Pending",
       "uncategorized": "Uncategorized"
     },
-    "viewList": "View the list of registrants"
+    "viewList": "View the list of registrants",
+    "comingSoonTitle": "Registration opening soon",
+    "priorityCategories": "F3P-A · F3P-AFM",
+    "priorityDate": "Sept 1, 2026, 8:00 PM",
+    "laterCategories": "F3P-AA · National A",
+    "laterDate": "Oct 1, 2026, 8:00 PM"
   },
   "inscrits": {
     "eyebrow": "Participants",

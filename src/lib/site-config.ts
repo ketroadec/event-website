@@ -34,7 +34,7 @@ export const SCHEDULE_URL = "/documents/programme-sifm-2026.pdf"
  * fixe et largeur proportionnelle, cohérent malgré des ratios différents).
  */
 export const partners: { name: string; logo: string | null; width: number; height: number }[] = [
-  { name: "Modélistes Club Sélestat", logo: "/images/brand/organizer.png", width: 160, height: 115 },
+  { name: "Modélistes Club Sélestat", logo: "/images/brand/organizer.png", width: 330, height: 245 },
   { name: "FAI", logo: "/images/brand/fai-logo.png", width: 155, height: 205 },
   {
     name: "Ville de Sélestat — Alsace Centrale",
