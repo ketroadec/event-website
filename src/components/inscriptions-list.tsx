@@ -1,10 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useTranslations } from "next-intl"
-import { Radio, Users } from "lucide-react"
+import { useEffect, useMemo, useState } from "react"
+import { useLocale, useTranslations } from "next-intl"
+import { Users } from "lucide-react"
 
 import { categories, mainClasses, afmCategory } from "@/lib/site-config"
+import { getCountryOptions } from "@/lib/countries"
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase/client"
 import type { InscriptionPublique } from "@/lib/supabase/types"
 import { Badge } from "@/components/ui/badge"
@@ -33,6 +34,16 @@ function StatutBadge({ statut }: { statut: InscriptionPublique["statut"] }) {
 export function InscriptionsList() {
   const t = useTranslations("inscription.list")
   const categoryLabel = useCategoryLabel()
+  const locale = useLocale()
+
+  // Nom de pays -> drapeau, pour afficher la nationalité de façon lisible.
+  const countryFlags = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const country of getCountryOptions(locale)) {
+      map.set(country.name, country.flag)
+    }
+    return map
+  }, [locale])
 
   const [inscriptions, setInscriptions] = useState<InscriptionPublique[]>([])
   const [loading, setLoading] = useState(isSupabaseConfigured)
@@ -92,22 +103,16 @@ export function InscriptionsList() {
 
   return (
     <Card>
-      <CardHeader className="flex-row items-center justify-between gap-3 space-y-0">
-        <div className="flex items-center gap-2">
-          <span className="flex size-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
-            <Users className="size-4.5" />
-          </span>
-          <div>
-            <CardTitle>{t("title")}</CardTitle>
-            <p className="text-sm text-muted-foreground">
-              {t("participantCount", { count: inscriptions.length })}
-            </p>
-          </div>
-        </div>
-        <span className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-          <Radio className="size-3.5 text-emerald-500" />
-          {t("realtime")}
+      <CardHeader className="flex-row items-center gap-3 space-y-0">
+        <span className="flex size-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
+          <Users className="size-4.5" />
         </span>
+        <div>
+          <CardTitle>{t("title")}</CardTitle>
+          <p className="text-sm text-muted-foreground">
+            {t("participantCount", { count: inscriptions.length })}
+          </p>
+        </div>
       </CardHeader>
       <CardContent>
         {!isSupabaseConfigured ? (
@@ -123,21 +128,32 @@ export function InscriptionsList() {
             {t("empty")}
           </p>
         ) : (
-          <div className="space-y-6">
+          <div className="space-y-5">
             {(() => {
               const knownValues = new Set<string>(mainClasses.map((c) => c.value))
               const uncategorized = inscriptions.filter((i) => !knownValues.has(i.categorie))
 
+              // Ordre d'affichage imposé : F3P-A, F3P-AFM, F3P-AA, puis National A.
               const groups = [
-                ...mainClasses.map((category) => ({
-                  key: category.value,
-                  label: categoryLabel(category.value),
-                  members: inscriptions.filter((i) => i.categorie === category.value),
-                })),
+                {
+                  key: "f3p-a",
+                  label: categoryLabel("f3p-a"),
+                  members: inscriptions.filter((i) => i.categorie === "f3p-a"),
+                },
                 {
                   key: afmCategory.value,
                   label: categoryLabel(afmCategory.value),
                   members: inscriptions.filter((i) => i.afm),
+                },
+                {
+                  key: "f3p-aa",
+                  label: categoryLabel("f3p-aa"),
+                  members: inscriptions.filter((i) => i.categorie === "f3p-aa"),
+                },
+                {
+                  key: "national-a",
+                  label: categoryLabel("national-a"),
+                  members: inscriptions.filter((i) => i.categorie === "national-a"),
                 },
                 // Filet de sécurité : une inscription dont la catégorie ne correspond à
                 // aucune classe connue (donnée ancienne/incohérente) doit rester visible
@@ -153,26 +169,38 @@ export function InscriptionsList() {
                 if (group.members.length === 0) return null
 
                 return (
-                  <div key={group.key}>
-                    <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-navy uppercase">
-                      {group.label}
-                      <span className="text-xs font-normal text-muted-foreground">
-                        ({group.members.length})
-                      </span>
-                    </h3>
+                  <div
+                    key={group.key}
+                    className="overflow-hidden rounded-xl border border-border"
+                  >
+                    <div className="flex items-center justify-between gap-3 bg-navy px-4 py-2.5">
+                      <h3 className="font-heading text-sm font-bold tracking-wide text-white uppercase">
+                        {group.label}
+                      </h3>
+                      <Badge variant="secondary">{group.members.length}</Badge>
+                    </div>
                     <ul className="divide-y divide-border">
                       {group.members.map((inscription) => (
                         <li
                           key={inscription.id}
-                          className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0"
+                          className="flex flex-wrap items-center justify-between gap-3 px-4 py-3"
                         >
                           <div>
-                            <p className="text-sm font-medium">
+                            <p className="text-sm font-semibold text-navy">
                               {inscription.nom} {inscription.prenom}
                             </p>
-                            <p className="text-xs text-muted-foreground">
-                              {inscription.nationalite}
-                              {inscription.fai_licence && ` · FAI ${inscription.fai_licence}`}
+                            <p className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
+                              <span>
+                                {countryFlags.get(inscription.nationalite) && (
+                                  <span aria-hidden className="mr-1">
+                                    {countryFlags.get(inscription.nationalite)}
+                                  </span>
+                                )}
+                                {inscription.nationalite || "—"}
+                              </span>
+                              {inscription.fai_licence && (
+                                <span>FAI {inscription.fai_licence}</span>
+                              )}
                             </p>
                           </div>
                           <StatutBadge statut={inscription.statut} />

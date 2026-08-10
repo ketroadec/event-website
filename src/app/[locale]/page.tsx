@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { CalendarDays, MapPin, Trophy, ArrowRight } from "lucide-react"
+import { CalendarDays, MapPin, Trophy, ArrowRight, Info, ScrollText, Users } from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Link } from "@/i18n/navigation"
@@ -40,13 +40,9 @@ export default async function Home({
       href: "/inscription",
     },
     { key: "schedule" as const, icon: "/images/brand/icon-schedule.png", href: "/programme" },
-    { key: "pilotInfo" as const, icon: "/images/brand/icon-docs.png", href: "/reglement" },
-    {
-      key: "accommodation" as const,
-      icon: "/images/brand/icon-home.png",
-      href: "/informations",
-    },
-    { key: "access" as const, icon: "/images/brand/icon-location.png", href: "/informations" },
+    { key: "informations" as const, icon: Info, href: "/informations" },
+    { key: "rules" as const, icon: ScrollText, href: "/reglement" },
+    { key: "pilots" as const, icon: Users, href: "/inscrits" },
   ]
 
   return (
@@ -257,13 +253,17 @@ export default async function Home({
                     href={item.href}
                     className="flex flex-col items-center gap-2 rounded-xl border border-white/15 px-3 py-5 text-center transition-colors hover:bg-white/5"
                   >
-                    <Image
-                      src={item.icon}
-                      alt=""
-                      width={125}
-                      height={100}
-                      className="h-10 w-auto object-contain"
-                    />
+                    {typeof item.icon === "string" ? (
+                      <Image
+                        src={item.icon}
+                        alt=""
+                        width={125}
+                        height={100}
+                        className="h-10 w-auto object-contain"
+                      />
+                    ) : (
+                      <item.icon className="size-10 text-white" />
+                    )}
                     <span className="text-xs font-semibold text-white uppercase">
                       {t(`practical.${item.key}.title`)}
                     </span>

@@ -54,6 +54,12 @@ export const partners: { name: string; logo: string | null; width: number; heigh
     width: 428,
     height: 428,
   },
+  {
+    name: "CTAA — Comité Territorial d'Aéromodélisme d'Alsace",
+    logo: "/images/brand/ctaa.png",
+    width: 146,
+    height: 155,
+  },
 ]
 
 export const categories = [

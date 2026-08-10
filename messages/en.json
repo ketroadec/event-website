@@ -103,17 +103,17 @@
         "title": "Schedule",
         "body": "Times and event program"
       },
-      "pilotInfo": {
-        "title": "Pilot info",
-        "body": "Rules, categories and documents"
+      "informations": {
+        "title": "Information",
+        "body": "Access, accommodation and poster"
       },
-      "accommodation": {
-        "title": "Accommodation",
-        "body": "Hotels and stays nearby"
+      "rules": {
+        "title": "Rules",
+        "body": "Categories, scoring and safety"
       },
-      "access": {
-        "title": "Access",
-        "body": "How to get to Sélestat"
+      "pilots": {
+        "title": "Pilots",
+        "body": "List of registered pilots by category"
       }
     },
     "highlights": {
