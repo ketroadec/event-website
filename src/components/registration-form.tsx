@@ -7,7 +7,7 @@ import { z } from "zod"
 import { useLocale, useTranslations } from "next-intl"
 import { CheckCircle2, Loader2 } from "lucide-react"
 
-import { mainClasses, afmCategory, CLASS_FEES, AFM_FEE, MEAL_PRICES } from "@/lib/site-config"
+import { mainClasses, afmCategory } from "@/lib/site-config"
 import { getCountryOptions } from "@/lib/countries"
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
@@ -36,7 +36,10 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-const MEAL_COUNTS = ["0", "1", "2", "3", "4", "5", "6"] as const
+// Temporaire : seule la catégorie F3P-A est ouverte aux inscriptions pour le
+// moment (F3P-AA et Nationale A ouvrent le 1er octobre). Repasser à
+// `mainClasses` telles quelles quand toutes les classes seront ouvertes.
+const availableClasses = mainClasses.filter((cat) => cat.value === "f3p-a")
 
 export function RegistrationForm() {
   const t = useTranslations("inscription.form")
@@ -66,9 +69,6 @@ export function RegistrationForm() {
         fai_licence: z.string().trim().min(1, t("validation.faiLicenceRequired")),
         categorie: z.string().min(1, t("validation.categorieRequired")),
         afm: z.boolean(),
-        repas_samedi_midi: z.enum(MEAL_COUNTS),
-        repas_samedi_soir: z.enum(MEAL_COUNTS),
-        repas_dimanche_midi: z.enum(MEAL_COUNTS),
       }),
     [t]
   )
@@ -88,24 +88,8 @@ export function RegistrationForm() {
       fai_licence: "",
       categorie: "",
       afm: false,
-      repas_samedi_midi: "0",
-      repas_samedi_soir: "0",
-      repas_dimanche_midi: "0",
     },
   })
-
-  const categorie = form.watch("categorie")
-  const afm = form.watch("afm")
-  const repasSamediMidi = form.watch("repas_samedi_midi")
-  const repasSamediSoir = form.watch("repas_samedi_soir")
-  const repasDimancheMidi = form.watch("repas_dimanche_midi")
-
-  const totalDue =
-    (CLASS_FEES[categorie] ?? 0) +
-    (afm ? AFM_FEE : 0) +
-    Number(repasSamediMidi) * MEAL_PRICES.repas_samedi_midi +
-    Number(repasSamediSoir) * MEAL_PRICES.repas_samedi_soir +
-    Number(repasDimancheMidi) * MEAL_PRICES.repas_dimanche_midi
 
   async function onSubmit(values: FormValues) {
     setStatus("submitting")
@@ -127,9 +111,6 @@ export function RegistrationForm() {
         fai_licence: values.fai_licence,
         categorie: values.categorie,
         afm: values.afm,
-        repas_samedi_midi: Number(values.repas_samedi_midi),
-        repas_samedi_soir: Number(values.repas_samedi_soir),
-        repas_dimanche_midi: Number(values.repas_dimanche_midi),
       })
 
       if (error) throw error
@@ -309,9 +290,9 @@ export function RegistrationForm() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {mainClasses.map((cat) => (
+                        {availableClasses.map((cat) => (
                           <SelectItem key={cat.value} value={cat.value}>
-                            {tCategories(cat.key)} ({CLASS_FEES[cat.value]} €)
+                            {tCategories(cat.key)}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -329,96 +310,11 @@ export function RegistrationForm() {
                       <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      {t("afmLabel")} ({tCategories(afmCategory.key)}, +{AFM_FEE} €)
+                      {t("afmLabel")} ({tCategories(afmCategory.key)})
                     </FormLabel>
                   </FormItem>
                 )}
               />
-            </div>
-
-            <div>
-              <p className="text-sm font-medium">{t("mealsHeading")}</p>
-              <p className="text-sm text-muted-foreground">{t("mealsDescription")}</p>
-              <div className="mt-3 grid gap-5 sm:grid-cols-3">
-                <FormField
-                  control={form.control}
-                  name="repas_samedi_midi"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t("saturdayLunch")} ({MEAL_PRICES.repas_samedi_midi} €)
-                      </FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="w-full">
-                            <SelectValue />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {MEAL_COUNTS.map((count) => (
-                            <SelectItem key={count} value={count}>
-                              {count}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="repas_samedi_soir"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t("saturdayDinner")} ({MEAL_PRICES.repas_samedi_soir} €)
-                      </FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="w-full">
-                            <SelectValue />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {MEAL_COUNTS.map((count) => (
-                            <SelectItem key={count} value={count}>
-                              {count}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="repas_dimanche_midi"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t("sundayLunch")} ({MEAL_PRICES.repas_dimanche_midi} €)
-                      </FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="w-full">
-                            <SelectValue />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {MEAL_COUNTS.map((count) => (
-                            <SelectItem key={count} value={count}>
-                              {count}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
             </div>
 
             {!isSupabaseConfigured && (
@@ -430,15 +326,6 @@ export function RegistrationForm() {
             {status === "error" && (
               <p className="text-sm font-medium text-destructive">{errorMessage}</p>
             )}
-
-            <div className="flex items-center justify-between rounded-lg bg-accent px-4 py-3">
-              <span className="text-sm font-medium text-accent-foreground">
-                {t("totalDue")}
-              </span>
-              <span className="text-lg font-semibold text-accent-foreground">
-                {totalDue} €
-              </span>
-            </div>
 
             <Button
               type="submit"
