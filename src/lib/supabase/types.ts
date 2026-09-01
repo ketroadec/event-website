@@ -10,7 +10,8 @@ export type NouvelleInscription = {
   telephone?: string
   federation?: string
   fai_licence: string
-  categorie: string
+  /** Facultative : on peut s'inscrire uniquement en F3P-AFM (voir `afm`). */
+  categorie: string | null
   afm: boolean
   repas_samedi_midi: number
   repas_samedi_soir: number
@@ -22,7 +23,7 @@ export type InscriptionPublique = {
   id: string
   prenom: string
   nom: string
-  categorie: string
+  categorie: string | null
   nationalite: string
   fai_licence: string
   afm: boolean
@@ -45,7 +46,7 @@ export type Database = {
           telephone: string | null
           federation: string | null
           fai_licence: string
-          categorie: string
+          categorie: string | null
           afm: boolean
           repas_samedi_midi: number
           repas_samedi_soir: number
@@ -63,7 +64,7 @@ export type Database = {
           telephone?: string | null
           federation?: string | null
           fai_licence: string
-          categorie: string
+          categorie?: string | null
           afm?: boolean
           repas_samedi_midi?: number
           repas_samedi_soir?: number

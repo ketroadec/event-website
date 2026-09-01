@@ -87,3 +87,23 @@ where pub.id = i.id;
 -- (le libellé affiché avait déjà changé ; on aligne la valeur stockée en base).
 update public.inscriptions set categorie = 'f3p-aa' where categorie = 'national-b';
 update public.inscriptions_publiques set categorie = 'f3p-aa' where categorie = 'national-b';
+
+-- La classe principale (`categorie`) devient facultative : on doit pouvoir
+-- s'inscrire uniquement en F3P-AFM sans choisir F3P-A / F3P-AA / Nationale A.
+-- Aucune donnée existante n'est modifiée : toutes les inscriptions déjà en
+-- base ont une `categorie` renseignée, on assouplit seulement la contrainte.
+alter table inscriptions alter column categorie drop not null;
+alter table inscriptions_publiques alter column categorie drop not null;
+
+-- Garde-fou en base : il faut au moins une classe OU l'AFM (déjà vérifié côté
+-- formulaire, on le double ici pour ne jamais avoir une inscription "vide").
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint WHERE conname = 'inscriptions_categorie_or_afm_check'
+  ) THEN
+    ALTER TABLE inscriptions
+      ADD CONSTRAINT inscriptions_categorie_or_afm_check
+      CHECK (categorie IS NOT NULL OR afm = true);
+  END IF;
+END $$;

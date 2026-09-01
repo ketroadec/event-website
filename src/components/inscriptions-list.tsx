@@ -131,7 +131,11 @@ export function InscriptionsList() {
           <div className="space-y-5">
             {(() => {
               const knownValues = new Set<string>(mainClasses.map((c) => c.value))
-              const uncategorized = inscriptions.filter((i) => !knownValues.has(i.categorie))
+              // Une inscription AFM seule (sans classe principale, categorie = null)
+              // n'est pas "non catégorisée" : elle apparaît dans le groupe AFM ci-dessous.
+              const uncategorized = inscriptions.filter(
+                (i) => !i.afm && !knownValues.has(i.categorie ?? "")
+              )
 
               // Ordre d'affichage imposé : F3P-A, F3P-AFM, F3P-AA, puis National A.
               const groups = [

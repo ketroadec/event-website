@@ -7,7 +7,7 @@ import { z } from "zod"
 import { useLocale, useTranslations } from "next-intl"
 import { CheckCircle2, Loader2 } from "lucide-react"
 
-import { mainClasses, afmCategory } from "@/lib/site-config"
+import { mainClasses } from "@/lib/site-config"
 import { getCountryOptions } from "@/lib/countries"
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
@@ -54,22 +54,29 @@ export function RegistrationForm() {
 
   const formSchema = useMemo(
     () =>
-      z.object({
-        prenom: z.string().trim().min(1, t("validation.prenomRequired")),
-        nom: z.string().trim().min(1, t("validation.nomRequired")),
-        nationalite: z.string().trim().min(1, t("validation.nationaliteRequired")),
-        adresse: z.string().trim().min(1, t("validation.adresseRequired")),
-        email: z
-          .string()
-          .trim()
-          .min(1, t("validation.emailRequired"))
-          .email(t("validation.emailInvalid")),
-        telephone: z.string().trim().optional(),
-        federation: z.string().trim().optional(),
-        fai_licence: z.string().trim().min(1, t("validation.faiLicenceRequired")),
-        categorie: z.string().min(1, t("validation.categorieRequired")),
-        afm: z.boolean(),
-      }),
+      z
+        .object({
+          prenom: z.string().trim().min(1, t("validation.prenomRequired")),
+          nom: z.string().trim().min(1, t("validation.nomRequired")),
+          nationalite: z.string().trim().min(1, t("validation.nationaliteRequired")),
+          adresse: z.string().trim().min(1, t("validation.adresseRequired")),
+          email: z
+            .string()
+            .trim()
+            .min(1, t("validation.emailRequired"))
+            .email(t("validation.emailInvalid")),
+          telephone: z.string().trim().optional(),
+          federation: z.string().trim().optional(),
+          fai_licence: z.string().trim().min(1, t("validation.faiLicenceRequired")),
+          // Facultative : on peut s'inscrire uniquement en F3P-AFM (voir `afm`
+          // ci-dessous et le refine plus bas qui exige l'un des deux).
+          categorie: z.string(),
+          afm: z.boolean(),
+        })
+        .refine((data) => data.categorie !== "" || data.afm, {
+          message: t("validation.categorieOrAfmRequired"),
+          path: ["categorie"],
+        }),
     [t]
   )
 
@@ -109,7 +116,7 @@ export function RegistrationForm() {
         telephone: values.telephone || null,
         federation: values.federation || null,
         fai_licence: values.fai_licence,
-        categorie: values.categorie,
+        categorie: values.categorie || null,
         afm: values.afm,
       })
 
@@ -309,9 +316,7 @@ export function RegistrationForm() {
                     <FormControl>
                       <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
-                    <FormLabel className="font-normal">
-                      {t("afmLabel")} ({tCategories(afmCategory.key)})
-                    </FormLabel>
+                    <FormLabel className="font-normal">{t("afmLabel")}</FormLabel>
                   </FormItem>
                 )}
               />
