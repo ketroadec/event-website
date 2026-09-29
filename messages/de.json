@@ -360,7 +360,11 @@
   "inscrits": {
     "eyebrow": "Teilnehmer",
     "title": "Piloten",
-    "description": "Liste der für die Veranstaltung angemeldeten Teilnehmer, in Echtzeit aktualisiert."
+    "description": "Liste der für die Veranstaltung angemeldeten Teilnehmer, in Echtzeit aktualisiert.",
+    "payment": {
+      "text": "Anmeldungen und Essensreservierungen erfolgen über den folgenden Zahlungslink:",
+      "cta": "Zur Zahlung"
+    }
   },
   "contact": {
     "eyebrow": "Eine Frage?",

@@ -360,7 +360,11 @@
   "inscrits": {
     "eyebrow": "Participants",
     "title": "Pilotes",
-    "description": "Liste des participants inscrits à l'événement, mise à jour en temps réel."
+    "description": "Liste des participants inscrits à l'événement, mise à jour en temps réel.",
+    "payment": {
+      "text": "Les inscriptions et les réservations de repas sont à effectuer via le lien de paiement suivant :",
+      "cta": "Accéder au paiement"
+    }
   },
   "contact": {
     "eyebrow": "Une question ?",

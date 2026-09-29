@@ -360,7 +360,11 @@
   "inscrits": {
     "eyebrow": "Participants",
     "title": "Pilots",
-    "description": "List of participants registered for the event, updated in real time."
+    "description": "List of participants registered for the event, updated in real time.",
+    "payment": {
+      "text": "Registrations and meal reservations must be made via the following payment link:",
+      "cta": "Go to payment"
+    }
   },
   "contact": {
     "eyebrow": "Got a question?",

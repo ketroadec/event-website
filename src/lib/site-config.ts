@@ -23,6 +23,10 @@ export const RULES_URL = "/documents/reglement-f3p-sc4-2026.pdf"
 /** Lien vers le règlement fédéral FFAM de la catégorie Nationale A (PDF). */
 export const RULES_NATIONAL_A_URL = "/documents/reglement-national-a-2026.pdf"
 
+/** Lien vers la plateforme de paiement en ligne (Monetico) des frais d'inscription et des repas. */
+export const PAYMENT_URL =
+  "https://www.monetico-online-asso.com/modelistes-club-de-selestat/reglement"
+
 /** Lien vers le programme provisoire (PDF), issue de l'organisation. */
 export const SCHEDULE_URL = "/documents/programme-sifm-2026.pdf"
 
