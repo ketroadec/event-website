@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
+import { CheckCircle2 } from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Link } from "@/i18n/navigation"
 import { PageHero } from "@/components/page-hero"
-import { RegistrationGate } from "@/components/registration-gate"
+import { RegistrationForm } from "@/components/registration-form"
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -28,7 +29,16 @@ export default async function InscriptionPage({ params }: Props) {
       />
 
       <div className="mx-auto max-w-2xl px-4 pt-10 pb-14 sm:px-6">
-        <RegistrationGate />
+        <div className="mb-6 flex items-center gap-3 rounded-xl border border-emerald-600/30 bg-emerald-50 px-5 py-4 dark:border-emerald-500/30 dark:bg-emerald-950/30">
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white dark:bg-emerald-500">
+            <CheckCircle2 className="size-4.5" />
+          </span>
+          <p className="text-sm font-medium text-emerald-900 dark:text-emerald-100">
+            {t("openBanner")}
+          </p>
+        </div>
+
+        <RegistrationForm />
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           <Link href="/inscrits" className="font-medium text-primary hover:underline">

@@ -1,13 +1,13 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useLocale, useTranslations } from "next-intl"
 import { CheckCircle2, Loader2 } from "lucide-react"
 
-import { mainClasses } from "@/lib/site-config"
+import { mainClasses, LIMITED_CATEGORIES, LIMITED_CATEGORY_CAPACITY } from "@/lib/site-config"
 import { getCountryOptions } from "@/lib/countries"
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
@@ -36,10 +36,9 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-// Temporaire : seule la catégorie F3P-A est ouverte aux inscriptions pour le
-// moment (F3P-AA et Nationale A ouvrent le 1er octobre). Repasser à
-// `mainClasses` telles quelles quand toutes les classes seront ouvertes.
-const availableClasses = mainClasses.filter((cat) => cat.value === "f3p-a")
+function isLimitedCategory(value: string): value is (typeof LIMITED_CATEGORIES)[number] {
+  return (LIMITED_CATEGORIES as readonly string[]).includes(value)
+}
 
 export function RegistrationForm() {
   const t = useTranslations("inscription.form")
@@ -51,6 +50,49 @@ export function RegistrationForm() {
     "idle"
   )
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  // Nombre d'inscrits par catégorie à places limitées (F3P-AA, Nationale A),
+  // tenu à jour en temps réel pour désactiver l'option dès qu'elle est complète.
+  const [categoryCounts, setCategoryCounts] = useState<Record<string, number>>({})
+
+  useEffect(() => {
+    const supabase = getSupabaseClient()
+    if (!supabase) return
+
+    let isMounted = true
+
+    async function loadCounts(sb: NonNullable<typeof supabase>) {
+      const entries = await Promise.all(
+        LIMITED_CATEGORIES.map(async (value) => {
+          const { count } = await sb
+            .from("inscriptions_publiques")
+            .select("id", { count: "exact", head: true })
+            .eq("categorie", value)
+          return [value, count ?? 0] as const
+        })
+      )
+      if (isMounted) setCategoryCounts(Object.fromEntries(entries))
+    }
+
+    loadCounts(supabase)
+
+    const channel = supabase
+      .channel("inscriptions-publiques-counts")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "inscriptions_publiques" },
+        () => loadCounts(supabase)
+      )
+      .subscribe()
+
+    return () => {
+      isMounted = false
+      supabase.removeChannel(channel)
+    }
+  }, [])
+
+  const isCategoryFull = (value: string) =>
+    isLimitedCategory(value) && (categoryCounts[value] ?? 0) >= LIMITED_CATEGORY_CAPACITY
 
   const formSchema = useMemo(
     () =>
@@ -76,8 +118,13 @@ export function RegistrationForm() {
         .refine((data) => data.categorie !== "" || data.afm, {
           message: t("validation.categorieOrAfmRequired"),
           path: ["categorie"],
+        })
+        .refine((data) => !isCategoryFull(data.categorie), {
+          message: t("validation.categorieFullError"),
+          path: ["categorie"],
         }),
-    [t]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [t, categoryCounts]
   )
 
   type FormValues = z.infer<typeof formSchema>
@@ -126,7 +173,14 @@ export function RegistrationForm() {
       form.reset()
     } catch (err) {
       setStatus("error")
-      setErrorMessage(err instanceof Error ? err.message : t("genericError"))
+      // Garde-fou côté base (trigger `check_categorie_capacity`) en cas de
+      // soumissions concurrentes ayant dépassé la vérification côté client.
+      const code = (err as { code?: string } | null)?.code
+      if (code === "P0001") {
+        setErrorMessage(t("validation.categorieFullError"))
+      } else {
+        setErrorMessage(err instanceof Error ? err.message : t("genericError"))
+      }
     }
   }
 
@@ -297,11 +351,15 @@ export function RegistrationForm() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {availableClasses.map((cat) => (
-                          <SelectItem key={cat.value} value={cat.value}>
-                            {tCategories(cat.key)}
-                          </SelectItem>
-                        ))}
+                        {mainClasses.map((cat) => {
+                          const full = isCategoryFull(cat.value)
+                          return (
+                            <SelectItem key={cat.value} value={cat.value} disabled={full}>
+                              {tCategories(cat.key)}
+                              {full ? ` (${t("categorieFullBadge")})` : ""}
+                            </SelectItem>
+                          )
+                        })}
                       </SelectContent>
                     </Select>
                     <FormMessage />

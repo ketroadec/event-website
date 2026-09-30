@@ -88,6 +88,12 @@ export const CLASS_FEES: Record<string, number> = {
 /** Frais pour l'ajout cumulé de la catégorie F3P-AFM (en euros). */
 export const AFM_FEE = 20
 
+/** Catégories dont le nombre de places est limité (voir `LIMITED_CATEGORY_CAPACITY`). */
+export const LIMITED_CATEGORIES = ["f3p-aa", "national-a"] as const
+
+/** Nombre maximum de participants pour chacune des `LIMITED_CATEGORIES`. */
+export const LIMITED_CATEGORY_CAPACITY = 6
+
 /** Prix des repas, par personne (en euros). */
 export const MEAL_PRICES = {
   repas_samedi_midi: 18,

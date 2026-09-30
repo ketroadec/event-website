@@ -293,6 +293,7 @@
     "title": "Inscription",
     "description": "Remplissez le formulaire pour vous inscrire.",
     "opensNote": "Les inscriptions ouvrent le 1er septembre 2026 à 20h, avec priorité donnée aux catégories F3P-A et F3P-AFM. Les inscriptions pour les catégories F3P-AA et Nationale A ouvriront le 1er octobre à 20h.",
+    "openBanner": "Les inscriptions sont ouvertes pour les catégories F3P-A, F3P-AFM, F3P-AA et Nationale A. Places limitées à 6 participants pour les catégories F3P-AA et Nationale A.",
     "form": {
       "title": "Formulaire d'inscription",
       "description": "Les champs marqués * sont obligatoires. Votre email et téléphone ne sont jamais affichés publiquement.",
@@ -315,6 +316,7 @@
       "faiLicence": "Numéro de licence FAI *",
       "faiLicencePlaceholder": "Ex. FRA-12345",
       "afmLabel": "Ajouter la catégorie F3P-AFM (possible de s'inscrire uniquement en F3P-AFM)",
+      "categorieFullBadge": "Complet",
       "mealsHeading": "Repas",
       "mealsDescription": "Nombre de repas à réserver (vous + accompagnants).",
       "saturdayLunch": "Déjeuner du samedi *",
@@ -332,6 +334,7 @@
         "emailRequired": "L'email est requis",
         "emailInvalid": "Email invalide",
         "categorieOrAfmRequired": "Choisissez une classe ou cochez la catégorie F3P-AFM",
+        "categorieFullError": "Cette catégorie est complète (6 participants maximum). Merci de choisir une autre classe.",
         "nationaliteRequired": "La nationalité est requise",
         "adresseRequired": "L'adresse est requise",
         "faiLicenceRequired": "Le numéro de licence FAI est requis"

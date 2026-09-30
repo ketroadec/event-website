@@ -107,3 +107,35 @@ BEGIN
       CHECK (categorie IS NOT NULL OR afm = true);
   END IF;
 END $$;
+
+-- Inscriptions désormais ouvertes à toutes les catégories, avec un plafond de
+-- 6 participants pour F3P-AA et Nationale A (déjà vérifié côté formulaire par
+-- un comptage en temps réel ; ce trigger est le garde-fou serveur en cas de
+-- soumissions concurrentes).
+CREATE OR REPLACE FUNCTION public.check_categorie_capacity()
+ RETURNS trigger
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+DECLARE
+  max_capacity CONSTANT integer := 6;
+  current_count integer;
+BEGIN
+  IF NEW.categorie IN ('f3p-aa', 'national-a') THEN
+    SELECT count(*) INTO current_count
+    FROM inscriptions
+    WHERE categorie = NEW.categorie
+      AND (TG_OP = 'INSERT' OR id <> NEW.id);
+    IF current_count >= max_capacity THEN
+      RAISE EXCEPTION 'La catégorie % est complète (% participants maximum)', NEW.categorie, max_capacity;
+    END IF;
+  END IF;
+  RETURN NEW;
+END;
+$function$;
+
+DROP TRIGGER IF EXISTS trg_check_categorie_capacity ON inscriptions;
+CREATE TRIGGER trg_check_categorie_capacity
+  BEFORE INSERT OR UPDATE ON inscriptions
+  FOR EACH ROW EXECUTE FUNCTION public.check_categorie_capacity();
