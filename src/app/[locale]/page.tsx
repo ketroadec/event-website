@@ -8,6 +8,11 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Countdown } from "@/components/countdown"
 
+// Logos au format "bannière" (très larges par rapport à leur hauteur) : rendus
+// plus bas que les autres pour tenir sur la même ligne sans provoquer de retour
+// à la ligne dans la rangée de partenaires.
+const COMPACT_PARTNER_LOGOS = ["/images/brand/logo-selestat.png", "/images/brand/logo-thobby.png"]
+
 export default async function Home({
   params,
 }: {
@@ -279,11 +284,11 @@ export default async function Home({
       </section>
 
       {/* Partenaires & organisateurs */}
-      <section className="mx-auto max-w-5xl px-2 py-8 text-center sm:px-3">
+      <section className="mx-auto max-w-6xl px-1 py-8 text-center sm:px-2">
         <p className="mb-8 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
           {tPartners("heading")}
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-8">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-6">
           {partners.map((partner) =>
             partner.logo ? (
               <Image
@@ -294,7 +299,7 @@ export default async function Home({
                 height={partner.height}
                 className={cn(
                   "block w-auto self-center object-contain",
-                  partner.logo === "/images/brand/logo-selestat.png" ? "h-12" : "h-24"
+                  COMPACT_PARTNER_LOGOS.includes(partner.logo) ? "h-12" : "h-24"
                 )}
               />
             ) : (

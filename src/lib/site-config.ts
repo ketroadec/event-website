@@ -64,6 +64,12 @@ export const partners: { name: string; logo: string | null; width: number; heigh
     width: 146,
     height: 155,
   },
+  {
+    name: "T-Hobby",
+    logo: "/images/brand/logo-thobby.png",
+    width: 2088,
+    height: 503,
+  },
 ]
 
 export const categories = [
