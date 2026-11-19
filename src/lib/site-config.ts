@@ -28,7 +28,7 @@ export const PAYMENT_URL =
   "https://www.monetico-online-asso.com/modelistes-club-de-selestat/reglement"
 
 /** Lien vers le programme provisoire (PDF), issue de l'organisation. */
-export const SCHEDULE_URL = "/documents/programme-sifm-2026.pdf"
+export const SCHEDULE_URL = "/documents/programme-sifm-2026.pdf?v=2026-11-17"
 
 /**
  * Partenaires et organisateurs officiels (source : affiche de l'événement).
