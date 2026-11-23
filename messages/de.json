@@ -388,9 +388,12 @@
     "pos": "Pl.",
     "pilot": "Pilot",
     "flight": "Flug {n}",
-    "totalBefore": "Gesamt vor Finale",
     "total": "Gesamt",
     "raw": "Rohwertung",
-    "legend": "Pro Flug: normierte Wertung (von 1000) und darunter die Rohwertung. Durchgestrichene Flüge werden nicht gewertet. Quelle: offizielle, von der Jury unterzeichnete Ergebnislisten."
+    "legend": "Pro Flug: normierte Wertung (von 1000) und darunter die Rohwertung. Durchgestrichene Flüge werden nicht gewertet. Quelle: offizielle, von der Jury unterzeichnete Ergebnislisten.",
+    "prelimTotal": "Gesamt Vorrunde",
+    "finalTotal": "Gesamt Finale",
+    "prelims": "Vorrunde",
+    "final": "Finale"
   }
 }

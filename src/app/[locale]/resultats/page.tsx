@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { PageHero } from "@/components/page-hero"
 import { categories } from "@/lib/site-config"
 import { getCountryFromAlpha3 } from "@/lib/countries"
-import { results, type CategoryResults } from "@/lib/results"
+import { results, type CategoryResults, type FlightScore } from "@/lib/results"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 
@@ -48,9 +48,7 @@ export default async function ResultatsPage({ params }: Props) {
 
       <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6">
         <nav className="mb-8 flex flex-wrap gap-2" aria-label={t("jumpTo")}>
-          {results
-            .filter((r, i) => results.findIndex((o) => o.category === r.category) === i)
-            .map((r) => (
+          {results.map((r) => (
             <a
               key={r.category}
               href={`#${sectionId(r)}`}
@@ -72,7 +70,10 @@ export default async function ResultatsPage({ params }: Props) {
                 pos: t("pos"),
                 pilot: t("pilot"),
                 flight: (n: number) => t("flight", { n }),
-                totalBefore: t("totalBefore"),
+                prelimTotal: t("prelimTotal"),
+                finalTotal: t("finalTotal"),
+                prelims: t("prelims"),
+                final: t("final"),
                 total: t("total"),
                 raw: t("raw"),
               }}
@@ -103,14 +104,47 @@ function CategoryTable({
     pos: string
     pilot: string
     flight: (n: number) => string
-    totalBefore: string
+    prelimTotal: string
+    finalTotal: string
+    prelims: string
+    final: string
     total: string
     raw: string
   }
   fmt: Intl.NumberFormat
   locale: string
 }) {
-  const hasTotalBefore = data.rows.some((row) => row.totalBefore !== undefined)
+  // Tableau fusionné prélim + finale : colonne "Total prélim." insérée avant
+  // le premier vol de finale, et ligne d'en-tête regroupant les deux phases.
+  const splitIndex = data.finalFrom
+    ? data.flightNumbers.indexOf(data.finalFrom)
+    : -1
+  const isMerged = splitIndex > 0
+  const prelimFlights = isMerged ? data.flightNumbers.slice(0, splitIndex) : data.flightNumbers
+  const finalFlights = isMerged ? data.flightNumbers.slice(splitIndex) : []
+  const sep = "border-l border-border"
+
+  const flightCell = (flight: FlightScore | null, n: number, extra?: string) => (
+    <td
+      key={n}
+      className={cn(
+        "px-3 py-2.5 text-right tabular-nums",
+        flight?.discarded && "text-muted-foreground/70 line-through",
+        extra
+      )}
+    >
+      {flight ? (
+        <>
+          <span className="block">{fmt.format(flight.norm)}</span>
+          <span className="block text-xs text-muted-foreground" title={labels.raw}>
+            {fmt.format(flight.raw)}
+          </span>
+        </>
+      ) : (
+        <span className="text-muted-foreground">—</span>
+      )}
+    </td>
+  )
 
   return (
     <section id={sectionId(data)} className="scroll-mt-24 overflow-hidden rounded-xl border border-border">
@@ -123,20 +157,40 @@ function CategoryTable({
       </div>
 
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] text-sm">
+        <table className={cn("w-full text-sm", isMerged ? "min-w-[860px]" : "min-w-[560px]")}>
           <thead className="bg-muted/60 text-xs tracking-wide text-muted-foreground uppercase">
+            {isMerged && (
+              <tr className="border-b border-border">
+                <th colSpan={2} />
+                <th colSpan={prelimFlights.length + 1} className={cn("px-3 pt-2.5 pb-1 text-center font-semibold text-navy", sep)}>
+                  {labels.prelims}
+                </th>
+                <th colSpan={finalFlights.length + 1} className={cn("px-3 pt-2.5 pb-1 text-center font-semibold text-navy", sep)}>
+                  {labels.final}
+                </th>
+              </tr>
+            )}
             <tr>
               <th className="w-12 px-3 py-2.5 text-center font-semibold">{labels.pos}</th>
               <th className="px-3 py-2.5 text-left font-semibold">{labels.pilot}</th>
-              {hasTotalBefore && (
-                <th className="px-3 py-2.5 text-right font-semibold">{labels.totalBefore}</th>
-              )}
-              {data.flightNumbers.map((n) => (
-                <th key={n} className="px-3 py-2.5 text-right font-semibold whitespace-nowrap">
+              {prelimFlights.map((n, i) => (
+                <th key={n} className={cn("px-3 py-2.5 text-right font-semibold whitespace-nowrap", isMerged && i === 0 && sep)}>
                   {labels.flight(n)}
                 </th>
               ))}
-              <th className="px-3 py-2.5 text-right font-semibold">{labels.total}</th>
+              {isMerged && (
+                <>
+                  <th className="px-3 py-2.5 text-right font-semibold">{labels.prelimTotal}</th>
+                  {finalFlights.map((n, i) => (
+                    <th key={n} className={cn("px-3 py-2.5 text-right font-semibold whitespace-nowrap", i === 0 && sep)}>
+                      {labels.flight(n)}
+                    </th>
+                  ))}
+                </>
+              )}
+              <th className="px-3 py-2.5 text-right font-semibold">
+                {isMerged ? labels.finalTotal : labels.total}
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
@@ -168,27 +222,21 @@ function CategoryTable({
                       {row.note && <span className="ml-2">· {row.note}</span>}
                     </p>
                   </td>
-                  {hasTotalBefore && (
-                    <td className="px-3 py-2.5 text-right text-muted-foreground tabular-nums">
-                      {row.totalBefore !== undefined ? fmt.format(row.totalBefore) : "—"}
-                    </td>
+                  {prelimFlights.map((n, i) =>
+                    flightCell(row.flights[i], n, isMerged && i === 0 ? sep : undefined)
                   )}
-                  {row.flights.map((flight, i) => (
-                    <td
-                      key={data.flightNumbers[i]}
-                      className={cn(
-                        "px-3 py-2.5 text-right tabular-nums",
-                        flight.discarded && "text-muted-foreground/70 line-through"
+                  {isMerged && (
+                    <>
+                      <td className="px-3 py-2.5 text-right font-semibold tabular-nums">
+                        {row.prelimTotal !== undefined ? fmt.format(row.prelimTotal) : "—"}
+                      </td>
+                      {finalFlights.map((n, i) =>
+                        flightCell(row.flights[splitIndex + i], n, i === 0 ? sep : undefined)
                       )}
-                    >
-                      <span className="block">{fmt.format(flight.norm)}</span>
-                      <span className="block text-xs text-muted-foreground" title={labels.raw}>
-                        {fmt.format(flight.raw)}
-                      </span>
-                    </td>
-                  ))}
+                    </>
+                  )}
                   <td className="px-3 py-2.5 text-right font-bold text-navy tabular-nums">
-                    {fmt.format(row.total)}
+                    {row.total !== undefined ? fmt.format(row.total) : "—"}
                   </td>
                 </tr>
               )

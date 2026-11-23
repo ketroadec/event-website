@@ -20,10 +20,12 @@ export type ResultRow = {
   country: string
   /** Mention particulière (ex. "Junior", "Fem"). */
   note?: string
-  /** Total avant finale (classements finaux uniquement). */
-  totalBefore?: number
-  total: number
-  flights: FlightScore[]
+  /** Total des préliminaires (tableaux fusionnés prélim + finale uniquement). */
+  prelimTotal?: number
+  /** Total du classement (absent pour un non-finaliste dans un tableau fusionné). */
+  total?: number
+  /** Un vol par entrée de `flightNumbers` ; `null` = vol non effectué (non-finaliste). */
+  flights: (FlightScore | null)[]
 }
 
 export type CategoryResults = {
@@ -33,6 +35,9 @@ export type CategoryResults = {
   stage: "final" | "preliminary"
   /** Numéros des vols présentés dans le tableau. */
   flightNumbers: number[]
+  /** Numéro du premier vol de finale : affiche une colonne "Total prélim."
+   *  avant ce vol et sépare visuellement les deux phases. */
+  finalFrom?: number
   rows: ResultRow[]
 }
 
@@ -44,42 +49,28 @@ const f = (raw: number, norm: number, discarded = false): FlightScore => ({
 
 export const results: CategoryResults[] = [
   {
+    // Préliminaires (vols 1 à 3) puis finale (vols 4 et 5) pour les 10 premiers.
+    // Classement : ordre de la finale, puis non-finalistes dans l'ordre des préliminaires.
     category: "f3p-a",
     stage: "final",
-    flightNumbers: [4, 5],
+    flightNumbers: [1, 2, 3, 4, 5],
+    finalFrom: 4,
     rows: [
-      { pos: 1, firstName: "Gernot", lastName: "BRUCKMANN", country: "AUT", totalBefore: 2000, total: 2000, flights: [f(398.1, 1000), f(411.8, 1000, true)] },
-      { pos: 2, firstName: "Maxime", lastName: "SCHMITT", country: "FRA", totalBefore: 1994.84, total: 1986.96, flights: [f(382.3, 960.6, true), f(407.9, 989.54)] },
-      { pos: 3, firstName: "Sébastien", lastName: "MICEK", country: "FRA", totalBefore: 1870.67, total: 1880.45, flights: [f(362.0, 911.53, true), f(389.2, 945.11)] },
-      { pos: 4, firstName: "Sylvain", lastName: "PASINI", country: "SUI", totalBefore: 1855.58, total: 1878.69, flights: [f(363.2, 915.28, true), f(390.3, 950.9)] },
-      { pos: 5, firstName: "Markus", lastName: "ZOLITSCH", country: "GER", totalBefore: 1888.47, total: 1867.57, flights: [f(364.8, 917.7, true), f(381.5, 923.33)] },
-      { pos: 6, firstName: "Philipp", lastName: "SCHURMANN", country: "SUI", totalBefore: 1854.6, total: 1860.39, flights: [f(211.0, 540.97, true), f(382.4, 933.09)] },
-      { pos: 7, firstName: "Lucas", lastName: "PONCET", country: "FRA", totalBefore: 1816.13, total: 1840.68, flights: [f(354.2, 886.08, true), f(384.4, 932.61)] },
-      { pos: 8, firstName: "Kévin", lastName: "TROADEC", country: "FRA", totalBefore: 1831.35, total: 1836.94, flights: [f(357.5, 901.0, true), f(377.9, 921.26)] },
-      { pos: 9, firstName: "Mateij", lastName: "HRICA", country: "SVK", totalBefore: 1756.71, total: 1788.4, flights: [f(356.2, 896.89), f(366.8, 891.51)] },
-      { pos: 10, firstName: "Lukas", lastName: "DOUBRAVA", country: "CZE", totalBefore: 1746.83, total: 1726.07, flights: [f(331.6, 835.9, true), f(351.4, 852.65)] },
-    ],
-  },
-  {
-    category: "f3p-a",
-    stage: "preliminary",
-    flightNumbers: [1, 2, 3],
-    rows: [
-      { pos: 1, firstName: "Gernot", lastName: "BRUCKMANN", country: "AUT", total: 2000, flights: [f(378.2, 1000), f(386.5, 1000), f(386.9, 1000, true)] },
-      { pos: 2, firstName: "Maxime", lastName: "SCHMITT", country: "FRA", total: 1994.84, flights: [f(382.0, 999.53), f(383.4, 992.2, true), f(387.5, 995.31)] },
-      { pos: 3, firstName: "Markus", lastName: "ZOLITSCH", country: "GER", total: 1888.47, flights: [f(362.9, 944.84), f(362.5, 939.29, true), f(368.8, 943.63)] },
-      { pos: 4, firstName: "Sébastien", lastName: "MICEK", country: "FRA", total: 1870.67, flights: [f(357.0, 933.06), f(365.3, 937.61), f(363.7, 931.96, true)] },
-      { pos: 5, firstName: "Sylvain", lastName: "PASINI", country: "SUI", total: 1855.58, flights: [f(351.9, 918.69, true), f(361.5, 936.26), f(359.3, 919.32)] },
-      { pos: 6, firstName: "Philipp", lastName: "SCHURMANN", country: "SUI", total: 1854.6, flights: [f(351.4, 917.75, true), f(357.4, 925.94), f(363.2, 928.66)] },
-      { pos: 7, firstName: "Kévin", lastName: "TROADEC", country: "FRA", total: 1831.35, flights: [f(348.5, 910.81), f(355.0, 920.54), f(353.7, 906.25, true)] },
-      { pos: 8, firstName: "Lucas", lastName: "PONCET", country: "FRA", total: 1816.13, flights: [f(342.9, 908.09), f(345.7, 897.59, true), f(354.1, 908.04)] },
-      { pos: 9, firstName: "Mateij", lastName: "HRICA", country: "SVK", total: 1756.71, flights: [f(328.2, 857.08, true), f(342.6, 887.61), f(339.9, 869.1)] },
-      { pos: 10, firstName: "Lukas", lastName: "DOUBRAVA", country: "CZE", total: 1746.83, flights: [f(333.5, 872.94), f(337.0, 873.89), f(337.5, 861.87, true)] },
-      { pos: 11, firstName: "Florentin", lastName: "TAKZDHOOP", country: "FRA", total: 1745.95, flights: [f(330.7, 867.63), f(338.6, 878.32), f(333.9, 857.18, true)] },
-      { pos: 12, firstName: "Antoine", lastName: "VURPILLOT", country: "FRA", total: 1656.25, flights: [f(308.6, 807.78, true), f(326.4, 848.09), f(314.2, 808.16)] },
-      { pos: 13, firstName: "Sergej", lastName: "GLAVAK", country: "GER", total: 1531.48, flights: [f(287.6, 755.07), f(298.0, 776.41), f(292.6, 754.68, true)] },
-      { pos: 14, firstName: "Frantisek", lastName: "HORNA", country: "CZE", total: 1493.19, flights: [f(282.2, 739.5), f(291.1, 753.69), f(286.3, 736.32, true)] },
-      { pos: 15, firstName: "Joshua", lastName: "DEBERNARDI", country: "SUI", note: "Junior", total: 0, flights: [f(0, 0), f(0, 0), f(0, 0, true)] },
+      { pos: 1, firstName: "Gernot", lastName: "BRUCKMANN", country: "AUT", prelimTotal: 2000, total: 2000, flights: [f(378.2, 1000), f(386.5, 1000), f(386.9, 1000, true), f(398.1, 1000), f(411.8, 1000, true)] },
+      { pos: 2, firstName: "Maxime", lastName: "SCHMITT", country: "FRA", prelimTotal: 1994.84, total: 1986.96, flights: [f(382.0, 999.53), f(383.4, 992.2, true), f(387.5, 995.31), f(382.3, 960.6, true), f(407.9, 989.54)] },
+      { pos: 3, firstName: "Sébastien", lastName: "MICEK", country: "FRA", prelimTotal: 1870.67, total: 1880.45, flights: [f(357.0, 933.06), f(365.3, 937.61), f(363.7, 931.96, true), f(362.0, 911.53, true), f(389.2, 945.11)] },
+      { pos: 4, firstName: "Sylvain", lastName: "PASINI", country: "SUI", prelimTotal: 1855.58, total: 1878.69, flights: [f(351.9, 918.69, true), f(361.5, 936.26), f(359.3, 919.32), f(363.2, 915.28, true), f(390.3, 950.9)] },
+      { pos: 5, firstName: "Markus", lastName: "ZOLITSCH", country: "GER", prelimTotal: 1888.47, total: 1867.57, flights: [f(362.9, 944.84), f(362.5, 939.29, true), f(368.8, 943.63), f(364.8, 917.7, true), f(381.5, 923.33)] },
+      { pos: 6, firstName: "Philipp", lastName: "SCHURMANN", country: "SUI", prelimTotal: 1854.6, total: 1860.39, flights: [f(351.4, 917.75, true), f(357.4, 925.94), f(363.2, 928.66), f(211.0, 540.97, true), f(382.4, 933.09)] },
+      { pos: 7, firstName: "Lucas", lastName: "PONCET", country: "FRA", prelimTotal: 1816.13, total: 1840.68, flights: [f(342.9, 908.09), f(345.7, 897.59, true), f(354.1, 908.04), f(354.2, 886.08, true), f(384.4, 932.61)] },
+      { pos: 8, firstName: "Kévin", lastName: "TROADEC", country: "FRA", prelimTotal: 1831.35, total: 1836.94, flights: [f(348.5, 910.81), f(355.0, 920.54), f(353.7, 906.25, true), f(357.5, 901.0, true), f(377.9, 921.26)] },
+      { pos: 9, firstName: "Mateij", lastName: "HRICA", country: "SVK", prelimTotal: 1756.71, total: 1788.4, flights: [f(328.2, 857.08, true), f(342.6, 887.61), f(339.9, 869.1), f(356.2, 896.89), f(366.8, 891.51)] },
+      { pos: 10, firstName: "Lukas", lastName: "DOUBRAVA", country: "CZE", prelimTotal: 1746.83, total: 1726.07, flights: [f(333.5, 872.94), f(337.0, 873.89), f(337.5, 861.87, true), f(331.6, 835.9, true), f(351.4, 852.65)] },
+      { pos: 11, firstName: "Florentin", lastName: "TAKZDHOOP", country: "FRA", prelimTotal: 1745.95, flights: [f(330.7, 867.63), f(338.6, 878.32), f(333.9, 857.18, true), null, null] },
+      { pos: 12, firstName: "Antoine", lastName: "VURPILLOT", country: "FRA", prelimTotal: 1656.25, flights: [f(308.6, 807.78, true), f(326.4, 848.09), f(314.2, 808.16), null, null] },
+      { pos: 13, firstName: "Sergej", lastName: "GLAVAK", country: "GER", prelimTotal: 1531.48, flights: [f(287.6, 755.07), f(298.0, 776.41), f(292.6, 754.68, true), null, null] },
+      { pos: 14, firstName: "Frantisek", lastName: "HORNA", country: "CZE", prelimTotal: 1493.19, flights: [f(282.2, 739.5), f(291.1, 753.69), f(286.3, 736.32, true), null, null] },
+      { pos: 15, firstName: "Joshua", lastName: "DEBERNARDI", country: "SUI", note: "Junior", prelimTotal: 0, flights: [f(0, 0), f(0, 0), f(0, 0, true), null, null] },
     ],
   },
   {

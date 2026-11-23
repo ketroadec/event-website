@@ -388,9 +388,12 @@
     "pos": "Pos.",
     "pilot": "Pilote",
     "flight": "Vol {n}",
-    "totalBefore": "Total avant finale",
     "total": "Total",
     "raw": "Score brut",
-    "legend": "Pour chaque vol : score normalisé (sur 1000) et, en dessous, score brut. Les vols barrés ne sont pas retenus dans le total. Source : feuilles de résultats officielles signées par le jury."
+    "legend": "Pour chaque vol : score normalisé (sur 1000) et, en dessous, score brut. Les vols barrés ne sont pas retenus dans le total. Source : feuilles de résultats officielles signées par le jury.",
+    "prelimTotal": "Total prélim.",
+    "finalTotal": "Total finale",
+    "prelims": "Préliminaires",
+    "final": "Finale"
   }
 }
