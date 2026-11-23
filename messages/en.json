@@ -23,9 +23,7 @@
     "programme": "Schedule",
     "reglement": "Rules",
     "informations": "Information",
-    "inscription": "Register",
     "contact": "Contact",
-    "register": "Register",
     "openMenu": "Open menu",
     "inscrits": "Pilots",
     "resultats": "Results"
@@ -70,7 +68,6 @@
     "heroTitleLine1": "Sélestat",
     "heroTitleLine2": "International",
     "heroTitleLine3": "F3P Masters 2026",
-    "ctaRegister": "Register for the competition",
     "ctaProgramme": "View the schedule",
     "ctaDiscover": "Discover the event",
     "aboutHeading": "Sélestat International F3P Masters",
@@ -96,10 +93,6 @@
     },
     "practical": {
       "heading": "Practical information",
-      "registration": {
-        "title": "Registration",
-        "body": "How to register and fees"
-      },
       "schedule": {
         "title": "Schedule",
         "body": "Times and event program"
@@ -115,6 +108,10 @@
       "pilots": {
         "title": "Pilots",
         "body": "List of registered pilots by category"
+      },
+      "results": {
+        "title": "Results",
+        "body": "Rankings by category"
       }
     },
     "highlights": {
@@ -290,58 +287,6 @@
     "comingSoon": "Coming soon"
   },
   "inscription": {
-    "eyebrow": "Take part",
-    "title": "Registration",
-    "description": "Fill out the form to register.",
-    "opensNote": "Registration opens on September 1, 2026 at 8:00 PM, with priority given to the F3P-A and F3P-AFM categories. Registration for the F3P-AA and National A categories will open on October 1 at 8:00 PM.",
-    "openBanner": "Registration is open for the F3P-A, F3P-AFM, F3P-AA and National A categories. F3P-AA and National A are limited to 6 participants.",
-    "form": {
-      "title": "Registration form",
-      "description": "Fields marked * are required. Your email and phone number are never displayed publicly.",
-      "prenom": "First name *",
-      "prenomPlaceholder": "John",
-      "nom": "Last name *",
-      "nomPlaceholder": "Smith",
-      "email": "Email *",
-      "emailPlaceholder": "john.smith@email.com",
-      "telephone": "Phone",
-      "telephonePlaceholder": "+1 555 123 4567",
-      "categorie": "Class",
-      "categoriePlaceholder": "Choose a class (optional if F3P-AFM)",
-      "nationalite": "Nationality *",
-      "nationalitePlaceholder": "Choose a country",
-      "adresse": "Address *",
-      "adressePlaceholder": "12 Airfield Road, London",
-      "federation": "National aeroclub / federation",
-      "federationPlaceholder": "Your aeroclub or federation name (optional)",
-      "faiLicence": "FAI Licence Number *",
-      "faiLicencePlaceholder": "e.g. GBR-12345",
-      "afmLabel": "Add the F3P-AFM category (you can register in F3P-AFM only)",
-      "categorieFullBadge": "Full",
-      "mealsHeading": "Meals",
-      "mealsDescription": "Number of meals to reserve (yourself + guests).",
-      "saturdayLunch": "Saturday lunch *",
-      "saturdayDinner": "Saturday dinner *",
-      "sundayLunch": "Sunday lunch *",
-      "submit": "Register",
-      "notConfigured": "Supabase is not configured yet (see .env.local.example): registrations cannot be saved at the moment.",
-      "genericError": "Something went wrong, please try again.",
-      "successTitle": "Registration sent!",
-      "successDescription": "Thank you, your registration appears below. You will receive an email confirmation once the organizers have validated your status.",
-      "registerAnother": "Register another person",
-      "validation": {
-        "prenomRequired": "First name is required",
-        "nomRequired": "Last name is required",
-        "emailRequired": "Email is required",
-        "emailInvalid": "Invalid email",
-        "categorieOrAfmRequired": "Choose a class or check the F3P-AFM category",
-        "categorieFullError": "This category is full (6 participants maximum). Please choose another class.",
-        "nationaliteRequired": "Nationality is required",
-        "adresseRequired": "Address is required",
-        "faiLicenceRequired": "FAI Licence Number is required"
-      },
-      "totalDue": "Amount due"
-    },
     "list": {
       "title": "Participants",
       "participantCount": "{count, plural, =0 {No participants} one {# participant} other {# participants}}",
@@ -352,23 +297,12 @@
       "statusConfirmed": "Confirmed",
       "statusPending": "Pending",
       "uncategorized": "Uncategorized"
-    },
-    "viewList": "View the list of registrants",
-    "comingSoonTitle": "Registration opening soon",
-    "priorityCategories": "F3P-A · F3P-AFM",
-    "priorityDate": "Sept 1, 2026, 8:00 PM",
-    "laterCategories": "F3P-AA · National A",
-    "laterDate": "Oct 1, 2026, 8:00 PM",
-    "statusOpen": "Open"
+    }
   },
   "inscrits": {
     "eyebrow": "Participants",
     "title": "Pilots",
-    "description": "List of participants registered for the event, updated in real time.",
-    "payment": {
-      "text": "Registrations and meal reservations must be made via the following payment link:",
-      "cta": "Go to payment"
-    }
+    "description": "List of participants registered for the event, updated in real time."
   },
   "contact": {
     "eyebrow": "Got a question?",

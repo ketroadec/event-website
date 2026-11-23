@@ -39,15 +39,11 @@ export default async function Home({
   ]
 
   const practicalItems = [
-    {
-      key: "registration" as const,
-      icon: "/images/brand/icon-registration.png",
-      href: "/inscription",
-    },
     { key: "schedule" as const, icon: "/images/brand/icon-schedule.png", href: "/programme" },
     { key: "informations" as const, icon: Info, href: "/informations" },
     { key: "rules" as const, icon: ScrollText, href: "/reglement" },
     { key: "pilots" as const, icon: Users, href: "/inscrits" },
+    { key: "results" as const, icon: Trophy, href: "/resultats" },
   ]
 
   return (
@@ -134,12 +130,6 @@ export default async function Home({
             {tCountdown("startsIn")}
           </p>
           <Countdown />
-          <Button asChild className="rounded-none bg-[#0281fd] uppercase hover:bg-[#0281fd]/90">
-            <Link href="/inscription">
-              {t("ctaRegister")}
-              <ArrowRight className="size-4" />
-            </Link>
-          </Button>
         </div>
       </div>
 

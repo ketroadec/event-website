@@ -23,9 +23,7 @@
     "programme": "Programme",
     "reglement": "Règlement",
     "informations": "Informations",
-    "inscription": "Inscription",
     "contact": "Contact",
-    "register": "S'inscrire",
     "openMenu": "Ouvrir le menu",
     "inscrits": "Pilotes",
     "resultats": "Résultats"
@@ -70,7 +68,6 @@
     "heroTitleLine1": "Sélestat",
     "heroTitleLine2": "International",
     "heroTitleLine3": "F3P Masters 2026",
-    "ctaRegister": "S'inscrire à la compétition",
     "ctaProgramme": "Voir le programme",
     "ctaDiscover": "Découvrir l'événement",
     "aboutHeading": "Sélestat International F3P Masters",
@@ -96,10 +93,6 @@
     },
     "practical": {
       "heading": "Informations pratiques",
-      "registration": {
-        "title": "Inscription",
-        "body": "Comment s'inscrire et tarifs"
-      },
       "schedule": {
         "title": "Programme",
         "body": "Horaires et déroulé"
@@ -115,6 +108,10 @@
       "pilots": {
         "title": "Pilotes",
         "body": "Liste des inscrits par catégorie"
+      },
+      "results": {
+        "title": "Résultats",
+        "body": "Classements par catégorie"
       }
     },
     "highlights": {
@@ -290,58 +287,6 @@
     "comingSoon": "Bientôt disponible"
   },
   "inscription": {
-    "eyebrow": "Participer",
-    "title": "Inscription",
-    "description": "Remplissez le formulaire pour vous inscrire.",
-    "opensNote": "Les inscriptions ouvrent le 1er septembre 2026 à 20h, avec priorité donnée aux catégories F3P-A et F3P-AFM. Les inscriptions pour les catégories F3P-AA et Nationale A ouvriront le 1er octobre à 20h.",
-    "openBanner": "Les inscriptions sont ouvertes pour les catégories F3P-A, F3P-AFM, F3P-AA et Nationale A. Places limitées à 6 participants pour les catégories F3P-AA et Nationale A.",
-    "form": {
-      "title": "Formulaire d'inscription",
-      "description": "Les champs marqués * sont obligatoires. Votre email et téléphone ne sont jamais affichés publiquement.",
-      "prenom": "Prénom *",
-      "prenomPlaceholder": "Jean",
-      "nom": "Nom *",
-      "nomPlaceholder": "Dupont",
-      "email": "Email *",
-      "emailPlaceholder": "jean.dupont@email.com",
-      "telephone": "Téléphone",
-      "telephonePlaceholder": "+33 6 12 34 56 78",
-      "categorie": "Classe",
-      "categoriePlaceholder": "Choisir une classe (facultatif si F3P-AFM)",
-      "nationalite": "Nationalité *",
-      "nationalitePlaceholder": "Choisir un pays",
-      "adresse": "Adresse *",
-      "adressePlaceholder": "12 rue des Aviateurs, 67600 Sélestat",
-      "federation": "Aéroclub national / fédération",
-      "federationPlaceholder": "Nom de votre aéroclub ou fédération (facultatif)",
-      "faiLicence": "Numéro de licence FAI *",
-      "faiLicencePlaceholder": "Ex. FRA-12345",
-      "afmLabel": "Ajouter la catégorie F3P-AFM (possible de s'inscrire uniquement en F3P-AFM)",
-      "categorieFullBadge": "Complet",
-      "mealsHeading": "Repas",
-      "mealsDescription": "Nombre de repas à réserver (vous + accompagnants).",
-      "saturdayLunch": "Déjeuner du samedi *",
-      "saturdayDinner": "Dîner du samedi *",
-      "sundayLunch": "Déjeuner du dimanche *",
-      "submit": "S'inscrire",
-      "notConfigured": "Supabase n'est pas encore configuré (voir .env.local.example) : les inscriptions ne peuvent pas être enregistrées pour le moment.",
-      "genericError": "Une erreur est survenue, réessayez.",
-      "successTitle": "Inscription envoyée !",
-      "successDescription": "Merci, votre inscription apparaît ci-dessous. Vous recevrez une confirmation par email dès que l'organisation aura validé votre statut.",
-      "registerAnother": "Inscrire une autre personne",
-      "validation": {
-        "prenomRequired": "Le prénom est requis",
-        "nomRequired": "Le nom est requis",
-        "emailRequired": "L'email est requis",
-        "emailInvalid": "Email invalide",
-        "categorieOrAfmRequired": "Choisissez une classe ou cochez la catégorie F3P-AFM",
-        "categorieFullError": "Cette catégorie est complète (6 participants maximum). Merci de choisir une autre classe.",
-        "nationaliteRequired": "La nationalité est requise",
-        "adresseRequired": "L'adresse est requise",
-        "faiLicenceRequired": "Le numéro de licence FAI est requis"
-      },
-      "totalDue": "Montant à payer"
-    },
     "list": {
       "title": "Inscrits",
       "participantCount": "{count, plural, =0 {Aucun participant} one {# participant} other {# participants}}",
@@ -352,23 +297,12 @@
       "statusConfirmed": "Confirmé",
       "statusPending": "En attente",
       "uncategorized": "Non classé"
-    },
-    "viewList": "Voir la liste des inscrits",
-    "comingSoonTitle": "Inscriptions bientôt ouvertes",
-    "priorityCategories": "F3P-A · F3P-AFM",
-    "priorityDate": "1er sept. 2026, 20h",
-    "laterCategories": "F3P-AA · Nationale A",
-    "laterDate": "1er oct. 2026, 20h",
-    "statusOpen": "Ouvert"
+    }
   },
   "inscrits": {
     "eyebrow": "Participants",
     "title": "Pilotes",
-    "description": "Liste des participants inscrits à l'événement, mise à jour en temps réel.",
-    "payment": {
-      "text": "Les inscriptions et les réservations de repas sont à effectuer via le lien de paiement suivant :",
-      "cta": "Accéder au paiement"
-    }
+    "description": "Liste des participants inscrits à l'événement, mise à jour en temps réel."
   },
   "contact": {
     "eyebrow": "Une question ?",

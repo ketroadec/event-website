@@ -23,10 +23,6 @@ export const RULES_URL = "/documents/reglement-f3p-sc4-2026.pdf"
 /** Lien vers le règlement fédéral FFAM de la catégorie Nationale A (PDF). */
 export const RULES_NATIONAL_A_URL = "/documents/reglement-national-a-2026.pdf"
 
-/** Lien vers la plateforme de paiement en ligne (Monetico) des frais d'inscription et des repas. */
-export const PAYMENT_URL =
-  "https://www.monetico-online-asso.com/modelistes-club-de-selestat/reglement"
-
 /** Lien vers le programme provisoire (PDF), issue de l'organisation. */
 export const SCHEDULE_URL = "/documents/programme-sifm-2026.pdf?v=2026-11-17"
 
@@ -83,29 +79,6 @@ export const categories = [
  *  supplémentaire cumulable, proposée séparément (case à cocher). */
 export const mainClasses = categories.filter((c) => c.value !== "f3p-afm")
 export const afmCategory = categories.find((c) => c.value === "f3p-afm")!
-
-/** Frais d'inscription par classe principale (en euros). */
-export const CLASS_FEES: Record<string, number> = {
-  "f3p-a": 50,
-  "national-a": 20,
-  "f3p-aa": 20,
-}
-
-/** Frais pour l'ajout cumulé de la catégorie F3P-AFM (en euros). */
-export const AFM_FEE = 20
-
-/** Catégories dont le nombre de places est limité (voir `LIMITED_CATEGORY_CAPACITY`). */
-export const LIMITED_CATEGORIES = ["f3p-aa", "national-a"] as const
-
-/** Nombre maximum de participants pour chacune des `LIMITED_CATEGORIES`. */
-export const LIMITED_CATEGORY_CAPACITY = 6
-
-/** Prix des repas, par personne (en euros). */
-export const MEAL_PRICES = {
-  repas_samedi_midi: 18,
-  repas_samedi_soir: 25,
-  repas_dimanche_midi: 18,
-} as const
 
 export type NavItem = {
   key: string

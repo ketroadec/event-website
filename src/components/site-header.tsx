@@ -47,9 +47,6 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 md:flex">
           <LanguageSwitcher />
-          <Button asChild size="sm" className="rounded-none bg-[#0281fd] uppercase hover:bg-[#0281fd]/90">
-            <Link href="/inscription">{t("register")}</Link>
-          </Button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
