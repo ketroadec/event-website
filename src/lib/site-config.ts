@@ -118,5 +118,6 @@ export const navItems: NavItem[] = [
   { key: "informations", href: "/informations" },
   { key: "reglement", href: "/reglement" },
   { key: "inscrits", href: "/inscrits" },
+  { key: "resultats", href: "/resultats" },
   { key: "contact", href: "/contact" },
 ]

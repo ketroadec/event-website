@@ -27,7 +27,8 @@
     "contact": "Kontakt",
     "register": "Anmelden",
     "openMenu": "Menü öffnen",
-    "inscrits": "Piloten"
+    "inscrits": "Piloten",
+    "resultats": "Ergebnisse"
   },
   "footer": {
     "rights": "© {year} {name}. Alle Rechte vorbehalten.",
@@ -376,5 +377,20 @@
     "emailLabel": "E-Mail",
     "locationLabel": "Ort des Wettbewerbs",
     "sendEmail": "E-Mail senden"
+  },
+  "resultats": {
+    "eyebrow": "Wertungen",
+    "title": "Ergebnisse",
+    "description": "Offizielle Wertungen der Ausgabe 2026, nach Kategorie.",
+    "jumpTo": "Zur Kategorie",
+    "stageFinal": "Endwertung",
+    "stagePreliminary": "Vorrundenwertung",
+    "pos": "Pl.",
+    "pilot": "Pilot",
+    "flight": "Flug {n}",
+    "totalBefore": "Gesamt vor Finale",
+    "total": "Gesamt",
+    "raw": "Rohwertung",
+    "legend": "Pro Flug: normierte Wertung (von 1000) und darunter die Rohwertung. Durchgestrichene Flüge werden nicht gewertet. Quelle: offizielle, von der Jury unterzeichnete Ergebnislisten."
   }
 }

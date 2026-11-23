@@ -27,7 +27,8 @@
     "contact": "Contact",
     "register": "Register",
     "openMenu": "Open menu",
-    "inscrits": "Pilots"
+    "inscrits": "Pilots",
+    "resultats": "Results"
   },
   "footer": {
     "rights": "© {year} {name}. All rights reserved.",
@@ -376,5 +377,20 @@
     "emailLabel": "Email",
     "locationLabel": "Competition location",
     "sendEmail": "Send an email"
+  },
+  "resultats": {
+    "eyebrow": "Rankings",
+    "title": "Results",
+    "description": "Official rankings of the 2026 edition, category by category.",
+    "jumpTo": "Jump to category",
+    "stageFinal": "Final ranking",
+    "stagePreliminary": "Preliminary ranking",
+    "pos": "Pos.",
+    "pilot": "Pilot",
+    "flight": "Flight {n}",
+    "totalBefore": "Total before final",
+    "total": "Total",
+    "raw": "Raw score",
+    "legend": "For each flight: normalized score (out of 1000) and, below, raw score. Struck-through flights are discarded from the total. Source: official result sheets signed by the jury."
   }
 }

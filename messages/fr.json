@@ -27,7 +27,8 @@
     "contact": "Contact",
     "register": "S'inscrire",
     "openMenu": "Ouvrir le menu",
-    "inscrits": "Pilotes"
+    "inscrits": "Pilotes",
+    "resultats": "Résultats"
   },
   "footer": {
     "rights": "© {year} {name}. Tous droits réservés.",
@@ -376,5 +377,20 @@
     "emailLabel": "Email",
     "locationLabel": "Lieu de la compétition",
     "sendEmail": "Envoyer un email"
+  },
+  "resultats": {
+    "eyebrow": "Classements",
+    "title": "Résultats",
+    "description": "Classements officiels de l'édition 2026, catégorie par catégorie.",
+    "jumpTo": "Aller à la catégorie",
+    "stageFinal": "Classement final",
+    "stagePreliminary": "Classement préliminaire",
+    "pos": "Pos.",
+    "pilot": "Pilote",
+    "flight": "Vol {n}",
+    "totalBefore": "Total avant finale",
+    "total": "Total",
+    "raw": "Score brut",
+    "legend": "Pour chaque vol : score normalisé (sur 1000) et, en dessous, score brut. Les vols barrés ne sont pas retenus dans le total. Source : feuilles de résultats officielles signées par le jury."
   }
 }
