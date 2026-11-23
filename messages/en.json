@@ -394,6 +394,7 @@
     "prelimTotal": "Prelim total",
     "finalTotal": "Final total",
     "prelims": "Preliminaries",
-    "final": "Final"
+    "final": "Final",
+    "prelimRatio": "Prelim /1000"
   }
 }

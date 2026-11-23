@@ -394,6 +394,7 @@
     "prelimTotal": "Gesamt Vorrunde",
     "finalTotal": "Gesamt Finale",
     "prelims": "Vorrunde",
-    "final": "Finale"
+    "final": "Finale",
+    "prelimRatio": "Vorrunde /1000"
   }
 }

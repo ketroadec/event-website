@@ -71,6 +71,7 @@ export default async function ResultatsPage({ params }: Props) {
                 pilot: t("pilot"),
                 flight: (n: number) => t("flight", { n }),
                 prelimTotal: t("prelimTotal"),
+                prelimRatio: t("prelimRatio"),
                 finalTotal: t("finalTotal"),
                 prelims: t("prelims"),
                 final: t("final"),
@@ -105,6 +106,7 @@ function CategoryTable({
     pilot: string
     flight: (n: number) => string
     prelimTotal: string
+    prelimRatio: string
     finalTotal: string
     prelims: string
     final: string
@@ -123,6 +125,9 @@ function CategoryTable({
   const prelimFlights = isMerged ? data.flightNumbers.slice(0, splitIndex) : data.flightNumbers
   const finalFlights = isMerged ? data.flightNumbers.slice(splitIndex) : []
   const sep = "border-l border-border"
+  // Rapport à 1000 des préliminaires : total prélim. / meilleur total prélim. × 1000
+  // (sert de base au total de finale, auquel s'ajoute le meilleur vol de finale).
+  const prelimLeader = Math.max(0, ...data.rows.map((row) => row.prelimTotal ?? 0))
 
   const flightCell = (flight: FlightScore | null, n: number, extra?: string) => (
     <td
@@ -157,7 +162,7 @@ function CategoryTable({
       </div>
 
       <div className="overflow-x-auto">
-        <table className={cn("w-full text-sm", isMerged ? "min-w-[860px]" : "min-w-[560px]")}>
+        <table className={cn("w-full text-sm", isMerged ? "min-w-[960px]" : "min-w-[560px]")}>
           <thead className="bg-muted/60 text-xs tracking-wide text-muted-foreground uppercase">
             {isMerged && (
               <tr className="border-b border-border">
@@ -165,7 +170,7 @@ function CategoryTable({
                 <th colSpan={prelimFlights.length + 1} className={cn("px-3 pt-2.5 pb-1 text-center font-semibold text-navy", sep)}>
                   {labels.prelims}
                 </th>
-                <th colSpan={finalFlights.length + 1} className={cn("px-3 pt-2.5 pb-1 text-center font-semibold text-navy", sep)}>
+                <th colSpan={finalFlights.length + 2} className={cn("px-3 pt-2.5 pb-1 text-center font-semibold text-navy", sep)}>
                   {labels.final}
                 </th>
               </tr>
@@ -181,8 +186,9 @@ function CategoryTable({
               {isMerged && (
                 <>
                   <th className="px-3 py-2.5 text-right font-semibold">{labels.prelimTotal}</th>
-                  {finalFlights.map((n, i) => (
-                    <th key={n} className={cn("px-3 py-2.5 text-right font-semibold whitespace-nowrap", i === 0 && sep)}>
+                  <th className={cn("px-3 py-2.5 text-right font-semibold", sep)}>{labels.prelimRatio}</th>
+                  {finalFlights.map((n) => (
+                    <th key={n} className="px-3 py-2.5 text-right font-semibold whitespace-nowrap">
                       {labels.flight(n)}
                     </th>
                   ))}
@@ -230,9 +236,12 @@ function CategoryTable({
                       <td className="px-3 py-2.5 text-right font-semibold tabular-nums">
                         {row.prelimTotal !== undefined ? fmt.format(row.prelimTotal) : "—"}
                       </td>
-                      {finalFlights.map((n, i) =>
-                        flightCell(row.flights[splitIndex + i], n, i === 0 ? sep : undefined)
-                      )}
+                      <td className={cn("px-3 py-2.5 text-right tabular-nums", sep)}>
+                        {row.prelimTotal !== undefined && prelimLeader > 0
+                          ? fmt.format((row.prelimTotal / prelimLeader) * 1000)
+                          : "—"}
+                      </td>
+                      {finalFlights.map((n, i) => flightCell(row.flights[splitIndex + i], n))}
                     </>
                   )}
                   <td className="px-3 py-2.5 text-right font-bold text-navy tabular-nums">
